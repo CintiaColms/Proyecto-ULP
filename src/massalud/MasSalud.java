@@ -28,10 +28,10 @@ public class MasSalud {
     public static void main(String[] args) {
        
         Connection con=Conexion.getConexion();
-        Empleado juan = new Empleado("Juan", "Fernandez", 42078248, "JuanFer", "juan1234", 155348604, "alfa23", true);
+        Empleado juan = new Empleado(1,"Max", "Power", 12345678, "Maxpower", "contraseña123", 1234567890, "Password123", true);
         Afiliado a=new Afiliado(1,"Candela","Romero",12345678,"Junin 987",2147483647,juan,true);
         Especialidad e=new Especialidad(1,"Cardiología",true);
-        Prestador p=new Prestador("Juan","Pérez","Hospital ABC","Calle Principal 123",123456789,"juan@example.com",e ,true);
+        Prestador p=new Prestador(1,"Juan","Pérez","Hospital ABC","Calle Principal 123",123456789,"juan@example.com",e ,true);
         Orden ord=new Orden(LocalDate.of(1999,5,22),"Efvo",20.20,a,p);
       OrdenData ordD=new OrdenData();
         ordD.guardarOrden(ord); 
