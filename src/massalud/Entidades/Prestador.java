@@ -1,0 +1,130 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package massalud.Entidades;
+
+/**
+ *
+ * @author DANILO
+ */
+public class Prestador {
+    
+      private int id;
+    private String nombre;
+    private String apellido;
+    private String institucion;
+    private String direccion;
+    private String telefono;
+    private String email;
+    private Especialidad especialidad;
+    private boolean estado;
+
+    public Prestador() {
+    }
+
+    public Prestador(String nombre, String apellido, String institucion, String direccion, String telefono, String email, Especialidad especialidad, boolean estado) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.institucion = institucion;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
+        this.especialidad = especialidad;
+        this.estado = estado;
+    }
+    
+    
+    
+    public Prestador(int id, String nombre, String apellido, String institucion, String direccion, String telefono, String email, Especialidad especialidad, boolean estado) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.institucion = institucion;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
+        this.especialidad = especialidad;
+        this.estado = estado;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getApellido() {
+        return apellido;
+    }
+    
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    
+    public String getInstitucion() {
+        return institucion;
+    }
+    
+    public void setInstitucion(String institucion) {
+        this.institucion = institucion;
+    }
+    
+    public String getDireccion() {
+        return direccion;
+    }
+    
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
+    public String getTelefono() {
+        return telefono;
+    }
+    
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public Especialidad getEspecialidad() {
+        return especialidad;
+    }
+    
+    public void setEspecialidad(Especialidad especialidad) {
+        this.especialidad = especialidad;
+    }
+    
+    public boolean isEstado() {
+        return estado;
+    }
+    
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Prestador{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", institucion=" + institucion + ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + ", especialidad=" + especialidad + ", estado=" + estado + '}';
+    }
+    
+    
+}
