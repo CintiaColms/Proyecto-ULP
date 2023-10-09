@@ -22,7 +22,7 @@ public class OrdenData {
   
    private Connection con=null;
     private AfiliadoData afiData=new AfiliadoData();
-//    private PrestadorData presData=new PrestadorData();
+  private PrestadorData presData=new PrestadorData();
 
     public OrdenData() {
         con=Conexion.getConexion();
@@ -39,7 +39,6 @@ public class OrdenData {
       ps.setInt(5, ord.getPrestador().getId());
 
       ps.executeUpdate();
-
       ResultSet rs = ps.getGeneratedKeys();
       if (rs.next()) {
         ord.setIdOrden(rs.getInt(1));

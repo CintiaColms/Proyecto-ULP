@@ -6,8 +6,15 @@
 package massalud;
 
 import java.sql.Connection;
+import java.time.LocalDate;
 import massalud.AccesoDatos.AfiliadoData;
 import massalud.AccesoDatos.Conexion;
+import massalud.AccesoDatos.OrdenData;
+import massalud.Entidades.Afiliado;
+import massalud.Entidades.Empleado;
+import massalud.Entidades.Especialidad;
+import massalud.Entidades.Orden;
+import massalud.Entidades.Prestador;
 
 /**
  *
@@ -19,11 +26,18 @@ public class MasSalud {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-
-
        
         Connection con=Conexion.getConexion();
+        Empleado juan = new Empleado("Juan", "Fernandez", 42078248, "JuanFer", "juan1234", 155348604, "alfa23", true);
+        Afiliado a=new Afiliado(1,"Candela","Romero",12345678,"Junin 987",2147483647,juan,true);
+        Especialidad e=new Especialidad(1,"Cardiología",true);
+        Prestador p=new Prestador("Juan","Pérez","Hospital ABC","Calle Principal 123",123456789,"juan@example.com",e ,true);
+        Orden ord=new Orden(LocalDate.of(1999,5,22),"Efvo",20.20,a,p);
+      OrdenData ordD=new OrdenData();
+        ordD.guardarOrden(ord); 
+        
+        
+        
         
 //        Empleado juan = new Empleado("Juan", "Fernandez", 42078248, "JuanFer", "juan1234", 155348604, "alfa23", true);
 //        EmpleadoData emp = new EmpleadoData();
@@ -69,7 +83,7 @@ public class MasSalud {
 //            System.out.println("Estado:" + empleado.isEstado());
 //            System.out.println("-------------------------------");
 //        }
-        AfiliadoData ad=new AfiliadoData();
+     //   AfiliadoData ad=new AfiliadoData();
 //         Empleado e=new Empleado(1,"Max","Power",12345678,"Maxpower","contraseña123", 1234567890,"pasword123", true);
 //        Afiliado a=new Afiliado(15,"Danilo","Garay",98124510,"Riobamba 785",32145689, e ,true);    
 //        ad.guardarAfiliado(a); guardar afiliado
