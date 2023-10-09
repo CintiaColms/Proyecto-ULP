@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.time.LocalDate;
 import massalud.AccesoDatos.AfiliadoData;
 import massalud.AccesoDatos.Conexion;
-//import massalud.AccesoDatos.OrdenData;
+import massalud.AccesoDatos.OrdenData;
 import massalud.Entidades.Afiliado;
 import massalud.Entidades.Empleado;
 import massalud.Entidades.Especialidad;
@@ -29,18 +29,17 @@ public class MasSalud {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-<<<<<<< HEAD
+
        
-        Connection con=Conexion.getConexion();
-        Empleado juan = new Empleado(1,"Max", "Power", 12345678, "Maxpower", "contraseña123", 1234567890, "Password123", true);
-        Afiliado a=new Afiliado(1,"Candela","Romero",12345678,"Junin 987",2147483647,juan,true);
-        Especialidad e=new Especialidad(1,"Cardiología",true);
-        Prestador p=new Prestador(1,"Juan","Pérez","Hospital ABC","Calle Principal 123",123456789,"juan@example.com",e ,true);
-        Orden ord=new Orden(LocalDate.of(1999,5,22),"Efvo",20.20,a,p);
-      OrdenData ordD=new OrdenData();
-        ordD.guardarOrden(ord); 
-=======
->>>>>>> d1517268345e70a7288546ef0d219ba61f35d518
+//        Connection con=Conexion.getConexion();
+//        Empleado juan = new Empleado(1,"Max", "Power", 12345678, "Maxpower", "contraseña123", 1234567890, "Password123", true);
+//        Afiliado a=new Afiliado(1,"Candela","Romero",12345678,"Junin 987",2147483647,juan,true);
+//        Especialidad e=new Especialidad(1,"Cardiología",true);
+//        Prestador p=new Prestador(1,"Juan","Pérez","Hospital ABC","Calle Principal 123","123456789","juan@example.com",e ,true);
+//        Orden ord=new Orden(LocalDate.of(1999,5,22),"Efvo",20.20,a,p);
+//      OrdenData ordD=new OrdenData();
+//        ordD.guardarOrden(ord); 
+
         
         
         
@@ -48,37 +47,37 @@ public class MasSalud {
 //CLASE PRESTADOR
 
 
-        Connection con = Conexion.getConexion();
-        EspecialidadData especialidadData = new EspecialidadData(con); // 
-        PrestadorData prestadorData = new PrestadorData(con, especialidadData);
-
-        int id = 10;
-        Prestador prestador = (Prestador) prestadorData.buscarPrestador(id);
-
-        if (prestador == null) {
-            System.out.println("Prestador con ID " + id + " no encontrado.");
-        } else {
-            System.out.println("Prestador encontrado:");
-            System.out.println("ID: " + prestador.getId());
-            System.out.println("Nombre: " + prestador.getNombre());
-            System.out.println("Apellido: " + prestador.getApellido());
-            System.out.println("Institución: " + prestador.getInstitucion());
-            System.out.println("Dirección: " + prestador.getDireccion());
-            System.out.println("Telefono: " + prestador.getTelefono());
-            System.out.println("Email: " + prestador.getEmail());
-
-            if (prestador.getEstado()) {
-                System.out.println("Estado: Activo");
-            } else {
-                System.out.println("Estado: Inactivo");
-            }
-
-            int idEspecialidad = prestador.getEspecialidad().getIdEspecialidad();
-            String nombreEspecialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad).getNombre();
-
-            System.out.println("Número de Especialidad: " + idEspecialidad);
-            System.out.println("Nombre de Especialidad: " + nombreEspecialidad);
-        }
+//        Connection con = Conexion.getConexion();
+//        EspecialidadData especialidadData = new EspecialidadData(con); // 
+//        PrestadorData prestadorData = new PrestadorData();
+//
+//        int id = 10;
+//        Prestador prestador = (Prestador) prestadorData.buscarPrestador(id);
+//
+//        if (prestador == null) {
+//            System.out.println("Prestador con ID " + id + " no encontrado.");
+//        } else {
+//            System.out.println("Prestador encontrado:");
+//            System.out.println("ID: " + prestador.getId());
+//            System.out.println("Nombre: " + prestador.getNombre());
+//            System.out.println("Apellido: " + prestador.getApellido());
+//            System.out.println("Institución: " + prestador.getInstitucion());
+//            System.out.println("Dirección: " + prestador.getDireccion());
+//            System.out.println("Telefono: " + prestador.getTelefono());
+//            System.out.println("Email: " + prestador.getEmail());
+//
+//            if (prestador.getEstado()) {
+//                System.out.println("Estado: Activo");
+//            } else {
+//                System.out.println("Estado: Inactivo");
+//            }
+//
+//            int idEspecialidad = prestador.getEspecialidad().getIdEspecialidad();
+//            String nombreEspecialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad).getNombre();
+//
+//            System.out.println("Número de Especialidad: " + idEspecialidad);
+//            System.out.println("Nombre de Especialidad: " + nombreEspecialidad);
+//        }
     }
 }
 

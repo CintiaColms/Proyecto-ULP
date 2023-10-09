@@ -22,17 +22,14 @@ import massalud.Entidades.Prestador;
 
 public class PrestadorData {
 
-    private final Connection connection;
+    private Connection connection=null;
     private EspecialidadData especialidadData;
 
-    public PrestadorData(Connection connection, EspecialidadData especialidadData) {
-        this.connection = connection;
-        this.especialidadData = especialidadData;
+    public PrestadorData() {
+        connection=Conexion.getConexion();
     }
 
-    public PrestadorData(Connection con, massaludgrupo17.AccesoDatos.EspecialidadData especialidadData) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
     public void guardarPrestador(Prestador prestador) {
         try {
 
