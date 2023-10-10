@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import massalud.Entidades.Especialidad;
 import massalud.Entidades.Prestador;
+import massalud.AccesoDatos.EspecialidadData;
 
 public class PrestadorData {
 
@@ -46,12 +47,12 @@ public class PrestadorData {
                 statement.setString(5, prestador.getTelefono());
                 statement.setString(6, prestador.getEmail());
                 statement.setInt(7, prestador.getEspecialidad().getIdEspecialidad());
-                statement.setBoolean(8, prestador.Estado());
+                statement.setBoolean(8, prestador.isEstado());
                 statement.executeUpdate();
 
                 ResultSet generatedKeys = statement.getGeneratedKeys();
                 if (generatedKeys.next()) {
-                    prestador.setId(generatedKeys.getInt(1));
+                    prestador.setIdPrestador(generatedKeys.getInt(1));
                 }
             }
         } catch (SQLException e) {
@@ -62,7 +63,7 @@ public class PrestadorData {
     public void actualizarPrestador(Prestador prestador) {
         try {
 
-            if (prestador.getId() == 0) {
+            if (prestador.getIdPrestador()== 0) {
                 return;
             }
 
@@ -75,7 +76,7 @@ public class PrestadorData {
                 statement.setString(5, prestador.getTelefono());
                 statement.setString(6, prestador.getEmail());
                 statement.setInt(7, prestador.getEspecialidad().getIdEspecialidad());
-                statement.setBoolean(8, prestador.Estado());
+                statement.setBoolean(8, prestador.isEstado());
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
@@ -105,19 +106,17 @@ public class PrestadorData {
 
                 while (resultSet.next()) {
                     Prestador prestador = new Prestador();
-                    prestador.setId(resultSet.getInt("id"));
+                    EspecialidadData ed=new EspecialidadData();
+                    prestador.setIdPrestador(resultSet.getInt("id"));
                     prestador.setNombre(resultSet.getString("nombre"));
                     prestador.setApellido(resultSet.getString("apellido"));
                     prestador.setInstitucion(resultSet.getString("institucion"));
                     prestador.setDireccion(resultSet.getString("direccion"));
                     prestador.setTelefono(resultSet.getString("telefono"));
-                    prestador.setEmail(resultSet.getString("email"));
+                    prestador.setEmail(resultSet.getString("email"));                   
 
 
-                    int idEspecialidad = resultSet.getInt("idespecialidad");
-
-
-                    Especialidad especialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad);
+                    Especialidad especialidad = ed.buscarEspecialidadPorId(resultSet.getInt("idespecialidad")) ;
 
 
                     prestador.setEspecialidad(especialidad);
@@ -144,19 +143,17 @@ public Prestador buscarPrestador(int idABuscar) {
 
         if (resultSet.next()) {
             prestador = new Prestador();
-            prestador.setId(resultSet.getInt("id"));
+            EspecialidadData ed= new EspecialidadData();
+            prestador.setIdPrestador(resultSet.getInt("id"));
             prestador.setNombre(resultSet.getString("nombre"));
             prestador.setApellido(resultSet.getString("apellido"));
             prestador.setInstitucion(resultSet.getString("institucion"));
             prestador.setDireccion(resultSet.getString("direccion"));
             prestador.setTelefono(resultSet.getString("telefono"));
-            prestador.setEmail(resultSet.getString("email"));
+            prestador.setEmail(resultSet.getString("email"));               
 
-
-            int idEspecialidad = resultSet.getInt("idespecialidad");
+            Especialidad especialidad = ed.buscarEspecialidadPorId(resultSet.getInt("idespecialidad")) ;
             
-
-            Especialidad especialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad);
             
 
             prestador.setEspecialidad(especialidad);

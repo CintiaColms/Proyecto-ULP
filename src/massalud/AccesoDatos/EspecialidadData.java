@@ -15,8 +15,8 @@ public class EspecialidadData {
 
     private Connection con = null;
 
-    public EspecialidadData(Connection con) {
-        this.con = con;
+    public EspecialidadData() {
+       con=Conexion.getConexion();
     }
 
     public void guardarEspecialidad(Especialidad espe) {
