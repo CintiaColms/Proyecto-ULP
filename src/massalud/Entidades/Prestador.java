@@ -7,8 +7,6 @@
 
 package massalud.Entidades;
 
-import massalud.Entidades.Especialidad;
-
 /**
  *
  * @author Leroom

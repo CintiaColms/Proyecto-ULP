@@ -11,6 +11,7 @@ import java.util.List;
 import massalud.AccesoDatos.AfiliadoData;
 //import massalud.AccesoDatos.AfiliadoData;
 import massalud.AccesoDatos.Conexion;
+import massalud.AccesoDatos.EspecialidadData;
 import massalud.AccesoDatos.OrdenData;
 import massalud.AccesoDatos.PrestadorData;
 import massalud.Entidades.Afiliado;
@@ -73,36 +74,36 @@ public class MasSalud {
 
 //         AfiliadoData afiliadoData = new AfiliadoData();
 //        PrestadorData prestadorData = new PrestadorData();
-        OrdenData ordenData = new OrdenData();
+//        OrdenData ordenData = new OrdenData();
+////
+//        LocalDate fechaBusqueda = LocalDate.of(2023, 10, 10); // Fecha de búsqueda
+////        List<Orden> ordenesEncontradas = ordenData.buscarOrdenesPorFecha(fechaBusqueda);
 //
-        LocalDate fechaBusqueda = LocalDate.of(2023, 10, 10); // Fecha de búsqueda
-//        List<Orden> ordenesEncontradas = ordenData.buscarOrdenesPorFecha(fechaBusqueda);
-
-//        if (!ordenesEncontradas.isEmpty()) {
-//            System.out.println("Órdenes encontradas por fecha:");
-            for (Orden orden : ordenData.buscarOrdenesPorFecha(fechaBusqueda)) {
-                System.out.println("ID de Orden: " + orden.getIdOrden());
-                System.out.println("Fecha: " + orden.getFecha());
-                System.out.println("Forma de Pago: " + orden.getFormaDePago());
-                System.out.println("Importe: " + orden.getImporte());              
-                System.out.println("Nombre afiliado: "+orden.getAfiliado().getNombre());
-              System.out.println("Especialidad   System.out.println(\"Nombre afiliado: \"+orden.getAfiliado().getNombre()); prestador: "+orden.getPrestador().getEspecialidad().getNombre());
-            }
-//        } else {
-//            System.out.println("No se encontraron órdenes para la fecha especificada.");
+////        if (!ordenesEncontradas.isEmpty()) {
+////            System.out.println("Órdenes encontradas por fecha:");
+//            for (Orden orden : ordenData.buscarOrdenesPorFecha(fechaBusqueda)) {
+//                System.out.println("ID de Orden: " + orden.getIdOrden());
+//                System.out.println("Fecha: " + orden.getFecha());
+//                System.out.println("Forma de Pago: " + orden.getFormaDePago());
+//                System.out.println("Importe: " + orden.getImporte());              
+//                System.out.println("Nombre afiliado: "+orden.getAfiliado().getNombre());
+//              System.out.println("Especialidad   System.out.println(\"Nombre afiliado: \"+orden.getAfiliado().getNombre()); prestador: "+orden.getPrestador().getEspecialidad().getNombre());
+//            }
+////        } else {
+////            System.out.println("No se encontraron órdenes para la fecha especificada.");
+////        }
+////
+////        // Cierra la conexión a la base de datos si es necesario
+////        try {
+////            con.close();Prestador prestador = new Prestador();
+////                    EspecialidadData ed=new EspecialidadData();
+////            e.printStackTrace();
 //        }
-//
-//        // Cierra la conexión a la base de datos si es necesario
-//        try {
-//            con.close();Prestador prestador = new Prestador();
-//                    EspecialidadData ed=new EspecialidadData();
-//            e.printStackTrace();
-        }
-        
-       
-    }
-        
-        
+//        
+//       
+//    }
+//        
+//        
         
         
         
@@ -111,39 +112,43 @@ public class MasSalud {
 
 
 
-//CLASE PRESTADOR
-//        Connection con = Conexion.getConexion();
-//        EspecialidadData especialidadData = new EspecialidadData(con); // 
-//        PrestadorData prestadorData = new PrestadorData();
-//
-//        int id = 10;
-//        Prestador prestador = (Prestador) prestadorData.buscarPrestador(id);
-//
-//        if (prestador == null) {
-//            System.out.println("Prestador con ID " + id + " no encontrado.");
-//        } else {
-//            System.out.println("Prestador encontrado:");
-//            System.out.println("ID: " + prestador.getId());
-//            System.out.println("Nombre: " + prestador.getNombre());
-//            System.out.println("Apellido: " + prestador.getApellido());
-//            System.out.println("Institución: " + prestador.getInstitucion());
-//            System.out.println("Dirección: " + prestador.getDireccion());
-//            System.out.println("Telefono: " + prestador.getTelefono());
-//            System.out.println("Email: " + prestador.getEmail());
-//
-//            if (prestador.getEstado()) {
-//                System.out.println("Estado: Activo");
-//            } else {
-//                System.out.println("Estado: Inactivo");
-//            }
-//
-//            int idEspecialidad = prestador.getEspecialidad().getIdEspecialidad();
-//            String nombreEspecialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad).getNombre();
-//
-//            System.out.println("Número de Especialidad: " + idEspecialidad);
-//            System.out.println("Nombre de Especialidad: " + nombreEspecialidad);
-//        }
-//       
+//CLASE PRESTADO
+
+        EspecialidadData especialidadData = new EspecialidadData();
+        PrestadorData prestadorData = new PrestadorData();
+
+        int id = 10;
+        Prestador prestador = (Prestador) prestadorData.buscarPrestador(id);
+
+        if (prestador == null) {
+            System.out.println("Prestador con ID " + id + " no encontrado.");
+        } else {
+            System.out.println("Prestador encontrado:");
+            System.out.println("ID: " + prestador.getIdPrestador());
+            System.out.println("Nombre: " + prestador.getNombre());
+            System.out.println("Apellido: " + prestador.getApellido());
+            System.out.println("Institución: " + prestador.getInstitucion());
+            System.out.println("Dirección: " + prestador.getDireccion());
+            System.out.println("Telefono: " + prestador.getTelefono());
+            System.out.println("Email: " + prestador.getEmail());
+
+            if (prestador.isEstado()) {
+                System.out.println("Estado: Activo");
+            } else {
+                System.out.println("Estado: Inactivo");
+            }
+
+            int idEspecialidad = prestador.getEspecialidad().getIdEspecialidad();
+            String nombreEspecialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad).getNombre();
+
+            System.out.println("Número de Especialidad: " + idEspecialidad);
+            System.out.println("Nombre de Especialidad: " + nombreEspecialidad);
+        }
+  }
+}
+       
+
+
 //        Connection con=Conexion.getConexion();
 //        Empleado juan = new Empleado("Juan", "Fernandez", 42078248, "JuanFer", "juan1234", 155348604, "alfa23", true);
 //        Afiliado a=new Afiliado(1,"Candela","Romero",12345678,"Junin 987",2147483647,juan,true);
