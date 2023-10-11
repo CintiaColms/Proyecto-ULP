@@ -161,9 +161,9 @@ public class MasSalud {
 //    
    
 //// Actualizar prestador
-      Especialidad e = new Especialidad(2, "Cardiología", true);
-      Prestador p = new Prestador(1, "Max", "Pérez", "Hospital ABC", "Calle Principal 123", "123456789", "juan@example.com", e, true);
-      prestadorData.actualizarPrestador(p);
+//      Especialidad e = new Especialidad(2, "Cardiología", true);
+//      Prestador p = new Prestador(1, "Max", "Pérez", "Hospital ABC", "Calle Principal 123", "123456789", "juan@example.com", e, true);
+//      prestadorData.actualizarPrestador(p);
 
 
 
