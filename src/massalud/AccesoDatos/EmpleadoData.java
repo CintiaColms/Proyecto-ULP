@@ -23,12 +23,12 @@ public class EmpleadoData {
     }
 
     public void guardarEmpleado(Empleado empleado) {
-        String sql = "INSERT INTO empleado (dni, apellido, nombre, usuario, contraseña, telefono, claveacceso, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO empleado (nombre, apellido, dni, usuario, contraseña, telefono, claveacceso, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(3, empleado.getDni());
-            ps.setString(2, empleado.getApellido());
             ps.setString(1, empleado.getNombre());
+            ps.setString(2, empleado.getApellido());
+            ps.setInt(3, empleado.getDni());
             ps.setString(4, empleado.getUsuario());
             ps.setString(5, empleado.getContra());
             ps.setInt(6, empleado.getTel());
@@ -135,7 +135,7 @@ public class EmpleadoData {
     }
   
     public List<Empleado> listarEmpleado() {
-        String sql = "SELECT idEmpleado, dni, apellido, nombre, telefono FROM empleado WHERE estado = 1";
+        String sql = "SELECT idEmpleado, dni, apellido, nombre, telefono, usuario FROM empleado WHERE estado = 1";
         PreparedStatement ps = null;
         ArrayList<Empleado> empleados = new ArrayList<>();
         try {
@@ -149,6 +149,7 @@ public class EmpleadoData {
                 empleado.setApellido(rs.getString("apellido"));
                 empleado.setNombre(rs.getString("nombre"));
                 empleado.setTel(rs.getInt("telefono"));
+                empleado.setUsuario(rs.getString("usuario"));
                 empleado.setEstado(true);
                 empleados.add(empleado);
             }

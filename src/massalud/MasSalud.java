@@ -11,6 +11,7 @@ import java.util.List;
 import massalud.AccesoDatos.AfiliadoData;
 //import massalud.AccesoDatos.AfiliadoData;
 import massalud.AccesoDatos.Conexion;
+import massalud.AccesoDatos.EmpleadoData;
 import massalud.AccesoDatos.EspecialidadData;
 import massalud.AccesoDatos.OrdenData;
 import massalud.AccesoDatos.PrestadorData;
@@ -114,38 +115,38 @@ public class MasSalud {
 
 //CLASE PRESTADO
 
-        EspecialidadData especialidadData = new EspecialidadData();
-        PrestadorData prestadorData = new PrestadorData();
-
-        int id = 10;
-        Prestador prestador = (Prestador) prestadorData.buscarPrestador(id);
-
-        if (prestador == null) {
-            System.out.println("Prestador con ID " + id + " no encontrado.");
-        } else {
-            System.out.println("Prestador encontrado:");
-            System.out.println("ID: " + prestador.getIdPrestador());
-            System.out.println("Nombre: " + prestador.getNombre());
-            System.out.println("Apellido: " + prestador.getApellido());
-            System.out.println("Institución: " + prestador.getInstitucion());
-            System.out.println("Dirección: " + prestador.getDireccion());
-            System.out.println("Telefono: " + prestador.getTelefono());
-            System.out.println("Email: " + prestador.getEmail());
-
-            if (prestador.isEstado()) {
-                System.out.println("Estado: Activo");
-            } else {
-                System.out.println("Estado: Inactivo");
-            }
-
-            int idEspecialidad = prestador.getEspecialidad().getIdEspecialidad();
-            String nombreEspecialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad).getNombre();
-
-            System.out.println("Número de Especialidad: " + idEspecialidad);
-            System.out.println("Nombre de Especialidad: " + nombreEspecialidad);
-        }
-  }
-}
+//        EspecialidadData especialidadData = new EspecialidadData();
+//        PrestadorData prestadorData = new PrestadorData();
+//
+//        int id = 10;
+//        Prestador prestador = (Prestador) prestadorData.buscarPrestador(id);
+//
+//        if (prestador == null) {
+//            System.out.println("Prestador con ID " + id + " no encontrado.");
+//        } else {
+//            System.out.println("Prestador encontrado:");
+//            System.out.println("ID: " + prestador.getIdPrestador());
+//            System.out.println("Nombre: " + prestador.getNombre());
+//            System.out.println("Apellido: " + prestador.getApellido());
+//            System.out.println("Institución: " + prestador.getInstitucion());
+//            System.out.println("Dirección: " + prestador.getDireccion());
+//            System.out.println("Telefono: " + prestador.getTelefono());
+//            System.out.println("Email: " + prestador.getEmail());
+//
+//            if (prestador.isEstado()) {
+//                System.out.println("Estado: Activo");
+//            } else {
+//                System.out.println("Estado: Inactivo");
+//            }
+//
+//            int idEspecialidad = prestador.getEspecialidad().getIdEspecialidad();
+//            String nombreEspecialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad).getNombre();
+//
+//            System.out.println("Número de Especialidad: " + idEspecialidad);
+//            System.out.println("Nombre de Especialidad: " + nombreEspecialidad);
+//        }
+//  }
+//}
        
 
 
@@ -159,13 +160,13 @@ public class MasSalud {
 //        ordD.guardarOrden(ord); 
 //        
 //        
-//        Empleado juan = new Empleado("Juan", "Fernandez", 42078248, "JuanFer", "juan1234", 155348604, "alfa23", true);
-//        EmpleadoData emp = new EmpleadoData();
+//        Empleado fabio = new Empleado("Fabio", "Alvarez", 17890980, "fab23", "pablo123", 155348604, "beta23", true);
+        EmpleadoData emp = new EmpleadoData();
 // Agregado de Empleado 
-//        emp.guardarEmpleado(juan);
+//        emp.guardarEmpleado(fabio);
 // Modificado de Empleado
-//        Empleado juan = new Empleado(11,"Juan Antonio", "Fernandez", 42078248, "JuanFer2307", "juan1234", 155348604, "alfa23", true);
-//        emp.modificarEmpleado(juan);
+//        Empleado fabio = new Empleado(15,"Fabio alan", "Alvarez", 17890980, "fab23", "fabiocap123", 155348604, "beta23", true);
+//        emp.modificarEmpleado(fabio);
 // Eliminar un Empleado
 //        emp.eliminarEmpleado(11);
 // Buscar un Empleado Por DNI
@@ -190,13 +191,16 @@ public class MasSalud {
 //          }
 // Lista de Empleados
 //        for (Empleado empleado : emp.listarEmpleado()) {
+//            System.out.println("ID: " + empleado.getIdEmpleado());
 //            System.out.println("DNI: " + empleado.getDni());
 //            System.out.println("Apellido:" + empleado.getApellido());
 //            System.out.println("Nombre: " + empleado.getNombre());
 //            System.out.println("Telefono: " + empleado.getTel());
+//            System.out.println("Usuario: " + empleado.getUsuario());
 //            System.out.println("Estado:" + empleado.isEstado());
 //            System.out.println("-------------------------------");
 //        }
+  
 //   AfiliadoData ad=new AfiliadoData();
 //         Empleado e=new Empleado(1,"Max","Power",12345678,"Maxpower","contraseña123", 1234567890,"pasword123", true);
 //        Afiliado a=new Afiliado(15,"Danilo","Garay",98124510,"Riobamba 785",32145689, e ,true);    
@@ -223,3 +227,5 @@ public class MasSalud {
 //          
 //          }
 
+  }
+}
