@@ -114,16 +114,16 @@ public class MasSalud {
 
 
 //////CLASE PRESTADOR
-//        EspecialidadData especialidadData = new EspecialidadData();
-//        PrestadorData prestadorData = new PrestadorData();
-//        
-////Obtener una sola especialidad existente por ID
+        EspecialidadData especialidadData = new EspecialidadData();
+        PrestadorData prestadorData = new PrestadorData();
+        
+//Obtener una sola especialidad existente por ID
 //      Especialidad especialidad = especialidadData.buscarEspecialidadPorId(10);
 //      System.out.println("La especialidad " + especialidad);
 //
 //System.out.println("---------------------------------------------------------------------------");
-//
-//////Mostrar todos datos de un prestador por ID
+
+////Mostrar todos datos de un prestador por ID
 //        int id = 10;
 //        Prestador prestador = (Prestador) prestadorData.buscarPrestador(id);
 //        if (prestador == null) {
@@ -133,8 +133,8 @@ public class MasSalud {
 //            System.out.println("ID: " + prestador.getIdPrestador());
 //            System.out.println("Nombre: " + prestador.getNombre());
 //            System.out.println("Apellido: " + prestador.getApellido());
-//            System.out.println("InstituciÃ³n: " + prestador.getInstitucion());
-//            System.out.println("DirecciÃ³n: " + prestador.getDireccion());
+//            System.out.println("Institución: " + prestador.getInstitucion());
+//            System.out.println("Dirección: " + prestador.getDireccion());
 //            System.out.println("Telefono: " + prestador.getTelefono());
 //            System.out.println("Email: " + prestador.getEmail());
 //            if (prestador.isEstado()) {
@@ -144,7 +144,7 @@ public class MasSalud {
 //            }
 //            int idEspecialidad = prestador.getEspecialidad().getIdEspecialidad();
 //            String nombreEspecialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad).getNombre();
-//            System.out.println("NÃºmero de Especialidad: " + idEspecialidad);
+//            System.out.println("Número de Especialidad: " + idEspecialidad);
 //            System.out.println("Nombre de Especialidad: " + nombreEspecialidad);
 //        }
 //        
@@ -157,13 +157,22 @@ public class MasSalud {
 //    });
 //    
 //    System.out.println("---------------------------------------------------------------------------");
-//
-//
-//}
-//}
-////--------------------------------------------------------------------------------------------------------------------//
+//    
+//    
+   
+//// Actualizar prestador
+      Especialidad e = new Especialidad(2, "Cardiología", true);
+      Prestador p = new Prestador(1, "Max", "Pérez", "Hospital ABC", "Calle Principal 123", "123456789", "juan@example.com", e, true);
+      prestadorData.actualizarPrestador(p);
 
-       
+
+
+// // Eliminar prestador
+//
+// prestadorData.eliminarPrestador(p1.getIdPrestador());
+
+
+////--------------------------------------------------------------------------------------------------------------------//
 
 
 //        Connection con=Conexion.getConexion();

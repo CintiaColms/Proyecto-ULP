@@ -67,7 +67,7 @@ public class PrestadorData {
                 return;
             }
 
-            String query = "UPDATE prestador SET nombre = ?, apellido = ?, direccion = ?, telefono = ?, email = ?, idespecialidad = ?, estado = ? WHERE id=?";
+            String query = "UPDATE prestador SET nombre = ?, apellido = ?, institucion = ?, direccion = ?, telefono = ?, email = ?, idespecialidad = ?, estado = ? WHERE id=?";
             try (PreparedStatement statement = connection.prepareStatement(query)) {
                 statement.setString(1, prestador.getNombre());
                 statement.setString(2, prestador.getApellido());
@@ -77,6 +77,7 @@ public class PrestadorData {
                 statement.setString(6, prestador.getEmail());
                 statement.setInt(7, prestador.getEspecialidad().getIdEspecialidad());
                 statement.setBoolean(8, prestador.isEstado());
+                statement.setInt(9,prestador.getIdPrestador());
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
