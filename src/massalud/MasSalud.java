@@ -263,8 +263,8 @@ public class MasSalud {
                 //        }
 //                guardar afiliado
                 //   AfiliadoData ad=new AfiliadoData();
-                         Empleado e=new Empleado(1,"Max","Power",12345678,"Maxpower","contraseña123", 1234567890,"pasword123", true);
-                        Afiliado a=new Afiliado(15,"Danilo","Garay",98124510,"Riobamba 785",32145689, e ,true);    
+//                         Empleado e=new Empleado(1,"Max","Power",12345678,"Maxpower","contraseña123", 1234567890,"pasword123", true);
+//                        Afiliado a=new Afiliado(15,"Danilo","Garay",98124510,"Riobamba 785",32145689, e ,true);    
                 //        ad.guardarAfiliado(a); guardar afiliado
 //                modificar afiliado
                 //        ad.modificarAfiliado(a); modificar afiliado
@@ -292,14 +292,30 @@ public class MasSalud {
 //}
 //                        buscar afiliado por dni  
                         
-                            Afiliado afiliado=ad.buscarAfiliadoPorDni(76543210);
-                            if(afiliado != null){
-                                 System.out.println("ID "+afiliado.getIdafiliaado());
-                              System.out.println("Nombre "+afiliado.getNombre());
-                              System.out.println("Apellido "+afiliado.getApellido());
-                              System.out.println("Domicilio "+afiliado.getDomicilio());
+//                            Afiliado afiliado=ad.buscarAfiliadoPorDni(76543210);
+//                            if(afiliado != null){
+//                                 System.out.println("ID "+afiliado.getIdafiliaado());
+//                              System.out.println("Nombre "+afiliado.getNombre());
+//                              System.out.println("Apellido "+afiliado.getApellido());
+//                              System.out.println("Domicilio "+afiliado.getDomicilio());
+//                            
                             
+//                            }
+                               
+//                          buscar afiliado por apellido
+                            String apellido="Garay";
                             
-                            }
 
-  }}
+                                for (Afiliado a : ad.buscarAfiliadoPorApellido(apellido)) {
+                                   
+                                    System.out.println("Nombre: " + a.getNombre());
+                                    System.out.println("DNI: " + a.getDni());
+                                    System.out.println("Direccion: " + a.getDomicilio());
+                                    System.out.println("Telefono: " + a.getTelefono());
+                                   }
+                                }
+          
+      }
+
+  
+  

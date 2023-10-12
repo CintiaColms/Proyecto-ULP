@@ -235,6 +235,41 @@ public class AfiliadoData {
       return afiliado;
     }
       
+        public List <Afiliado> buscarAfiliadoPorApellido(String apellido) {
+    Afiliado afiliado = null;
+    String sql = "SELECT * FROM afiliado WHERE apellido = ? and estado=1";
+    PreparedStatement ps = null;
+    ArrayList<Afiliado> afi=new ArrayList<>();
+    try {
+      ps = con.prepareStatement(sql);
+      ps.setString(1, apellido);
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+         
+          afiliado = new Afiliado();
+               EmpleadoData eD= new EmpleadoData();
+              afiliado.setIdafiliaado(rs.getInt("idafiliaado"));
+              afiliado.setDni(rs.getInt("dni"));
+              afiliado.setApellido(apellido);
+              afiliado.setNombre(rs.getString("nombre"));
+              Empleado  e=eD.buscarEmpleado(rs.getInt("idempleado"));
+              afiliado.setEmpleado(e);
+              afiliado.setDomicilio(rs.getString("domicilio"));
+              afiliado.setTelefono(rs.getInt("telefono"));              
+              afiliado.setEstado(rs.getBoolean("estado"));
+              afi.add(afiliado);
+        }
+                   
+      if(afi.isEmpty()) {
+           JOptionPane.showMessageDialog(null, "No hay Afiliados con el apellido "+apellido);
+      }
+      
+        ps.close();
+      } catch (SQLException ex) { 
+ JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliado "+ex.getMessage()); 
+ }
+      return afi;
+    }
 }
 
 
