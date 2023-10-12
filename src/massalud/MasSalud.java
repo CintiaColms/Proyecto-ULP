@@ -44,6 +44,7 @@ public class MasSalud {
 ////CLASE PRESTADOR
         EspecialidadData especialidadData = new EspecialidadData();
         PrestadorData prestadorData = new PrestadorData();
+        AfiliadoData ad=new AfiliadoData();
 //        Prestador p = new Prestador();
 //// MOSTRAR LISTA DE PRESTADORES EXISTENTES
 //        List<Prestador> prestadores = prestadorData.obtenerPrestadores();
@@ -210,7 +211,7 @@ public class MasSalud {
 
         //-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- ---//
         
-                //        Connection con=Conexion.getConexion();
+//                        Connection con=Conexion.getConexion();
                 //        Empleado juan = new Empleado("Juan", "Fernandez", 42078248, "JuanFer", "juan1234", 155348604, "alfa23", true);
                 //        Afiliado a=new Afiliado(1,"Candela","Romero",12345678,"Junin 987",2147483647,juan,true);
                 //        Especialidad e=new Especialidad(1,"Cardiología",true);
@@ -260,12 +261,16 @@ public class MasSalud {
                 //            System.out.println("Estado:" + empleado.isEstado());
                 //            System.out.println("-------------------------------");
                 //        }
+//                guardar afiliado
                 //   AfiliadoData ad=new AfiliadoData();
-                //         Empleado e=new Empleado(1,"Max","Power",12345678,"Maxpower","contraseña123", 1234567890,"pasword123", true);
-                //        Afiliado a=new Afiliado(15,"Danilo","Garay",98124510,"Riobamba 785",32145689, e ,true);    
+                         Empleado e=new Empleado(1,"Max","Power",12345678,"Maxpower","contraseña123", 1234567890,"pasword123", true);
+                        Afiliado a=new Afiliado(15,"Danilo","Garay",98124510,"Riobamba 785",32145689, e ,true);    
                 //        ad.guardarAfiliado(a); guardar afiliado
+//                modificar afiliado
                 //        ad.modificarAfiliado(a); modificar afiliado
+//                eliminar afiliado
                 //          ad.eliminarAfiliado(15); eliminado logico de afiliado
+//                buscar afiliado
                 //          Afiliado afi=ad.buscarAfiliado(10);
                 //          if(afi!=null){
                 //              System.out.println("Nombre "+afi.getNombre());
@@ -277,6 +282,7 @@ public class MasSalud {
                 //              System.out.println("Apellido "+afi.getApellido());
                 //              System.out.println("DNI "+afi.getDni());
                 //          }
+//                listar afiliado
                 //          for(Afiliado a: ad.listarAfiliado()){
                 //          
                 //              System.out.println("ID "+a.getIdafiliaado());
@@ -284,3 +290,16 @@ public class MasSalud {
                 //              System.out.println("Apellido "+a.getApellido());
                 //              System.out.println("Domicilio "+a.getDomicilio());
 //}
+//                        buscar afiliado por dni  
+                        
+                            Afiliado afiliado=ad.buscarAfiliadoPorDni(76543210);
+                            if(afiliado != null){
+                                 System.out.println("ID "+afiliado.getIdafiliaado());
+                              System.out.println("Nombre "+afiliado.getNombre());
+                              System.out.println("Apellido "+afiliado.getApellido());
+                              System.out.println("Domicilio "+afiliado.getDomicilio());
+                            
+                            
+                            }
+
+  }}
