@@ -6,23 +6,22 @@
 package massalud;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
-import massalud.AccesoDatos.AfiliadoData;
-//import massalud.AccesoDatos.AfiliadoData;
+
+
 import massalud.AccesoDatos.Conexion;
-import massalud.AccesoDatos.EmpleadoData;
-import massalud.AccesoDatos.EspecialidadData;
+
 import massalud.AccesoDatos.OrdenData;
-import massalud.AccesoDatos.PrestadorData;
+
 import massalud.Entidades.Afiliado;
 import massalud.Entidades.Empleado;
 import massalud.Entidades.Especialidad;
 import massalud.Entidades.Orden;
-//import massalud.Entidades.Prestador;
+
 import massalud.Entidades.Prestador;
-//import massalud.AccesoDatos.EspecialidadData;
-//import massalud.AccesoDatos.PrestadorData;
+
 
 /**
  *
@@ -36,85 +35,145 @@ public class MasSalud {
   public static void main(String[] args) {
 
     Connection con = Conexion.getConexion();
-    //----------------------------------------------------------------------------------
-//    Empleado juan = new Empleado(1, "Max", "Power", 12345678, "Maxpower", "contraseña123", 1234567890, "Password123", true);
-//    Afiliado a = new Afiliado(1, "Candela", "Romero", 12345678, "Junin 987", 2147483647, juan, true);
+   
+//--EMPIEZA ORDEN-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----GUARDAR ORDEN ----------------------------------------------------------------------------------------------------------------  
+//    Empleado emp = new Empleado(1, "Max", "Power", 12345678, "Maxpower", "contraseña123", 1234567890, "Password123", true);
+//    Afiliado a = new Afiliado(1, "Cande", "Romo", 12345675, "San Juan 987", 214748647, emp, true);
 //    Especialidad e = new Especialidad(2, "Cardiología", true);
 //    Prestador p = new Prestador(1, "Juan", "Pérez", "Hospital ABC", "Calle Principal 123", "123456789", "juan@example.com", e, true);
-//        Orden ord=new Orden(LocalDate.of(2023,10,10),"Efvo",500,a,p);
-//      OrdenData ordD=new OrdenData();
+//    Orden ord = new Orden(LocalDate.of(2023, 10, 10), "Efvo", 500, a, p);
+//    OrdenData ordD = new OrdenData();
+//    
+//
 //     ordD.guardarOrden(ord); 
-
-//--------- Orden con los valores que necisitamos modificar--------
-// IDorden= ingresar id de la orden que deseas modificar
+//
+//--MODIFICAR ORDEN: ---------------------------------------------------
 //    Orden ordenModificada = new Orden(1, LocalDate.of(2023, 9, 22), "Tarjeta de Débito", 400, a, p);
-////     Llama al método modificarOrden para actualizar la orden en la base de datos
-//
-//
 //    ordD.modificarOrden(ordenModificada);
-//    int idOrdenAEliminar = 2; // Reemplaza esto con el ID de la orden que deseas eliminar
+//--ELIMINA ORDEN------------------------------------------------------------------------------------------------------
+//    int idOrdenAEliminar = 2; // 
 //    ordD.eliminarOrden(idOrdenAEliminar);
-    //----------------------------------------------------------------------
-    
-//    LocalDate fechaBusqueda = LocalDate.of(2023, 10, 10); // Fecha de búsqueda
-//        List<Orden> ordenesEncontradas = ordD.buscarOrdenesPorFecha(fechaBusqueda);
-//ord.setAfiliado(a);
+//---BUSCAR ORDEN POR FECHA---------------------------------------------------------------------------------------------------------------------
+//    LocalDate fechaBusqueda = LocalDate.of(1999, 5, 22); // Fecha de búsqueda
+//    List<Orden> ordenesEncontradas = ordD.buscarOrdenesPorFecha(fechaBusqueda);
+//    ord.setAfiliado(a);
+//    if (!ordenesEncontradas.isEmpty()) {
+//      System.out.println("-----------------------------------------------------------------------");
+//
+//      System.out.println(" Órdenes encontradas por fecha: ");
+//      System.out.println("-----------------------------------------------------------------------\n");
+//      for (Orden orden : ordenesEncontradas) {
+//        System.out.println("ID de Orden: " + orden.getIdOrden());
+//        System.out.println("Fecha: " + orden.getFecha());
+//        System.out.println("Forma de Pago: " + orden.getFormaDePago());
+//        System.out.println("Importe: " + orden.getImporte());
+//        System.out.println("Nombre afiliado: " + orden.getAfiliado().getNombre());
+//        System.out.println("Especialidad del prestador: " + orden.getPrestador().getEspecialidad().getNombre());
+//        System.out.println("-----------------------------------------------------------------------");
+//        // Imprimir otros detalles de la orden según sea necesario
+//      }
+//    } else {
+//      System.out.println("No se encontraron órdenes para la fecha especificada.");
+//    }
+//----BUSCAR ORDEN POR ID-AFILIADO----------------------------------------------------------------------------------------------------------------------
+//  
+//
+//        int afiliadoIdAfiliado = 5; // Replace with the actual ID of the Afiliado you want to search for.
+//
+//        List<Orden> ordenesEncontradas = ordD.buscarOrdenesPorAfiliado(afiliadoIdAfiliado);
+//
 //        if (!ordenesEncontradas.isEmpty()) {
-//            System.out.println("Órdenes encontradas por fecha:");
+//            System.out.println("-----------------------------------------------------------------------");
+//            System.out.println("Órdenes encontradas para el Afiliado ID " + afiliadoIdAfiliado+ ":");
+//            System.out.println("-----------------------------------------------------------------------\n");
 //            for (Orden orden : ordenesEncontradas) {
 //                System.out.println("ID de Orden: " + orden.getIdOrden());
 //                System.out.println("Fecha: " + orden.getFecha());
 //                System.out.println("Forma de Pago: " + orden.getFormaDePago());
 //                System.out.println("Importe: " + orden.getImporte());
-//                // Imprimir otros detalles de la orden según sea necesario
-//                System.out.println();
+//                System.out.println("Nombre afiliado: " + orden.getAfiliado().getNombre());
+//                System.out.println("Especialidad del prestador: " + orden.getPrestador().getEspecialidad().getNombre());
+//                System.out.println("-----------------------------------------------------------------------");
+//                // Print other order details as needed.
 //            }
 //        } else {
-//            System.out.println("No se encontraron órdenes para la fecha especificada.");
+//            System.out.println("No se encontraron órdenes para el Afiliado ID " + afiliadoIdAfiliado + ".");
 //        }
-
-//         AfiliadoData afiliadoData = new AfiliadoData();
-//        PrestadorData prestadorData = new PrestadorData();
-//        OrdenData ordenData = new OrdenData();
-////
-//        LocalDate fechaBusqueda = LocalDate.of(2023, 10, 10); // Fecha de búsqueda
-////        List<Orden> ordenesEncontradas = ordenData.buscarOrdenesPorFecha(fechaBusqueda);
+//----BUSCAR ORDEN POR ID-PRESTADOR-----------------------------------------------------------------------------------------------------------
+//        int idPrestadorABuscar = 6; // Reemplaza con el ID del Prestador que deseas buscar.
 //
-////        if (!ordenesEncontradas.isEmpty()) {
-////            System.out.println("Órdenes encontradas por fecha:");
-//            for (Orden orden : ordenData.buscarOrdenesPorFecha(fechaBusqueda)) {
+//        List<Orden> ordenesEncontradas = ordD.buscarOrdenesPorPrestador(idPrestadorABuscar);
+//
+//        if (!ordenesEncontradas.isEmpty()) {
+//            System.out.println("-----------------------------------------------------------------------");
+//            System.out.println("Órdenes encontradas para el Prestador con ID " + idPrestadorABuscar + ":");
+//            System.out.println("-----------------------------------------------------------------------\n");
+//            for (Orden orden : ordenesEncontradas) {
 //                System.out.println("ID de Orden: " + orden.getIdOrden());
 //                System.out.println("Fecha: " + orden.getFecha());
 //                System.out.println("Forma de Pago: " + orden.getFormaDePago());
-//                System.out.println("Importe: " + orden.getImporte());              
-//                System.out.println("Nombre afiliado: "+orden.getAfiliado().getNombre());
-//              System.out.println("Especialidad   System.out.println(\"Nombre afiliado: \"+orden.getAfiliado().getNombre()); prestador: "+orden.getPrestador().getEspecialidad().getNombre());
+//                System.out.println("Importe: " + orden.getImporte());
+//                System.out.println("Nombre del Afiliado: " + orden.getAfiliado().getNombre());
+//                System.out.println("Especialidad del Prestador: " + orden.getPrestador().getEspecialidad().getNombre());
+//                System.out.println("-----------------------------------------------------------------------");
+//                // Muestra otros detalles de la orden según sea necesario.
 //            }
-////        } else {
-////            System.out.println("No se encontraron órdenes para la fecha especificada.");
-////        }
-////
-////        // Cierra la conexión a la base de datos si es necesario
-////        try {
-////            con.close();Prestador prestador = new Prestador();
-////                    EspecialidadData ed=new EspecialidadData();
-////            e.printStackTrace();
+//        } else {
+//            System.out.println("No se encontraron órdenes para el Prestador con ID " + idPrestadorABuscar + ".");
+//        }  
+//----BUSCAR ORDEN POR ID-ORDEN----------------------------------------------------------------------------------------------------------------------
+//          int idOrdenABuscar = 25; // Reemplaza con el ID de la orden que deseas buscar.
+//
+//        Orden ordenEncontrada = ordD.buscarOrdenPorId(idOrdenABuscar);
+//
+//        if (ordenEncontrada != null) {
+//            System.out.println("------------------------------------------------------------------------------------");
+//            System.out.println("Detalles de la Orden encontrada (ID " + idOrdenABuscar + "):");
+//            System.out.println("------------------------------------------------------------------------------------");
+//            System.out.println("ID de Orden: " + ordenEncontrada.getIdOrden()+"                            || Fecha: " + ordenEncontrada.getFecha());
+//            System.out.println("Forma de Pago: " + ordenEncontrada.getFormaDePago()+"                        ||Importe: " + ordenEncontrada.getImporte());
+//            System.out.println("\nID Afiliado:"+ordenEncontrada.getAfiliado().getIdafiliaado()+"\t\t|| Afiliado: " + ordenEncontrada.getAfiliado().getNombre()+
+//                    " "+ordenEncontrada.getAfiliado().getApellido()+"\t\t  ||DNI: "+ordenEncontrada.getAfiliado().getDni()+"\n");
+//            System.out.println("Prestador: " + ordenEncontrada.getPrestador().getInstitucion()+
+//                    "                    || Direccion: "+ordenEncontrada.getPrestador().getDireccion());            
+//            System.out.println("Médico/Especialista: " + ordenEncontrada.getPrestador().getNombre()+
+//                    " "+ordenEncontrada.getPrestador().getApellido()+"            || Especialidad:" + ordenEncontrada.getPrestador().getEspecialidad().getNombre());
+//            System.out.println("------------------------------------------------------------------------------------");
+//            // Puedes imprimir otros detalles de la orden según sea necesario.
+//        } else {
+//            System.out.println("No se encontró una orden con el ID " + idOrdenABuscar + ".");
 //        }
-//        
-//       
-//    }
-//        
-//        
-        
-        
-        
-        
+//----LISTA ORDENES-----------------------------------------------------------------------------------------------------------
+//List<Orden> ordenes = ordD.listarOrden();
+//
+//        if (!ordenes.isEmpty()) {
+//            System.out.println("-----------------------------------------------------------------------");
+//            System.out.println("Lista de Órdenes:");
+//            System.out.println("-----------------------------------------------------------------------\n");
+//            for (Orden orden : ordenes) {
+//                System.out.println("ID de Orden: " + orden.getIdOrden());
+//                System.out.println("Fecha: " + orden.getFecha());
+//                System.out.println("Forma de Pago: " + orden.getFormaDePago());
+//                System.out.println("Importe: " + orden.getImporte());
+//                System.out.println("ID Afiliado: " + orden.getAfiliado().getIdafiliaado());
+//                System.out.println("ID Prestador: " + orden.getPrestador().getIdPrestador());
+//                System.out.println("-----------------------------------------------------------------------");
+//                // Puedes imprimir otros detalles de la orden según sea necesario.
+//            }
+//        } else {
+//            System.out.println("No se encontraron órdenes.");
+//        }   
+// ----TERMINA ORDEN --------------------------------------------------------------------------------------
+        }
+    }
+
+
+
+  
   
 
-
-
 //CLASE PRESTADO
-
 //        EspecialidadData especialidadData = new EspecialidadData();
 //        PrestadorData prestadorData = new PrestadorData();
 //
@@ -147,9 +206,6 @@ public class MasSalud {
 //        }
 //  }
 //}
-       
-
-
 //        Connection con=Conexion.getConexion();
 //        Empleado juan = new Empleado("Juan", "Fernandez", 42078248, "JuanFer", "juan1234", 155348604, "alfa23", true);
 //        Afiliado a=new Afiliado(1,"Candela","Romero",12345678,"Junin 987",2147483647,juan,true);
@@ -161,7 +217,7 @@ public class MasSalud {
 //        
 //        
 //        Empleado fabio = new Empleado("Fabio", "Alvarez", 17890980, "fab23", "pablo123", 155348604, "beta23", true);
-        EmpleadoData emp = new EmpleadoData();
+//        EmpleadoData emp = new EmpleadoData();
 // Agregado de Empleado 
 //        emp.guardarEmpleado(fabio);
 // Modificado de Empleado
@@ -200,7 +256,6 @@ public class MasSalud {
 //            System.out.println("Estado:" + empleado.isEstado());
 //            System.out.println("-------------------------------");
 //        }
-  
 //   AfiliadoData ad=new AfiliadoData();
 //         Empleado e=new Empleado(1,"Max","Power",12345678,"Maxpower","contraseña123", 1234567890,"pasword123", true);
 //        Afiliado a=new Afiliado(15,"Danilo","Garay",98124510,"Riobamba 785",32145689, e ,true);    
@@ -227,5 +282,3 @@ public class MasSalud {
 //          
 //          }
 
-  }
-}
