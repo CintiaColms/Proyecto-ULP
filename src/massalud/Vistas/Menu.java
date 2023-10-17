@@ -771,15 +771,18 @@ setIconImage(new ImageIcon(getClass().getResource("/massalud/Recursos/icon.jpeg"
       Tel.setText(Integer.toString(afiliadoActualDni.getTelefono()));
    
    
-// if (afiliadoActualDni.isEstado() == true) {
-//
-//Act.setSelected(afiData.getEstado());
-//
-//} else {
-//
-//Ina.setSelected(afiData.isEstado());
-//
-//}
+   
+ if (afiliadoActualDni.isEstado() == true) {
+
+   Act.setState(true);
+   Ina.setState(false);
+
+} else {
+     
+     Ina.setState(true);
+   Act.setState(false);
+
+}
      
       }
     }catch(NumberFormatException ex){
