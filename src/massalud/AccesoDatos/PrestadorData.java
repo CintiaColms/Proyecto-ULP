@@ -34,63 +34,71 @@ public class PrestadorData {
     }
     Prestador prestador = new Prestador();
     
-   ////-----------------------------------------------------------------------------------------------------------------------////
-    
+ ////CREAR UN NUEVO PRESTADOR-------------------------------------------------------------------------------------////
     public void guardarPrestador(Prestador prestador) {
-        try {
-
-            if (prestador.getNombre() == null || prestador.getApellido() == null) {
-                return;
-            }
-
-            String query = "INSERT INTO prestador (nombre, apellido, institucion, direccion, telefono, email, idespecialidad, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
-                statement.setString(1, prestador.getNombre());
-                statement.setString(2, prestador.getApellido());
-                statement.setString(3, prestador.getInstitucion());
-                statement.setString(4, prestador.getDireccion());
-                statement.setString(5, prestador.getTelefono());
-                statement.setString(6, prestador.getEmail());
-                statement.setInt(7, prestador.getEspecialidad().getIdEspecialidad());
-                statement.setBoolean(8, prestador.isEstado());
-                statement.executeUpdate();
-
-                ResultSet generatedKeys = statement.getGeneratedKeys();
-                if (generatedKeys.next()) {
-                    prestador.setIdPrestador(generatedKeys.getInt(1));
-                }
-            }
-        } catch (SQLException e) {
-            System.out.println("Error al guardar el prestador: " + e.getMessage());
+    try {
+        if (prestador.getNombre() == null || prestador.getApellido() == null) {
+            return;
         }
-   }
-   
-////-----------------------------------------------------------------------------------------------------------------------////
 
+        String query = "INSERT INTO prestador (nombre, apellido, dni, institucion, direccion, telefono, email, idespecialidad, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-////METODO ACTUALIZAR QUE MUESTRA SOLO LOS CAMBIOS
+        try (PreparedStatement statement = connection.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            statement.setString(1, prestador.getNombre());
+            statement.setString(2, prestador.getApellido());
+            statement.setInt(3, prestador.getDni());
+            statement.setString(4, prestador.getInstitucion());
+            statement.setString(5, prestador.getDireccion());
+            statement.setString(6, prestador.getTelefono());
+            statement.setString(7, prestador.getEmail());
+            statement.setInt(8, prestador.getEspecialidad().getIdEspecialidad());
+            statement.setBoolean(9, prestador.isEstado());
+            statement.executeUpdate();
+
+            ResultSet generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                prestador.setIdPrestador(generatedKeys.getInt(1));
+                JOptionPane.showMessageDialog(null, "Nuevo Prestador agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo agregar el nuevo Prestador.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    } catch (SQLException e) {
+        if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
+            JOptionPane.showMessageDialog(null, "Error: El DNI ingresado ya existe en la base de datos.", "DNI Duplicado", JOptionPane.ERROR_MESSAGE);
+        } else {
+            System.out.println("Error al guardar el prestador: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al guardar el Prestador: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+
+////METODO ACTUALIZAR QUE MUESTRA SOLO LOS CAMBIOS------------------------------------------------------////
+
 public void actualizarPrestador(Prestador prestador) {
     try {
         if (prestador.getIdPrestador() == 0) {
             return;
         }
-        String query = "UPDATE prestador SET nombre = ?, apellido = ?, institucion = ?, direccion = ?, telefono = ?, email = ?, idespecialidad = ?, estado = ? WHERE id=?";
+        String query = "UPDATE prestador SET nombre = ?, apellido = ?, dni = ?, institucion = ?, direccion = ?, telefono = ?, email = ?, idespecialidad = ?, estado = ? WHERE id=?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, prestador.getNombre());
             statement.setString(2, prestador.getApellido());
-            statement.setString(3, prestador.getInstitucion());
-            statement.setString(4, prestador.getDireccion());
-            statement.setString(5, prestador.getTelefono());
-            statement.setString(6, prestador.getEmail());
-            statement.setInt(7, prestador.getEspecialidad().getIdEspecialidad());
-            statement.setBoolean(8, prestador.isEstado());
-            statement.setInt(9, prestador.getIdPrestador());
+            statement.setInt(3,prestador.getDni());
+            statement.setString(4, prestador.getInstitucion());
+            statement.setString(5, prestador.getDireccion());
+            statement.setString(6, prestador.getTelefono());
+            statement.setString(7, prestador.getEmail());
+            statement.setInt(8, prestador.getEspecialidad().getIdEspecialidad());
+            statement.setBoolean(9, prestador.isEstado());
+            statement.setInt(10, prestador.getIdPrestador());
             statement.executeUpdate();
             
             String mensaje = "Prestador fue actualizado exitosamente.\n";
             mensaje += "Datos modificados:\n";
             mensaje += "Nombre: " + prestador.getNombre() + "\n";
             mensaje += "Apellido: " + prestador.getApellido() + "\n";
+            mensaje += "DNI: " + prestador.getDni() + "\n";
             mensaje += "Institución: " + prestador.getInstitucion() + "\n";
             mensaje += "Dirección: " + prestador.getDireccion() + "\n";
             mensaje += "Teléfono: " + prestador.getTelefono() + "\n";
@@ -104,91 +112,30 @@ public void actualizarPrestador(Prestador prestador) {
         System.out.println("Error al actualizar el prestador: " + e.getMessage());
     }
 }
-    
-////METODO ACTUALIZAR QUE MUESTRA POR CONSOLA ANTES Y DESPUES
-//public void actualizarPrestador(Prestador prestadorActual, Prestador prestadorAnterior) throws SQLException {
-//    if (prestadorActual.getIdPrestador() == 0) {
-//        System.out.println("El ID del prestador actual es 0. No se puede actualizar.");
-//        return;
-//    }
-//
-//    System.out.println("Datos del prestador antes de la actualización:");
-//    System.out.println("Nombre: " + prestadorAnterior.getNombre());
-//    System.out.println("Apellido: " + prestadorAnterior.getApellido());
-//    System.out.println("Institución: " + prestadorAnterior.getInstitucion());
-//    System.out.println("Dirección: " + prestadorAnterior.getDireccion());
-//    System.out.println("Teléfono: " + prestadorAnterior.getTelefono());
-//    System.out.println("Email: " + prestadorAnterior.getEmail());
-//    System.out.println("Especialidad: " + prestadorAnterior.getEspecialidad().getNombre());
-//    System.out.println("Estado: " + (prestadorAnterior.isEstado() ? "Activo" : "Inactivo"));
-//
-//    String query = "UPDATE prestador SET nombre = ?, apellido = ?, institucion = ?, direccion = ?, telefono = ?, email = ?, idespecialidad = ?, estado = ? WHERE id=?";
-//    try (PreparedStatement statement = connection.prepareStatement(query)) {
-//        statement.setString(1, prestadorActual.getNombre());
-//        statement.setString(2, prestadorActual.getApellido());
-//        statement.setString(3, prestadorActual.getInstitucion());
-//        statement.setString(4, prestadorActual.getDireccion());
-//        statement.setString(5, prestadorActual.getTelefono());
-//        statement.setString(6, prestadorActual.getEmail());
-//        statement.setInt(7, prestadorActual.getEspecialidad().getIdEspecialidad());
-//        statement.setBoolean(8, prestadorActual.isEstado());
-//        statement.setInt(9, prestadorActual.getIdPrestador());
-//        statement.executeUpdate();
-//
-//        System.out.println("Datos del prestador después de la actualización:");
-//        System.out.println("Nombre: " + prestadorActual.getNombre());
-//        System.out.println("Apellido: " + prestadorActual.getApellido());
-//        System.out.println("Institución: " + prestadorActual.getInstitucion());
-//        System.out.println("Dirección: " + prestadorActual.getDireccion());
-//        System.out.println("Teléfono: " + prestadorActual.getTelefono());
-//        System.out.println("Email: " + prestadorActual.getEmail());
-//        System.out.println("Especialidad: " + prestadorActual.getEspecialidad().getNombre());
-//        System.out.println("Estado: " + (prestadorActual.isEstado() ? "Activo" : "Inactivo"));
-//
-//        String mensaje = "Prestador fue actualizado exitosamente.\n";
-//        mensaje += "Datos modificados o agregados:\n";
-//        mensaje += "Nombre: " + prestadorActual.getNombre() + "\n";
-//        mensaje += "Apellido: " + prestadorActual.getApellido() + "\n";
-//        mensaje += "Institución: " + prestadorActual.getInstitucion() + "\n";
-//        mensaje += "Dirección: " + prestadorActual.getDireccion() + "\n";
-//        mensaje += "Teléfono: " + prestadorActual.getTelefono() + "\n";
-//        mensaje += "Email: " + prestadorActual.getEmail() + "\n";
-//        mensaje += "Especialidad: " + prestadorActual.getEspecialidad().getNombre() + "\n";
-//        mensaje += "Estado: " + (prestadorActual.isEstado() ? "Activo" : "Inactivo");
-//
-//        JOptionPane.showMessageDialog(null, mensaje);
-//    } catch (SQLException e) {
-//        System.out.println("Error al actualizar el prestador: " + e.getMessage());
-//    }
-//}
 
+////ELIMINAR UN PRESTADOR A TRAVES DE SU ID------------------------------------------------------------------////
+ public void eliminarPrestador(int id) {
+    try {
+        String query = "UPDATE prestador SET estado = 0 WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                String mensajeConfirmacion = "El prestador con ID " + id + " fue eliminado exitosamente.";
+                JOptionPane.showMessageDialog(null, mensajeConfirmacion, "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 
-   ////-----------------------------------------------------------------------------------------------------------------------////
-    
-    public void eliminarPrestador(int id) {
-        try {
-            String query = "DELETE FROM prestador WHERE id = ?";
-            try (PreparedStatement statement = connection.prepareStatement(query)) {
-                statement.setInt(1, id);
-                int rowsAffected = statement.executeUpdate();
-                if (rowsAffected > 0) {
-                    String mensajeConfirmacion = "El prestador con ID " + id + " fue eliminado exitosamente.";
-                    JOptionPane.showMessageDialog(null, mensajeConfirmacion, "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
-                } else {
-                    String mensajeError = "Error: No se encontró prestador con ID " + id + " para eliminar.";
-                    JOptionPane.showMessageDialog(null, mensajeError, "Error al Eliminar", JOptionPane.ERROR_MESSAGE);
-                }
+            } else {
+                String mensajeError = "Error: No se encontró prestador con ID " + id + " para eliminar.";
+                JOptionPane.showMessageDialog(null, mensajeError, "Error al Eliminar", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (SQLException e) {
-            String mensajeError = "Error al eliminar el prestador: " + e.getMessage();
-            JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
         }
+    } catch (SQLException e) {
+        String mensajeError = "Error al eliminar el prestador: " + e.getMessage();
+        JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
 
-    ////-----------------------------------------------------------------------------------------------------------------------////
-    
-
+////MOSTRAR LISTA DE PRESTADORES EXISTENTES-----------------------------------------------------------------////
 public List<Prestador> obtenerPrestadores() {
     List<Prestador> prestadores = new ArrayList<>();
     try {
@@ -201,6 +148,7 @@ public List<Prestador> obtenerPrestadores() {
                 prestador.setIdPrestador(resultSet.getInt("id"));
                 prestador.setNombre(resultSet.getString("nombre"));
                 prestador.setApellido(resultSet.getString("apellido"));
+                prestador.setDni(resultSet.getInt("dni"));
                 prestador.setInstitucion(resultSet.getString("institucion"));
                 prestador.setDireccion(resultSet.getString("direccion"));
                 prestador.setTelefono(resultSet.getString("telefono"));
@@ -221,6 +169,7 @@ public List<Prestador> obtenerPrestadores() {
                     mensajeExito.append("ID: ").append(p.getIdPrestador()).append("\n");
                     mensajeExito.append("Nombre: ").append(p.getNombre()).append("\n");
                     mensajeExito.append("Apellido: ").append(p.getApellido()).append("\n");
+                    mensajeExito.append("DNI: ").append(p.getDni()).append("\n");
                     mensajeExito.append("Institución: ").append(p.getInstitucion()).append("\n");
                     mensajeExito.append("Dirección: ").append(p.getDireccion()).append("\n");
                     mensajeExito.append("Teléfono: ").append(p.getTelefono()).append("\n");
@@ -243,13 +192,11 @@ public List<Prestador> obtenerPrestadores() {
             }
         }
     } catch (SQLException e) {
-        // Manejo de errores
+       
     }
     return prestadores;
 }
-    ////-----------------------------------------------------------------------------------------------------------------------////
- 
-////BUSCAR UN PRESTADOR POR ID Y MOSTRAR TODOS SUS DATOS
+////BUSCAR UN PRESTADOR POR ID Y MOSTRAR TODOS SUS DATOS-----------------------------------------------////
 public Prestador buscarPrestador(int idABuscar) {
     Prestador prestador = null;
     try {
@@ -264,6 +211,7 @@ public Prestador buscarPrestador(int idABuscar) {
             prestador.setIdPrestador(resultSet.getInt("id"));
             prestador.setNombre(resultSet.getString("nombre"));
             prestador.setApellido(resultSet.getString("apellido"));
+            prestador.setDni(resultSet.getInt("dni"));
             prestador.setInstitucion(resultSet.getString("institucion"));
             prestador.setDireccion(resultSet.getString("direccion"));
             prestador.setTelefono(resultSet.getString("telefono"));
@@ -276,6 +224,7 @@ public Prestador buscarPrestador(int idABuscar) {
             mensaje += "ID: " + prestador.getIdPrestador() + "\n";
             mensaje += "Nombre: " + prestador.getNombre() + "\n";
             mensaje += "Apellido: " + prestador.getApellido() + "\n";
+            mensaje += "DNI: " + prestador.getDni() + "\n";
             mensaje += "Institución: " + prestador.getInstitucion() + "\n";
             mensaje += "Dirección: " + prestador.getDireccion() + "\n";
             mensaje += "Teléfono: " + prestador.getTelefono() + "\n";
@@ -292,22 +241,22 @@ public Prestador buscarPrestador(int idABuscar) {
 
     return prestador;
 }
- ////-----------------------------------------------------------------------------------------------------------------------////
-
-////Buscar un prestador por el nombre de la especialidad
-public Prestador buscarPrestadorPorEspecialidad(String nombreEspecialidad) {
-    Prestador prestador = null;
+ ////BUSCAR PRESTADOR POR NOMBRE DE ESPECIALIDAD------------------------------------------------------------////
+public List<Prestador> buscarPrestadoresPorEspecialidad(String nombreEspecialidad) {
+    List<Prestador> prestadores = new ArrayList<>();
     try {
         String sql = "SELECT p.* FROM prestador p INNER JOIN especialidad e ON p.idespecialidad = e.idespecialidad WHERE e.nombre = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, nombreEspecialidad);
         ResultSet resultSet = ps.executeQuery();
-        if (resultSet.next()) {
-            EspecialidadData ed = new EspecialidadData();
-            prestador = new Prestador();
+        EspecialidadData ed = new EspecialidadData();
+
+        while (resultSet.next()) {
+            Prestador prestador = new Prestador();
             prestador.setIdPrestador(resultSet.getInt("id"));
             prestador.setNombre(resultSet.getString("nombre"));
             prestador.setApellido(resultSet.getString("apellido"));
+            prestador.setDni(resultSet.getInt("dni"));
             prestador.setInstitucion(resultSet.getString("institucion"));
             prestador.setDireccion(resultSet.getString("direccion"));
             prestador.setTelefono(resultSet.getString("telefono"));
@@ -315,22 +264,32 @@ public Prestador buscarPrestadorPorEspecialidad(String nombreEspecialidad) {
             Especialidad especialidad = ed.buscarEspecialidadPorId(resultSet.getInt("idespecialidad"));
             prestador.setEspecialidad(especialidad);
             prestador.setEstado(resultSet.getBoolean("estado"));
-            String mensaje = "Prestador encontrado exitosamente:\n" +
-                "Nombre: " + prestador.getNombre() +  "\n"+
-                "Apellido: " + prestador.getApellido() + "\n" +
-                "Especialidad: " + prestador.getEspecialidad() + "\n" +
-                "Institución: " + prestador.getInstitucion() + "\n" +
-                "Dirección: " + prestador.getDireccion() + "\n" +
-                "Teléfono: " + prestador.getTelefono() + "\n" +
-                "Email: " + prestador.getEmail();
-            JOptionPane.showMessageDialog(null, mensaje);
+            prestadores.add(prestador);
+        }
+
+        if (!prestadores.isEmpty()) {
+            StringBuilder mensaje = new StringBuilder("Prestadores encontrados con la especialidad '" + nombreEspecialidad + "':\n");
+            for (Prestador prestador : prestadores) {
+                mensaje.append("Nombre: ").append(prestador.getNombre()).append("\n");
+                mensaje.append("Apellido: ").append(prestador.getApellido()).append("\n");
+                mensaje.append("DNI: ").append(prestador.getDni()).append("\n");
+                mensaje.append("Especialidad: ").append(prestador.getEspecialidad()).append("\n");
+                mensaje.append("Institución: ").append(prestador.getInstitucion()).append("\n");
+                mensaje.append("Dirección: ").append(prestador.getDireccion()).append("\n");
+                mensaje.append("Teléfono: ").append(prestador.getTelefono()).append("\n");
+                mensaje.append("Email: ").append(prestador.getEmail()).append("\n");
+                mensaje.append("Estado: ").append(prestador.isEstado() ? "Activo" : "Inactivo").append("\n");
+                mensaje.append("------------------------------\n");
+            }
+            JOptionPane.showMessageDialog(null, mensaje.toString());
         } else {
-            String mensajeError = "Error: No se encontró prestador con especialidad '" + nombreEspecialidad + "'";
+            String mensajeError = "Error: No se encontraron prestadores con especialidad '" + nombreEspecialidad + "'";
             JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
         }
     } catch (SQLException p) {
-        String mensaje = "Error al obtener prestador: " + p.getMessage();
+        String mensaje = "Error al obtener prestadores: " + p.getMessage();
         JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
-    return prestador;
-}}
+    return prestadores;
+}
+}
