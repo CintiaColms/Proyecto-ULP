@@ -5,9 +5,12 @@
  */
 package massalud;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Scanner;
 
 
 
@@ -17,8 +20,10 @@ import massalud.AccesoDatos.AfiliadoData;
 //import massalud.AccesoDatos.AfiliadoData;
 
 import massalud.AccesoDatos.Conexion;
+import massalud.AccesoDatos.EspecialidadData;
 
 import massalud.AccesoDatos.OrdenData;
+import massalud.AccesoDatos.PrestadorData;
 
 import massalud.Entidades.Afiliado;
 import massalud.Entidades.Empleado;
@@ -174,153 +179,136 @@ public class MasSalud {
 //        } else {
 //            System.out.println("No se encontraron órdenes.");
 //        }   
-// ----TERMINA ORDEN --------------------------------------------------------------------------------------
-        }
-    }
+//// ----TERMINA ORDEN --------------------------------------------------------------------------------------
+//        }
+//    }
 
   
         
 
-////CLASE PRESTADOR
-
-//        EspecialidadData especialidadData = new EspecialidadData();
-//        PrestadorData prestadorData = new PrestadorData();
-
-//        EspecialidadData especialidadData = new EspecialidadData();
-//        PrestadorData prestadorData = new PrestadorData();
-//        AfiliadoData ad=new AfiliadoData();
-
+////INICIO PRESTADOR////-----------------------------------------------------------------------------------------------////
+//    AfiliadoData ad=new AfiliadoData();
+//        PrestadorData pData = new PrestadorData();
+//        EspecialidadData eData = new EspecialidadData();
+//        Especialidad e = new Especialidad();
 //        Prestador p = new Prestador();
-//// MOSTRAR LISTA DE PRESTADORES EXISTENTES
-//        List<Prestador> prestadores = prestadorData.obtenerPrestadores();
-//        prestadores.forEach(p -> {
-//            System.out.println(p.getApellido() + ", " + p.getNombre() + ", " + p.getEspecialidad().getNombre() + ", " + p.getInstitucion());
-//        });
-//  }
-//}
-////--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------////
-////BUSCAR UN PRESTADOR POR ID Y MOSTRAR TODOS SUS DATOS
-//        int id = 10;
-//        Prestador prestador = (Prestador) prestadorData.buscarPrestador(id);
-//        if (prestador == null) {
-//            System.out.println("Prestador con ID " + id + " no encontrado.");
-//        } else {
-//            System.out.println("Prestador encontrado:");
-//            System.out.println("ID: " + prestador.getIdPrestador());
-//            System.out.println("Nombre: " + prestador.getNombre());
-//            System.out.println("Apellido: " + prestador.getApellido());
-//            System.out.println("Institución: " + prestador.getInstitucion());
-//            System.out.println("Dirección: " + prestador.getDireccion());
-//            System.out.println("Telefono: " + prestador.getTelefono());
-//            System.out.println("Email: " + prestador.getEmail());
-//            if (prestador.isEstado()) {
-//                System.out.println("Estado: Activo");
-//            } else {
-//                System.out.println("Estado: Inactivo");
-//            }
-//            int idEspecialidad = prestador.getEspecialidad().getIdEspecialidad();
-//            String nombreEspecialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad).getNombre();
-//            System.out.println("Número de Especialidad: " + idEspecialidad);
-//            System.out.println("Nombre de Especialidad: " + nombreEspecialidad);
-//        }
+
+////CREAR UN NUEVO PRESTADOR
+//    try {
+//    Prestador nuevoP = new Prestador();
+//    nuevoP.setNombre("Kal");
+//    nuevoP.setApellido("Parker");
+//    nuevoP.setDni(3326999);
+//    nuevoP.setInstitucion("Manantial");
+//    nuevoP.setDireccion("Calle Segura 123");
+//    nuevoP.setTelefono("033456");
+//    nuevoP.setEmail("Kal@example.com");
+//    e.setIdEspecialidad(2);
+//    nuevoP.setEspecialidad(e);
+//    nuevoP.setEstado(true);
+//    pData.guardarPrestador(nuevoP);
+//    System.out.println("Nuevo Prestador agregado con éxito.");
+//    } catch (Exception ex) {
+//    System.err.println("Error al guardar el Prestador: " + ex.getMessage());
+//    }
+//    }
+//    }
+////MOSTRAR LISTA DE PRESTADORES EXISTENTES--------------------------------------------------------------------////
+//       
+//     List<Prestador> prestadores = pData.obtenerPrestadores();
+//     prestadores.forEach(prestador -> {
+//     System.out.println(prestador.getApellido() + ", " + prestador.getNombre() + ", " + prestador.getEspecialidad().getNombre() + ", " + prestador.getInstitucion());
+//     });
+//     }
+//     }
+////BUSCAR UN PRESTADOR POR ID Y MOSTRAR TODOS SUS DATOS------------------------------------------------////
 //
-//  }
+//     int id = 10;
+//     p = (Prestador) pData.buscarPrestador(id);
+//     if (p== null) {
+//     System.out.println("Prestador con ID " + id + " no encontrado.");
+//     } else {
+//     System.out.println("Prestador encontrado:");
+//     System.out.println("ID: " + p.getIdPrestador());
+//     System.out.println("Nombre: " + p.getNombre());
+//     System.out.println("Apellido: " + p.getApellido());
+//     System.out.println("DNI " + p.getDni());
+//     System.out.println("Institución: " + p.getInstitucion());
+//     System.out.println("Dirección: " + p.getDireccion());
+//     System.out.println("Telefono: " + p.getTelefono());
+//     System.out.println("Email: " + p.getEmail());
+//     if (p.isEstado()) {
+//     System.out.println("Estado: Activo");
+//     } else {
+//     System.out.println("Estado: Inactivo");
+//     }
+//     int idEspecialidad = p.getEspecialidad().getIdEspecialidad();
+//     String nombreEspecialidad = eData.buscarEspecialidadPorId(idEspecialidad).getNombre();
+//     System.out.println("Número de Especialidad: " + idEspecialidad);
+//     System.out.println("Nombre de Especialidad: " + nombreEspecialidad);
+//     }
+//     }
 //}
-////--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------////
-////BUSCAR UNA ESPECIALIDAD POR ID
-//     Especialidad especialidad = especialidadData.buscarEspecialidadPorId(10);
-//     System.out.println("La especialidad es: " + especialidad);
-//     String mensaje = "La especialidad " + especialidad ;
+//////BUSCAR UNA ESPECIALIDAD POR ID-------------------------------------------------------------------------------////
+//
+//     e = eData.buscarEspecialidadPorId(2);
+//     System.out.println("La especialidad es: " + e);
+//     String mensaje = "La especialidad " + e;
 //     JOptionPane.showMessageDialog(null, mensaje, "Especialidad Encontrada", JOptionPane.INFORMATION_MESSAGE);
-//
-//  }
-//}
-////--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------////
-////BUSCAR UN PRESTADOR POR EL NOMBRE DE ESPECIALIDAD
-//      String nombreEspecialidadABuscar = "urologia";
-//      Prestador prestadorEncontrado = prestadorData.buscarPrestadorPorEspecialidad(nombreEspecialidadABuscar);
-//      if (prestadorEncontrado != null) {
-//          System.out.println("Prestador encontrado exitosamente:\n"
-//                  + "Nombre: " + prestadorEncontrado.getNombre() + "\n"
-//                  + "Apellido: " + prestadorEncontrado.getApellido() + "\n"
-//                  + "Especialidad: " + prestadorEncontrado.getEspecialidad() + "\n"
-//                  + "Institución: " + prestadorEncontrado.getInstitucion() + "\n"
-//                  + "Dirección: " + prestadorEncontrado.getDireccion() + "\n"
-//                  + "Teléfono: " + prestadorEncontrado.getTelefono() + "\n"
-//                  + "Email: " + prestadorEncontrado.getEmail());
-//      } else {
-//          System.out.println("Prestador no encontrado.");
+//     }
+//     }
+////BUSCAR PRESTADOR POR NOMBRE DE ESPECIALIDAD--------------------------------------------------------------////
+//     String nombreEspecialidadABuscar = "ortopedia";
+//     List<Prestador> prestadoresEncontrados = pData.buscarPrestadoresPorEspecialidad(nombreEspecialidadABuscar);
+//    
+//      if (!prestadoresEncontrados.isEmpty()) {
+//      System.out.println("Prestadores encontrados con la especialidad '" + nombreEspecialidadABuscar + "':");
+//      for (Prestador prestador : prestadoresEncontrados) {
+//      System.out.println("Nombre: " + prestador.getNombre());
+//      System.out.println("Apellido: " + prestador.getApellido());
+//      System.out.println("DNI: " + prestador.getDni());
+//      System.out.println("Especialidad: " + prestador.getEspecialidad().getNombre());
+//      System.out.println("Institución: " + prestador.getInstitucion());
+//      System.out.println("Dirección: " + prestador.getDireccion());
+//      System.out.println("Teléfono: " + prestador.getTelefono());
+//      System.out.println("Email: " + prestador.getEmail());
+//      System.out.println("Estado: " + (prestador.isEstado() ? "Activo" : "Inactivo"));
+//      System.out.println("------------------------------");
 //      }
-//  }
-//}
-////--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------////
-////ACTUALIZAR PRESTADOR QUE MUESTRA SOLO LOS CAMBIOS
-//     Especialidad e = new Especialidad(2, "Cardiología", true);
-//     Prestador p = new Prestador(1, "Max", "Pérez", "Hospital ABC", "Calle Principal 123", "0303456789", "juan@example.com", e, true);
-//     prestadorData.actualizarPrestador(p);
-//  }
-//}
-////ACTUALIZAR PRESTADOR QUE MUESTRA POR CONSOLA EL ANTES Y DESPUES
-//     try {
-//     Especialidad e = new Especialidad(2, "Cardiología", true);
-//     Prestador prestadorAnterior = new Prestador(1, "Max", "Pérez", "Hospital ABC", "Calle Principal 123", "0303456789", "juan@example.com", e, true);
-//     Prestador p;
-//     p = new Prestador(1, "Hola", "Pérez", "Hospital ABC", "Calle Principal 123", "0303456789", "juan@example.com", e, true);
-//     prestadorData.actualizarPrestador(p, prestadorAnterior);
-//     } catch (SQLException e) {
-//     System.out.println("Error en el método main: " + e.getMessage());
-//}
-////--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------////    
-////ELIMINAR UN PRESTADOR A TRAVES DE SU ID
-//        int idAEliminar = 10; // Reemplaza 10 con el ID del prestador que deseas eliminar
-//        prestadorData.eliminarPrestador(idAEliminar);
+//      } else {
+//      System.out.println("No se encontraron prestadores con la especialidad '" + nombreEspecialidadABuscar + "'");
+//      }
+//      }
+//      }
+//////METODO ACTUALIZAR QUE MUESTRA SOLO LOS CAMBIOS-------------------------------------------------------////
+//       // Crear una instancia de Especialidad con el ID correcto
+//        e = eData.buscarEspecialidadPorId(6);
+//
+//        // Configurar los datos del Prestador
+//        p.setIdPrestador(22); // ID del prestador a actualizar
+//        p.setNombre("Kal");
+//        p.setApellido("Parker");
+//        p.setDni(9999999);
+//        p.setInstitucion("Manantial");
+//        p.setDireccion("Calle Segura 123");
+//        p.setTelefono("0334567");
+//        p.setEmail("Kal@example.com");
+//        p.setEspecialidad(e); // Establecer la Especialidad cargada
+//        p.setEstado(true);
+//
+//        // Actualizar el Prestador
+//        pData.actualizarPrestador(p);
 //    }
 //}
-////--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------////
+////ELIMINAR UN PRESTADOR A TRAVES DE SU ID---------------------------------------------------------------------////
+//      int idAEliminar = 22;
+//      pData.eliminarPrestador(idAEliminar);
+//      }
+//      }
 
-  
-  
-  
-  
- 
+////FIN CLASE PRESTADOR////-------------------------------------------------------------------------------------------////
 
 
-  
-  
-
-//CLASE PRESTADO
-//        EspecialidadData especialidadData = new EspecialidadData();
-//        PrestadorData prestadorData = new PrestadorData();
-//
-//        int id = 10;
-//        Prestador prestador = (Prestador) prestadorData.buscarPrestador(id);
-//
-//        if (prestador == null) {
-//            System.out.println("Prestador con ID " + id + " no encontrado.");
-//        } else {
-//            System.out.println("Prestador encontrado:");
-//            System.out.println("ID: " + prestador.getIdPrestador());
-//            System.out.println("Nombre: " + prestador.getNombre());
-//            System.out.println("Apellido: " + prestador.getApellido());
-//            System.out.println("Institución: " + prestador.getInstitucion());
-//            System.out.println("Dirección: " + prestador.getDireccion());
-//            System.out.println("Telefono: " + prestador.getTelefono());
-//            System.out.println("Email: " + prestador.getEmail());
-//
-//            if (prestador.isEstado()) {
-//                System.out.println("Estado: Activo");
-//            } else {
-//                System.out.println("Estado: Inactivo");
-//            }
-//
-//            int idEspecialidad = prestador.getEspecialidad().getIdEspecialidad();
-//            String nombreEspecialidad = especialidadData.buscarEspecialidadPorId(idEspecialidad).getNombre();
-//
-//            System.out.println("Número de Especialidad: " + idEspecialidad);
-//            System.out.println("Nombre de Especialidad: " + nombreEspecialidad);
-//        }
-//  }
-//}
 //        Connection con=Conexion.getConexion();
 //        Empleado juan = new Empleado("Juan", "Fernandez", 42078248, "JuanFer", "juan1234", 155348604, "alfa23", true);
 //        Afiliado a=new Afiliado(1,"Candela","Romero",12345678,"Junin 987",2147483647,juan,true);
@@ -403,8 +391,6 @@ public class MasSalud {
 //    }
 //        
 //      
- 
-
         //-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- ---//
         
 //                        Connection con=Conexion.getConexion();
@@ -514,5 +500,6 @@ public class MasSalud {
 //                                }
 //          
 //      }
-
- 
+  
+  }
+}
