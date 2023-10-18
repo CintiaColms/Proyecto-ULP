@@ -174,7 +174,8 @@ public class Login extends javax.swing.JFrame {
                 contra = rs.getString("contraseña");
                 if (usuario.equalsIgnoreCase(texemp.getText()) && contra.equalsIgnoreCase(contra1)) {
                     String nombre="Bienvenido a Mas Salud!! "+rs.getString("nombre");
-                     JOptionPane.showMessageDialog(this, nombre, "Ingreso Exitoso ",JOptionPane.PLAIN_MESSAGE,icono());
+                    ImageIcon icono=new ImageIcon("/massalud/Recursos/Icob.png");
+                     JOptionPane.showMessageDialog(this, nombre, "Ingreso Exitoso ",JOptionPane.PLAIN_MESSAGE,icono);
                     Menu menu = new Menu();
                     menu.setVisible(true);
                     this.dispose();
