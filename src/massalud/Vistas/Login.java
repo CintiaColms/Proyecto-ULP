@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import massalud.AccesoDatos.Conexion;
@@ -172,7 +173,8 @@ public class Login extends javax.swing.JFrame {
                 usuario = rs.getString("usuario");
                 contra = rs.getString("contraseña");
                 if (usuario.equalsIgnoreCase(texemp.getText()) && contra.equalsIgnoreCase(contra1)) {
-                     JOptionPane.showMessageDialog(this,"!! Bienvenido a Mas Salud "+rs.getString("nombre")+" !!");
+                    String nombre="Bienvenido a Mas Salud!! "+rs.getString("nombre");
+                     JOptionPane.showMessageDialog(this, nombre, "Ingreso Exitoso ",JOptionPane.PLAIN_MESSAGE,icono());
                     Menu menu = new Menu();
                     menu.setVisible(true);
                     this.dispose();
@@ -181,7 +183,7 @@ public class Login extends javax.swing.JFrame {
                 }
             
             }
-            if(!usuario.equalsIgnoreCase(texemp.getText()) && !contra.equalsIgnoreCase(contra1)){
+            if(!usuario.equalsIgnoreCase(texemp.getText()) || !contra.equalsIgnoreCase(contra1)){
                 texemp.setText("");
                 texcontra.setText("");
                 JOptionPane.showMessageDialog(this,"Contraseña y/o Usuario incorrectos, Ingrese Nuevamente");
@@ -242,4 +244,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField texcontra;
     private javax.swing.JTextField texemp;
     // End of variables declaration//GEN-END:variables
+public Icon icono(){
+    ImageIcon imagen=new ImageIcon("/massalud/Recursos/iconoBienvenidochico.jpg");
+    return imagen;
+}
+
 }
