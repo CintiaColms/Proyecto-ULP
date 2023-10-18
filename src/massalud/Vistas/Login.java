@@ -7,8 +7,15 @@ package massalud.Vistas;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import massalud.AccesoDatos.Conexion;
 import massalud.AccesoDatos.EmpleadoData;
 import massalud.Entidades.Empleado;
 
@@ -17,6 +24,7 @@ import massalud.Entidades.Empleado;
  * @author Cintia
  */
 public class Login extends javax.swing.JFrame {
+    Connection con=null;
 //private EmpleadoData empData= new EmpleadoData();
   /**
    * Creates new form Login
@@ -151,15 +159,44 @@ public class Login extends javax.swing.JFrame {
    */
   
   public void Login(){
-    String usuario=texemp.getText();
-    String contra=String.valueOf(texcontra.getPassword());
-    if (usuario.equals("Leon")&& contra.compareTo("123456")==0){
-    Menu menu=new Menu();
-    menu.setVisible(true);
-    this.dispose();
-    }else{
-      JOptionPane.showMessageDialog(null,"Verifique Usuario y/o Contraseña","Error",JOptionPane.WARNING_MESSAGE);
-    }
+      con=Conexion.getConexion();
+    String usuario=null;
+    String contra=null;
+     String contra1=(String) texcontra.getText();
+    String sql="select nombre, usuario, contraseña from empleado where estado=1";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            
+            while (rs.next()) {
+                usuario = rs.getString("usuario");
+                contra = rs.getString("contraseña");
+                if (usuario.equalsIgnoreCase(texemp.getText()) && contra.equalsIgnoreCase(contra1)) {
+                     JOptionPane.showMessageDialog(this,"!! Bienvenido a Mas Salud "+rs.getString("nombre")+" !!");
+                    Menu menu = new Menu();
+                    menu.setVisible(true);
+                    this.dispose();
+                   
+                    break;
+                }
+            
+            }
+            if(!usuario.equalsIgnoreCase(texemp.getText()) && !contra.equalsIgnoreCase(contra1)){
+                texemp.setText("");
+                texcontra.setText("");
+                JOptionPane.showMessageDialog(this,"Contraseña y/o Usuario incorrectos, Ingrese Nuevamente");
+            }
+            
+//    if (usuario.equals("Leon")&& contra.compareTo("123456")==0){
+//    Menu menu=new Menu();
+//    menu.setVisible(true);
+//    this.dispose();
+//    }else{
+//      JOptionPane.showMessageDialog(null,"Verifique Usuario y/o Contraseña","Error",JOptionPane.WARNING_MESSAGE);
+//    }
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
   }
   
   

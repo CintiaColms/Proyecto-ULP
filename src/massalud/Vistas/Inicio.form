@@ -46,9 +46,9 @@
                   <EmptySpace pref="356" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="Barra" min="-2" pref="382" max="-2" attributes="0"/>
-                      <Component id="inilog" min="-2" pref="398" max="-2" attributes="0"/>
+                      <Component id="inilog" min="-2" pref="428" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="386" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="356" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

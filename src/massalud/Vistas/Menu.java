@@ -21,7 +21,7 @@ import massalud.Entidades.Afiliado;
 public class Menu extends javax.swing.JFrame {
 private AfiliadoData afiData= new AfiliadoData();
 private Afiliado afiliadoActualDni=null;
-private Afiliado  afiliadoActualId=null;
+private Afiliado  afiliadoId=null;
 
   /**
    * Creates new form Menu
@@ -757,13 +757,14 @@ setIconImage(new ImageIcon(getClass().getResource("/massalud/Recursos/icon.jpeg"
 
   private void BBuscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBuscActionPerformed
     // TODO add your handling code here:
+
     try{
       Integer dni= Integer.parseInt(Doc.getText());
-////      Integer id= Integer.parseInt(IdAfil.getText());
+//      Integer id= Integer.parseInt(IdAfil.getText());
       afiliadoActualDni=afiData.buscarAfiliadoPorDni(dni);
-//      afiliadoActualId=afiData.buscarAfiliado(id);
+//      afiliadoActualD=afiData.buscarAfiliado(id);
       if(afiliadoActualDni!=null){
-//      IdEm.setText(afiliadoActualDni.getIdEmpleado(get.empleado));
+//      IdEm.setText(afiliadoActualDni.getEmpleado());
       Nom.setText(afiliadoActualDni.getNombre());
       Ape.setText(afiliadoActualDni.getApellido());
       IdAf.setText(Integer.toString(afiliadoActualDni.getIdafiliaado()));

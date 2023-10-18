@@ -20,7 +20,7 @@ public class Inicio extends javax.swing.JFrame {
 
   private Timer tiempo;
   int cont = 0;
-  public final static int TWO_SECOND = 200;
+  public final static int TWO_SECOND = 30;
   private javax.swing.JLabel cargandoLabel; // Etiqueta para mostrar "Cargando..."
 
   /**
@@ -85,8 +85,8 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(356, Short.MAX_VALUE)
                 .addGroup(inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Barra, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inilog, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(386, 386, 386))
+                    .addComponent(inilog, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(356, 356, 356))
         );
         inicioLayout.setVerticalGroup(
             inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
