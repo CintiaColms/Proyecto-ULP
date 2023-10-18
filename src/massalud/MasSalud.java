@@ -52,16 +52,16 @@ public class MasSalud {
 // ----GUARDAR ORDEN ----------------------------------------------------------------------------------------------------------------  
 // 
 //    Empleado juan = new Empleado(1, "Max", "Power", 12345678, "Maxpower", "contraseña123", 1234567890, "Password123", true);
-//    Afiliado a = new Afiliado(1, "Candela", "Romero", 12345678, "Junin 987", 2147483647, juan, true);
-
+//    Afiliado a = new Afiliado(1, "Candela", "Romero", 12345678, 10, "Junin 987", 2147483647, juan, true);
+//
 //    Especialidad e = new Especialidad(2, "Cardiología", true);
-//    Prestador p = new Prestador(1, "Juan", "Pérez", "Hospital ABC", "Calle Principal 123", "123456789", "juan@example.com", e, true);
+//    Prestador p = new Prestador(1, "Juan", "Pérez", 12345678, "Hospital ABC", "Calle Principal 123", "123456789", "juan@example.com", e, true);
 //    Orden ord = new Orden(LocalDate.of(2023, 10, 10), "Efvo", 500, a, p);
 //    OrdenData ordD = new OrdenData();
-//    
+//
 //
 //     ordD.guardarOrden(ord); 
-//
+////
 //--MODIFICAR ORDEN: ---------------------------------------------------
 //    Orden ordenModificada = new Orden(1, LocalDate.of(2023, 9, 22), "Tarjeta de Débito", 400, a, p);
 //    ordD.modificarOrden(ordenModificada);

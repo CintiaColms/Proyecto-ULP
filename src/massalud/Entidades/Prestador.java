@@ -121,5 +121,21 @@ public class Prestador {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    
+    public String toString() {
+    return "Prestador{" +
+        "idPrestador=" + idPrestador +
+        ", nombre='" + nombre + '\'' +
+        ", apellido='" + apellido + '\'' +
+        ", dni=" + dni +
+        ", institucion='" + institucion + '\'' +
+        ", direccion='" + direccion + '\'' +
+        ", telefono='" + telefono + '\'' +
+        ", email='" + email + '\'' +
+        ", especialidad=" + especialidad +
+        ", estado=" + estado +
+        '}';
+}
+    
 }
 
