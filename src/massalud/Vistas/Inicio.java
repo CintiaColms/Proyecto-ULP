@@ -48,8 +48,8 @@ public class Inicio extends javax.swing.JFrame {
     // Configurar la etiqueta "Cargando..."
     cargandoLabel = new javax.swing.JLabel("Cargando...");
     cargandoLabel.setFont(new java.awt.Font("Harabara", java.awt.Font.BOLD, 14));    
-    cargandoLabel.setForeground(new Color(204, 102, 0));
-    cargandoLabel.setBounds(520, 600, 250, 40); // Establece la posición de la etiqueta
+    cargandoLabel.setForeground(new Color(0, 153, 153));
+    cargandoLabel.setBounds(520, 695, 250, 40); // Establece la posición de la etiqueta
     inicio.add(cargandoLabel); // Agrega la etiqueta al JDesktopPane
     cargandoLabel.setVisible(true); // Asegura que la etiqueta sea visible inicialmente
   }
@@ -61,7 +61,7 @@ public class Inicio extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    ImageIcon icono=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
+    ImageIcon icono=new ImageIcon(getClass().getResource("/massalud/Recursos/fini.png"));
     Image imagen=icono.getImage();
     inicio = new javax.swing.JDesktopPane(){
       public void paintComponent(Graphics g){
@@ -71,39 +71,48 @@ public class Inicio extends javax.swing.JFrame {
     ;
     Barra = new javax.swing.JProgressBar();
     jLabel1 = new javax.swing.JLabel();
+    jLabel3 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-    Barra.setBackground(new java.awt.Color(204, 204, 204));
-    Barra.setForeground(new java.awt.Color(255, 153, 51));
+    Barra.setBackground(new java.awt.Color(204, 102, 0));
+    Barra.setForeground(new java.awt.Color(0, 153, 153));
 
-    jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/logini .gif"))); // NOI18N
+    jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/logoini.gif"))); // NOI18N
+
+    jLabel3.setFont(new java.awt.Font("Berlin Sans FB Demi", 2, 36)); // NOI18N
+    jLabel3.setForeground(new java.awt.Color(0, 204, 204));
+    jLabel3.setText("La mutual que Más te cuida");
 
     inicio.setLayer(Barra, javax.swing.JLayeredPane.DEFAULT_LAYER);
     inicio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+    inicio.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
     javax.swing.GroupLayout inicioLayout = new javax.swing.GroupLayout(inicio);
     inicio.setLayout(inicioLayout);
     inicioLayout.setHorizontalGroup(
       inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(inicioLayout.createSequentialGroup()
-        .addGroup(inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(inicioLayout.createSequentialGroup()
-            .addGap(244, 244, 244)
-            .addComponent(jLabel1))
-          .addGroup(inicioLayout.createSequentialGroup()
-            .addGap(403, 403, 403)
-            .addComponent(Barra, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        .addContainerGap(271, Short.MAX_VALUE))
+        .addGap(254, 254, 254)
+        .addComponent(jLabel1)
+        .addContainerGap(236, Short.MAX_VALUE))
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inicioLayout.createSequentialGroup()
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGroup(inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+          .addComponent(Barra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE))
+        .addGap(320, 320, 320))
     );
     inicioLayout.setVerticalGroup(
       inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(inicioLayout.createSequentialGroup()
-        .addGap(153, 153, 153)
-        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(124, 124, 124)
+        .addGap(30, 30, 30)
+        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(jLabel3)
+        .addGap(116, 116, 116)
         .addComponent(Barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(184, Short.MAX_VALUE))
+        .addContainerGap(91, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,5 +193,6 @@ public class Inicio extends javax.swing.JFrame {
   private javax.swing.JProgressBar Barra;
   private javax.swing.JDesktopPane inicio;
   private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel3;
   // End of variables declaration//GEN-END:variables
 }

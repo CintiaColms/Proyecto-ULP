@@ -50,7 +50,7 @@ public class Login extends javax.swing.JFrame {
   private void initComponents() {
 
     jLabel3 = new javax.swing.JLabel();
-    ImageIcon icono=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
+    ImageIcon icono=new ImageIcon(getClass().getResource("/massalud/Recursos/fini.png"));
     Image imagen=icono.getImage();
     PanelLog = new javax.swing.JPanel(){
       public void paintComponent(Graphics g){
@@ -75,28 +75,28 @@ public class Login extends javax.swing.JFrame {
 
     texemp.setBackground(new java.awt.Color(255, 255, 255));
     texemp.setFont(new java.awt.Font("Bauhaus 93", 0, 18)); // NOI18N
-    texemp.setForeground(new java.awt.Color(0, 102, 153));
+    texemp.setForeground(new java.awt.Color(0, 153, 153));
     texemp.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         texempActionPerformed(evt);
       }
     });
-    PanelLog.add(texemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 550, 210, 40));
+    PanelLog.add(texemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 600, 200, 40));
 
     Emp.setFont(new java.awt.Font("Bauhaus 93", 1, 22)); // NOI18N
-    Emp.setForeground(new java.awt.Color(0, 102, 204));
-    Emp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/usu.png"))); // NOI18N
+    Emp.setForeground(new java.awt.Color(0, 153, 153));
+    Emp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/USUARIO VERDE 167X42 PX.png"))); // NOI18N
     Emp.setText("Usuario");
-    PanelLog.add(Emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 170, 40));
+    PanelLog.add(Emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 600, 190, 40));
 
     contra.setFont(new java.awt.Font("Bauhaus 93", 1, 22)); // NOI18N
     contra.setForeground(new java.awt.Color(0, 204, 204));
-    contra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/cont.png"))); // NOI18N
-    PanelLog.add(contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, -1, 40));
+    contra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/CONTRASEÑA VERDE 167X42 PX.png"))); // NOI18N
+    PanelLog.add(contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 600, -1, 40));
 
     texcontra.setBackground(new java.awt.Color(255, 255, 255));
     texcontra.setFont(new java.awt.Font("Bauhaus 93", 0, 18)); // NOI18N
-    texcontra.setForeground(new java.awt.Color(0, 102, 153));
+    texcontra.setForeground(new java.awt.Color(0, 153, 153));
     texcontra.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         texcontraActionPerformed(evt);
@@ -107,7 +107,7 @@ public class Login extends javax.swing.JFrame {
         texcontraKeyPressed(evt);
       }
     });
-    PanelLog.add(texcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 550, 210, 40));
+    PanelLog.add(texcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 600, 180, 40));
 
     botonin.setBackground(new java.awt.Color(198, 204, 204));
     botonin.setFont(new java.awt.Font("Bauhaus 93", 1, 24)); // NOI18N
@@ -123,10 +123,10 @@ public class Login extends javax.swing.JFrame {
         botoninKeyPressed(evt);
       }
     });
-    PanelLog.add(botonin, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 630, 200, 40));
+    PanelLog.add(botonin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 200, 40));
 
-    jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/logini .gif"))); // NOI18N
-    PanelLog.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 420));
+    jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/logoini.gif"))); // NOI18N
+    PanelLog.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, 530));
 
     getContentPane().add(PanelLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 780));
 
