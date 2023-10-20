@@ -678,29 +678,33 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="Ape1" alignment="0" min="-2" pref="249" max="-2" attributes="0"/>
-                                      <Component id="Nom1" alignment="0" min="-2" pref="253" max="-2" attributes="0"/>
-                                      <Component id="IdAf1" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="Nom1" alignment="0" pref="253" max="32767" attributes="0"/>
+                                          <Component id="Ape1" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="IdAf1" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jTextField2" min="-2" pref="59" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="Corre2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="Telf1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Corre2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Domi1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="Dom1" min="-2" pref="156" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
                                           <Component id="Act1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="Ina1" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="Telf1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="Tel1" min="-2" pref="135" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="Domi1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                          <Component id="Dom1" min="-2" pref="158" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="Tel1" min="-2" pref="156" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                               </Group>
@@ -745,7 +749,11 @@
                                           <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                                           <Component id="IdAfil1" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="IdAf1" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                          <Component id="IdAf1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -759,7 +767,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="577" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="565" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -886,6 +894,9 @@
                 </Component>
                 <Component class="java.awt.Checkbox" name="Act1">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="e5" green="f8" red="e5" type="rgb"/>
+                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Bauhaus 93" size="15" style="0"/>
                     </Property>
@@ -897,6 +908,9 @@
                 </Component>
                 <Component class="java.awt.Checkbox" name="Ina1">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="e5" green="f8" red="e5" type="rgb"/>
+                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Bauhaus 93" size="15" style="0"/>
                     </Property>
@@ -905,6 +919,19 @@
                     </Property>
                     <Property name="label" type="java.lang.String" value="Inactivo"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Bauhaus 93" size="15" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="99" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="ID Empleado :"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextField2">
                 </Component>
               </SubComponents>
             </Container>

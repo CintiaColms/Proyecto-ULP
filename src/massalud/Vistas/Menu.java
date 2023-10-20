@@ -112,6 +112,8 @@ public class Menu extends javax.swing.JFrame {
         Dom1 = new javax.swing.JTextField();
         Act1 = new java.awt.Checkbox();
         Ina1 = new java.awt.Checkbox();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         ImageIcon iconop=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
         Image imagenp=iconop.getImage();
         FPres = new javax.swing.JPanel(){
@@ -574,13 +576,19 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        Act1.setBackground(new java.awt.Color(229, 248, 229));
         Act1.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
         Act1.setForeground(new java.awt.Color(0, 153, 153));
         Act1.setLabel("Activo");
 
+        Ina1.setBackground(new java.awt.Color(229, 248, 229));
         Ina1.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
         Ina1.setForeground(new java.awt.Color(0, 153, 153));
         Ina1.setLabel("Inactivo");
+
+        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel1.setText("ID Empleado :");
 
         javax.swing.GroupLayout FAfiLayout = new javax.swing.GroupLayout(FAfi);
         FAfi.setLayout(FAfiLayout);
@@ -605,25 +613,28 @@ public class Menu extends javax.swing.JFrame {
                         .addContainerGap(410, Short.MAX_VALUE))
                     .addGroup(FAfiLayout.createSequentialGroup()
                         .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Ape1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nom1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(IdAf1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Nom1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                                .addComponent(Ape1))
+                            .addGroup(FAfiLayout.createSequentialGroup()
+                                .addComponent(IdAf1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Telf1)
+                            .addComponent(Corre2)
+                            .addComponent(Domi1))
+                        .addGap(18, 18, 18)
+                        .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Dom1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(FAfiLayout.createSequentialGroup()
-                                .addComponent(Corre2)
-                                .addGap(23, 23, 23)
                                 .addComponent(Act1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Ina1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(FAfiLayout.createSequentialGroup()
-                                .addComponent(Telf1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Tel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(FAfiLayout.createSequentialGroup()
-                                .addComponent(Domi1)
-                                .addGap(29, 29, 29)
-                                .addComponent(Dom1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Tel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(112, 112, 112))))
         );
         FAfiLayout.setVerticalGroup(
@@ -656,7 +667,10 @@ public class Menu extends javax.swing.JFrame {
                             .addGroup(FAfiLayout.createSequentialGroup()
                                 .addGap(3, 3, 3)
                                 .addComponent(IdAfil1))
-                            .addComponent(IdAf1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(IdAf1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(8, 8, 8)
                         .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Nomb1)
@@ -665,7 +679,7 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Apel1)
                             .addComponent(Ape1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 577, Short.MAX_VALUE))
+                .addGap(0, 565, Short.MAX_VALUE))
         );
 
         PanelOt.add(FAfi);
@@ -1002,10 +1016,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel afili;
     private javax.swing.JLabel espe;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel logomenu;
     private javax.swing.JLabel prest;
     // End of variables declaration//GEN-END:variables
