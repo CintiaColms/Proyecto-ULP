@@ -24,17 +24,17 @@ public class Menu extends javax.swing.JFrame {
   private AfiliadoData afiData = new AfiliadoData();
 
   private Afiliado afiliadoActualDni = null;
-//private Afiliado  afiliadoActualId=null;
 
   /**
    * Creates new form Menu
    */
   public Menu() {
     initComponents();
-    setIconImage(new ImageIcon(getClass().getResource("/massalud/Recursos/icon.jpeg")).getImage());
+    setIconImage(new ImageIcon(getClass().getResource("/massalud/Recursos/icon.png")).getImage());
     setLocationRelativeTo(null);
-//   setIconImage(new ImageIcon(getClass().getResource("/massalud/Recursos/icon.jpeg")).getImage());
-    POrden.setBackground(Color.lightGray);
+
+    POrden.setBackground(new Color(204, 102, 0));
+    Orden.setForeground(new Color(0, 204, 204));
   }
 
   /**
@@ -45,14 +45,14 @@ public class Menu extends javax.swing.JFrame {
   private void initComponents() {
 
     jDesktopPane1 = new javax.swing.JDesktopPane();
-    ImageIcon icono2=new ImageIcon(getClass().getResource("/massalud/Recursos/f2.jpg"));
+    ImageIcon icono2=new ImageIcon(getClass().getResource("/massalud/Recursos/f2.png"));
     Image imagen2=icono2.getImage();
     PanelMenu = new javax.swing.JPanel(){
       public void paintComponent(Graphics g){
         g.drawImage(imagen2,0,0,getWidth(),getHeight(),this);
       }
     };
-    jLabel1 = new javax.swing.JLabel();
+    logomenu = new javax.swing.JLabel();
     POrden = new javax.swing.JPanel();
     Orden = new javax.swing.JLabel();
     PAfil = new javax.swing.JPanel();
@@ -63,44 +63,65 @@ public class Menu extends javax.swing.JFrame {
     Espe = new javax.swing.JLabel();
     PEmpl = new javax.swing.JPanel();
     Empl = new javax.swing.JLabel();
-    jLabel7 = new javax.swing.JLabel();
     PanelOt = new javax.swing.JPanel();
-    ImageIcon icono=new ImageIcon(getClass().getResource("/massalud/Recursos/f1.jpg"));
+    ImageIcon icono=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
     Image imagen=icono.getImage();
     FOrd = new javax.swing.JPanel(){
       public void paintComponent(Graphics g){
         g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
       }
     };
-    jPanel1 = new javax.swing.JPanel();
-    jLabel2 = new javax.swing.JLabel();
-    jPanel3 = new javax.swing.JPanel();
+    Ordenes = new javax.swing.JLabel();
+    Docu = new javax.swing.JLabel();
+    Doc = new javax.swing.JTextField();
+    IdAfil = new javax.swing.JLabel();
+    IdAf = new javax.swing.JTextField();
     Nomb = new javax.swing.JLabel();
     Nom = new javax.swing.JTextField();
     Apel = new javax.swing.JLabel();
     Ape = new javax.swing.JTextField();
-    Sep = new javax.swing.JSeparator();
-    Docu = new javax.swing.JLabel();
-    Doc = new javax.swing.JTextField();
     Domi = new javax.swing.JLabel();
     Dom = new javax.swing.JTextField();
     Telf = new javax.swing.JLabel();
-    Tel = new javax.swing.JTextField();
-    Corre = new javax.swing.JLabel();
-    Cor = new javax.swing.JTextField();
-    Corre1 = new javax.swing.JLabel();
-    IdAf = new javax.swing.JTextField();
-    IdAfil = new javax.swing.JLabel();
-    BBusc = new java.awt.Button();
-    Act = new java.awt.Checkbox();
     Ina = new java.awt.Checkbox();
-    FAfi = new javax.swing.JPanel();
-    jLabel3 = new javax.swing.JLabel();
-    FPres = new javax.swing.JPanel();
-    jLabel4 = new javax.swing.JLabel();
-    FEsp = new javax.swing.JPanel();
-    jLabel5 = new javax.swing.JLabel();
-    FEmp = new javax.swing.JPanel();
+    Act = new java.awt.Checkbox();
+    Corre1 = new javax.swing.JLabel();
+    Tel = new javax.swing.JTextField();
+    Buscar = new javax.swing.JButton();
+    ImageIcon iconoa=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
+    Image imagena=iconoa.getImage();
+    FAfi = new javax.swing.JPanel(){
+      public void paintComponent(Graphics g){
+        g.drawImage(imagena,0,0,getWidth(),getHeight(),this);
+      }
+    };
+    afili = new javax.swing.JLabel();
+    ImageIcon iconop=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
+    Image imagenp=iconop.getImage();
+    FPres = new javax.swing.JPanel(){
+      public void paintComponent(Graphics g){
+        g.drawImage(imagenp,0,0,getWidth(),getHeight(),this);
+      }
+    }
+    ;
+    prest = new javax.swing.JLabel();
+    ImageIcon iconoe=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
+    Image imagene=iconoe.getImage();
+    FEsp = new javax.swing.JPanel(){
+
+      public void paintComponent(Graphics g){
+        g.drawImage(imagene,0,0,getWidth(),getHeight(),this);
+      }
+    };
+    espe = new javax.swing.JLabel();
+    ImageIcon iconoem=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
+    Image imagenem=iconoem.getImage();
+    FEmp = new javax.swing.JPanel(){
+
+      public void paintComponent(Graphics g){
+        g.drawImage(imagenem,0,0,getWidth(),getHeight(),this);
+      }
+    };
     jLabel6 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,9 +129,9 @@ public class Menu extends javax.swing.JFrame {
 
     jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-    jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/log.gif"))); // NOI18N
+    logomenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/logmenu.gif"))); // NOI18N
 
-    POrden.setBackground(new java.awt.Color(102, 255, 255));
+    POrden.setBackground(new java.awt.Color(0, 204, 204));
     POrden.setPreferredSize(new java.awt.Dimension(280, 50));
     POrden.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,27 +139,30 @@ public class Menu extends javax.swing.JFrame {
       }
     });
 
-    Orden.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    Orden.setForeground(new java.awt.Color(0, 102, 255));
-    Orden.setText("ORDEN");
+    Orden.setFont(new java.awt.Font("Bauhaus 93", 0, 22)); // NOI18N
+    Orden.setForeground(new java.awt.Color(204, 102, 0));
+    Orden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/orden.png"))); // NOI18N
+    Orden.setLabelFor(Ape);
+    Orden.setText("Ordenes");
+    Orden.setAlignmentY(0.0F);
 
     javax.swing.GroupLayout POrdenLayout = new javax.swing.GroupLayout(POrden);
     POrden.setLayout(POrdenLayout);
     POrdenLayout.setHorizontalGroup(
       POrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(POrdenLayout.createSequentialGroup()
-        .addGap(60, 60, 60)
-        .addComponent(Orden)
+        .addContainerGap()
+        .addComponent(Orden, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     POrdenLayout.setVerticalGroup(
       POrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, POrdenLayout.createSequentialGroup()
-        .addComponent(Orden, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-        .addContainerGap())
+        .addGap(0, 0, 0)
+        .addComponent(Orden, javax.swing.GroupLayout.PREFERRED_SIZE, 56, Short.MAX_VALUE))
     );
 
-    PAfil.setBackground(new java.awt.Color(51, 255, 255));
+    PAfil.setBackground(new java.awt.Color(0, 204, 204));
     PAfil.setPreferredSize(new java.awt.Dimension(280, 50));
     PAfil.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,25 +170,28 @@ public class Menu extends javax.swing.JFrame {
       }
     });
 
-    Afil.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    Afil.setForeground(new java.awt.Color(51, 102, 255));
-    Afil.setText("AFILIADO");
+    Afil.setFont(new java.awt.Font("Bauhaus 93", 0, 22)); // NOI18N
+    Afil.setForeground(new java.awt.Color(204, 102, 0));
+    Afil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Afiliados.png"))); // NOI18N
+    Afil.setText("Afiliados");
 
     javax.swing.GroupLayout PAfilLayout = new javax.swing.GroupLayout(PAfil);
     PAfil.setLayout(PAfilLayout);
     PAfilLayout.setHorizontalGroup(
       PAfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(PAfilLayout.createSequentialGroup()
-        .addGap(62, 62, 62)
-        .addComponent(Afil)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addContainerGap()
+        .addComponent(Afil, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(27, Short.MAX_VALUE))
     );
     PAfilLayout.setVerticalGroup(
       PAfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(Afil, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PAfilLayout.createSequentialGroup()
+        .addGap(0, 1, Short.MAX_VALUE)
+        .addComponent(Afil, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
 
-    PPrest.setBackground(new java.awt.Color(51, 255, 255));
+    PPrest.setBackground(new java.awt.Color(0, 204, 204));
     PPrest.setForeground(new java.awt.Color(51, 51, 255));
     PPrest.setPreferredSize(new java.awt.Dimension(280, 50));
     PPrest.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -173,25 +200,26 @@ public class Menu extends javax.swing.JFrame {
       }
     });
 
-    Prest.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    Prest.setForeground(new java.awt.Color(51, 102, 255));
-    Prest.setText("PRESTADOR");
+    Prest.setFont(new java.awt.Font("Bauhaus 93", 0, 22)); // NOI18N
+    Prest.setForeground(new java.awt.Color(204, 102, 0));
+    Prest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Prestador.png"))); // NOI18N
+    Prest.setText("Prestador");
 
     javax.swing.GroupLayout PPrestLayout = new javax.swing.GroupLayout(PPrest);
     PPrest.setLayout(PPrestLayout);
     PPrestLayout.setHorizontalGroup(
       PPrestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(PPrestLayout.createSequentialGroup()
-        .addGap(62, 62, 62)
+        .addContainerGap()
         .addComponent(Prest)
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     PPrestLayout.setVerticalGroup(
       PPrestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(Prest, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+      .addComponent(Prest, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE)
     );
 
-    PEspe.setBackground(new java.awt.Color(51, 255, 255));
+    PEspe.setBackground(new java.awt.Color(0, 204, 204));
     PEspe.setForeground(new java.awt.Color(51, 102, 255));
     PEspe.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -199,25 +227,26 @@ public class Menu extends javax.swing.JFrame {
       }
     });
 
-    Espe.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    Espe.setForeground(new java.awt.Color(51, 102, 255));
-    Espe.setText("ESPECIALIDAD");
+    Espe.setFont(new java.awt.Font("Bauhaus 93", 0, 22)); // NOI18N
+    Espe.setForeground(new java.awt.Color(204, 102, 0));
+    Espe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Especialidad.png"))); // NOI18N
+    Espe.setText("Especialidad");
 
     javax.swing.GroupLayout PEspeLayout = new javax.swing.GroupLayout(PEspe);
     PEspe.setLayout(PEspeLayout);
     PEspeLayout.setHorizontalGroup(
       PEspeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(PEspeLayout.createSequentialGroup()
-        .addGap(62, 62, 62)
-        .addComponent(Espe)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addContainerGap()
+        .addComponent(Espe, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(15, Short.MAX_VALUE))
     );
     PEspeLayout.setVerticalGroup(
       PEspeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(Espe, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+      .addComponent(Espe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
     );
 
-    PEmpl.setBackground(new java.awt.Color(51, 255, 255));
+    PEmpl.setBackground(new java.awt.Color(0, 204, 204));
     PEmpl.setForeground(new java.awt.Color(51, 102, 255));
     PEmpl.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -225,120 +254,75 @@ public class Menu extends javax.swing.JFrame {
       }
     });
 
-    Empl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-    Empl.setForeground(new java.awt.Color(51, 51, 255));
-    Empl.setText("EMPLEADOS");
+    Empl.setFont(new java.awt.Font("Bauhaus 93", 0, 24)); // NOI18N
+    Empl.setForeground(new java.awt.Color(204, 102, 0));
+    Empl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Empleados.png"))); // NOI18N
+    Empl.setText("Empleados");
+    Empl.setAlignmentY(0.0F);
 
     javax.swing.GroupLayout PEmplLayout = new javax.swing.GroupLayout(PEmpl);
     PEmpl.setLayout(PEmplLayout);
     PEmplLayout.setHorizontalGroup(
       PEmplLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(PEmplLayout.createSequentialGroup()
-        .addGap(62, 62, 62)
-        .addComponent(Empl)
+        .addContainerGap()
+        .addComponent(Empl, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     PEmplLayout.setVerticalGroup(
       PEmplLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(Empl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PEmplLayout.createSequentialGroup()
+        .addGap(0, 0, Short.MAX_VALUE)
+        .addComponent(Empl, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
 
     javax.swing.GroupLayout PanelMenuLayout = new javax.swing.GroupLayout(PanelMenu);
     PanelMenu.setLayout(PanelMenuLayout);
     PanelMenuLayout.setHorizontalGroup(
       PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(PEmpl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addComponent(PEspe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addComponent(PPrest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addComponent(PAfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addComponent(POrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMenuLayout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(jLabel7)
-        .addGap(68, 68, 68))
       .addGroup(PanelMenuLayout.createSequentialGroup()
-        .addGap(32, 32, 32)
-        .addComponent(jLabel1)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGap(14, 14, 14)
+        .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+          .addComponent(logomenu, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addComponent(POrden, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+            .addComponent(PEmpl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PEspe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PAfil, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+            .addComponent(PPrest, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)))
+        .addContainerGap(13, Short.MAX_VALUE))
     );
     PanelMenuLayout.setVerticalGroup(
       PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(PanelMenuLayout.createSequentialGroup()
-        .addGap(84, 84, 84)
-        .addComponent(jLabel7)
-        .addGap(18, 18, 18)
-        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(93, 93, 93)
-        .addComponent(POrden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
+        .addGap(51, 51, 51)
+        .addComponent(logomenu, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(145, 145, 145)
+        .addComponent(POrden, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(PAfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, 18)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(PPrest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(PEspe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addGap(18, 18, 18)
         .addComponent(PEmpl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(140, Short.MAX_VALUE))
+        .addContainerGap(77, Short.MAX_VALUE))
     );
 
-    jDesktopPane1.add(PanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 0, 280, 780));
+    jDesktopPane1.add(PanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, 260, 780));
 
     PanelOt.setBackground(new java.awt.Color(204, 255, 204));
     PanelOt.setLayout(new javax.swing.OverlayLayout(PanelOt));
 
-    FOrd.setPreferredSize(new java.awt.Dimension(860, 780));
+    FOrd.setPreferredSize(new java.awt.Dimension(870, 780));
 
-    jPanel1.setBackground(new java.awt.Color(153, 255, 255));
+    Ordenes.setFont(new java.awt.Font("Bauhaus 93", 3, 26)); // NOI18N
+    Ordenes.setForeground(new java.awt.Color(0, 102, 204));
+    Ordenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/ord (2).png"))); // NOI18N
 
-    jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
-    jLabel2.setForeground(new java.awt.Color(0, 102, 255));
-    jLabel2.setText("ORDEN");
-
-    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-    jPanel1.setLayout(jPanel1Layout);
-    jPanel1Layout.setHorizontalGroup(
-      jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel1Layout.createSequentialGroup()
-        .addGap(17, 17, 17)
-        .addComponent(jLabel2)
-        .addContainerGap(767, Short.MAX_VALUE))
-    );
-    jPanel1Layout.setVerticalGroup(
-      jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel1Layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(jLabel2)
-        .addContainerGap(13, Short.MAX_VALUE))
-    );
-
-    jPanel3.setBackground(new java.awt.Color(204, 255, 255));
-    jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Afiliado/a:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(0, 102, 204))); // NOI18N
-    jPanel3.setForeground(new java.awt.Color(0, 102, 255));
-
-    Nomb.setForeground(new java.awt.Color(0, 102, 204));
-    Nomb.setText("Nombre/s:");
-
-    Nom.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        NomActionPerformed(evt);
-      }
-    });
-
-    Apel.setForeground(new java.awt.Color(0, 102, 204));
-    Apel.setText("Apellido/s:");
-
-    Ape.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        ApeActionPerformed(evt);
-      }
-    });
-
-    Sep.setBackground(new java.awt.Color(153, 255, 255));
-    Sep.setForeground(new java.awt.Color(153, 255, 255));
-    Sep.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-    Docu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-    Docu.setForeground(new java.awt.Color(0, 102, 204));
+    Docu.setFont(new java.awt.Font("Candara", 0, 20)); // NOI18N
+    Docu.setForeground(new java.awt.Color(0, 153, 153));
     Docu.setText("DNI:");
 
     Doc.addActionListener(new java.awt.event.ActionListener() {
@@ -347,7 +331,38 @@ public class Menu extends javax.swing.JFrame {
       }
     });
 
-    Domi.setForeground(new java.awt.Color(0, 102, 204));
+    IdAfil.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
+    IdAfil.setForeground(new java.awt.Color(0, 153, 153));
+    IdAfil.setText("ID Afiliado/a:");
+
+    IdAf.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        IdAfActionPerformed(evt);
+      }
+    });
+
+    Nomb.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
+    Nomb.setForeground(new java.awt.Color(0, 153, 153));
+    Nomb.setText("Nombre/s:");
+
+    Nom.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        NomActionPerformed(evt);
+      }
+    });
+
+    Apel.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
+    Apel.setForeground(new java.awt.Color(0, 153, 153));
+    Apel.setText("Apellido/s:");
+
+    Ape.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        ApeActionPerformed(evt);
+      }
+    });
+
+    Domi.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
+    Domi.setForeground(new java.awt.Color(0, 153, 153));
     Domi.setText("Domicilio:");
 
     Dom.addActionListener(new java.awt.event.ActionListener() {
@@ -356,8 +371,21 @@ public class Menu extends javax.swing.JFrame {
       }
     });
 
-    Telf.setForeground(new java.awt.Color(0, 102, 204));
+    Telf.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
+    Telf.setForeground(new java.awt.Color(0, 153, 153));
     Telf.setText("Telf. o Cel. :");
+
+    Ina.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
+    Ina.setForeground(new java.awt.Color(0, 153, 153));
+    Ina.setLabel("Inactivo");
+
+    Act.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
+    Act.setForeground(new java.awt.Color(0, 153, 153));
+    Act.setLabel("Activo");
+
+    Corre1.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
+    Corre1.setForeground(new java.awt.Color(0, 153, 153));
+    Corre1.setText("Estado:");
 
     Tel.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,337 +393,193 @@ public class Menu extends javax.swing.JFrame {
       }
     });
 
-    Corre.setForeground(new java.awt.Color(0, 102, 204));
-    Corre.setText("E-mail:");
-
-    Cor.addActionListener(new java.awt.event.ActionListener() {
+    Buscar.setBackground(new java.awt.Color(0, 204, 204));
+    Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/buscar.png"))); // NOI18N
+    Buscar.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        CorActionPerformed(evt);
+        BuscarActionPerformed(evt);
       }
     });
-
-    Corre1.setForeground(new java.awt.Color(0, 102, 204));
-    Corre1.setText("Estado:");
-
-    IdAf.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        IdAfActionPerformed(evt);
-      }
-    });
-
-    IdAfil.setForeground(new java.awt.Color(0, 102, 204));
-    IdAfil.setText("ID Afiliado/a:");
-
-    BBusc.setFont(new java.awt.Font("Dialog", 3, 20)); // NOI18N
-    BBusc.setForeground(new java.awt.Color(0, 51, 255));
-    BBusc.setLabel("BUSCAR");
-    BBusc.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        BBuscActionPerformed(evt);
-      }
-    });
-    BBusc.addKeyListener(new java.awt.event.KeyAdapter() {
-      public void keyPressed(java.awt.event.KeyEvent evt) {
-        BBuscKeyPressed(evt);
-      }
-    });
-
-    Act.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-    Act.setForeground(new java.awt.Color(0, 102, 255));
-    Act.setLabel("Activo");
-
-    Ina.setFont(new java.awt.Font("Dialog", 0, 15)); // NOI18N
-    Ina.setForeground(new java.awt.Color(0, 51, 255));
-    Ina.setLabel("Inacivo");
-
-    javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-    jPanel3.setLayout(jPanel3Layout);
-    jPanel3Layout.setHorizontalGroup(
-      jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(jPanel3Layout.createSequentialGroup()
-            .addComponent(Nomb)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(Nom, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-          .addGroup(jPanel3Layout.createSequentialGroup()
-            .addComponent(Apel)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(Ape, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-          .addGroup(jPanel3Layout.createSequentialGroup()
-            .addComponent(IdAfil)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(IdAf, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-          .addGroup(jPanel3Layout.createSequentialGroup()
-            .addComponent(Docu)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(Doc, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(BBusc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(Sep, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(jPanel3Layout.createSequentialGroup()
-            .addComponent(Domi)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(Dom))
-          .addGroup(jPanel3Layout.createSequentialGroup()
-            .addComponent(Corre)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-            .addComponent(Cor, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(Telf)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(Tel, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
-          .addGroup(jPanel3Layout.createSequentialGroup()
-            .addComponent(Corre1)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(Act, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(20, 20, 20)
-            .addComponent(Ina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(0, 0, Short.MAX_VALUE))))
-    );
-    jPanel3Layout.setVerticalGroup(
-      jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel3Layout.createSequentialGroup()
-        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(jPanel3Layout.createSequentialGroup()
-            .addGap(79, 79, 79)
-            .addComponent(Sep, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-          .addGroup(jPanel3Layout.createSequentialGroup()
-            .addGap(18, 18, 18)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(Doc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(Docu))
-              .addComponent(BBusc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(18, 18, 18)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-              .addComponent(IdAfil)
-              .addComponent(IdAf, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-              .addComponent(Nomb)
-              .addComponent(Nom, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(Apel)
-              .addComponent(Ape, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        .addGap(0, 0, Short.MAX_VALUE))
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(Domi)
-          .addComponent(Dom, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(Corre)
-          .addComponent(Cor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(Telf)
-          .addComponent(Tel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-          .addComponent(Corre1)
-          .addComponent(Act, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(Ina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGap(15, 15, 15))
-    );
 
     javax.swing.GroupLayout FOrdLayout = new javax.swing.GroupLayout(FOrd);
     FOrd.setLayout(FOrdLayout);
     FOrdLayout.setHorizontalGroup(
       FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(FOrdLayout.createSequentialGroup()
-        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addContainerGap())
+        .addComponent(Ordenes)
+        .addGap(0, 0, Short.MAX_VALUE))
       .addGroup(FOrdLayout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGap(33, 33, 33)
+        .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(FOrdLayout.createSequentialGroup()
+            .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(FOrdLayout.createSequentialGroup()
+                .addComponent(Apel)
+                .addGap(6, 6, 6)
+                .addComponent(Ape, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+              .addGroup(FOrdLayout.createSequentialGroup()
+                .addComponent(IdAfil)
+                .addGap(6, 6, 6)
+                .addComponent(IdAf, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+              .addGroup(FOrdLayout.createSequentialGroup()
+                .addComponent(Nomb)
+                .addGap(6, 6, 6)
+                .addComponent(Nom, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGap(35, 35, 35)
+            .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+              .addGroup(FOrdLayout.createSequentialGroup()
+                .addComponent(Corre1)
+                .addGap(23, 23, 23)
+                .addComponent(Act, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Ina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+              .addGroup(FOrdLayout.createSequentialGroup()
+                .addComponent(Domi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Dom, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+              .addGroup(FOrdLayout.createSequentialGroup()
+                .addComponent(Telf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Tel))))
+          .addGroup(FOrdLayout.createSequentialGroup()
+            .addComponent(Docu)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(Doc, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(18, 18, 18)
+            .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        .addContainerGap(253, Short.MAX_VALUE))
     );
     FOrdLayout.setVerticalGroup(
       FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(FOrdLayout.createSequentialGroup()
-        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(527, Short.MAX_VALUE))
+        .addComponent(Ordenes)
+        .addGap(19, 19, 19)
+        .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+          .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+            .addComponent(Docu)
+            .addComponent(Doc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+        .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(FOrdLayout.createSequentialGroup()
+            .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(FOrdLayout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addComponent(IdAfil))
+              .addComponent(IdAf, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(6, 6, 6)
+            .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(FOrdLayout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addComponent(Nomb))
+              .addComponent(Nom, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(6, 6, 6)
+            .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(Apel)
+              .addComponent(Ape, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+          .addGroup(FOrdLayout.createSequentialGroup()
+            .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+              .addComponent(Domi)
+              .addComponent(Dom, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+              .addComponent(Tel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(Telf))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(Corre1)
+              .addComponent(Act, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(Ina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        .addGap(566, 566, 566))
     );
 
     PanelOt.add(FOrd);
 
-    jLabel3.setText("AFILIADO");
+    afili.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/afil (1).png"))); // NOI18N
+    afili.setText("AFILIADO");
 
     javax.swing.GroupLayout FAfiLayout = new javax.swing.GroupLayout(FAfi);
     FAfi.setLayout(FAfiLayout);
     FAfiLayout.setHorizontalGroup(
       FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(FAfiLayout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(jLabel3)
-        .addGap(191, 191, 191))
+        .addComponent(afili, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(0, 676, Short.MAX_VALUE))
     );
     FAfiLayout.setVerticalGroup(
       FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(FAfiLayout.createSequentialGroup()
-        .addGap(86, 86, 86)
-        .addComponent(jLabel3)
-        .addContainerGap(673, Short.MAX_VALUE))
+        .addComponent(afili, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(0, 735, Short.MAX_VALUE))
     );
 
     PanelOt.add(FAfi);
 
-    jLabel4.setText("PRESTADOR");
+    prest.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/prestador (1).png"))); // NOI18N
 
     javax.swing.GroupLayout FPresLayout = new javax.swing.GroupLayout(FPres);
     FPres.setLayout(FPresLayout);
     FPresLayout.setHorizontalGroup(
       FPresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(FPresLayout.createSequentialGroup()
-        .addGap(238, 238, 238)
-        .addComponent(jLabel4)
-        .addContainerGap(540, Short.MAX_VALUE))
+        .addComponent(prest)
+        .addGap(0, 675, Short.MAX_VALUE))
     );
     FPresLayout.setVerticalGroup(
       FPresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(FPresLayout.createSequentialGroup()
-        .addGap(308, 308, 308)
-        .addComponent(jLabel4)
-        .addContainerGap(451, Short.MAX_VALUE))
+        .addComponent(prest)
+        .addGap(0, 737, Short.MAX_VALUE))
     );
 
     PanelOt.add(FPres);
 
-    jLabel5.setText("ESPECIALISTA");
+    espe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/espe (1).png"))); // NOI18N
+    espe.setText("ESPECIALISTA");
 
     javax.swing.GroupLayout FEspLayout = new javax.swing.GroupLayout(FEsp);
     FEsp.setLayout(FEspLayout);
     FEspLayout.setHorizontalGroup(
       FEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 860, Short.MAX_VALUE)
-      .addGroup(FEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(FEspLayout.createSequentialGroup()
-          .addGap(233, 233, 233)
-          .addComponent(jLabel5)
-          .addContainerGap(535, Short.MAX_VALUE)))
+      .addGroup(FEspLayout.createSequentialGroup()
+        .addComponent(espe, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(0, 676, Short.MAX_VALUE))
     );
     FEspLayout.setVerticalGroup(
       FEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 780, Short.MAX_VALUE)
-      .addGroup(FEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(FEspLayout.createSequentialGroup()
-          .addGap(308, 308, 308)
-          .addComponent(jLabel5)
-          .addContainerGap(451, Short.MAX_VALUE)))
+      .addGroup(FEspLayout.createSequentialGroup()
+        .addComponent(espe)
+        .addGap(0, 737, Short.MAX_VALUE))
     );
 
     PanelOt.add(FEsp);
 
+    jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/emple (1).png"))); // NOI18N
     jLabel6.setText("EMPLEADO");
 
     javax.swing.GroupLayout FEmpLayout = new javax.swing.GroupLayout(FEmp);
     FEmp.setLayout(FEmpLayout);
     FEmpLayout.setHorizontalGroup(
       FEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 860, Short.MAX_VALUE)
-      .addGroup(FEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(FEmpLayout.createSequentialGroup()
-          .addGap(241, 241, 241)
-          .addComponent(jLabel6)
-          .addContainerGap(543, Short.MAX_VALUE)))
+      .addGroup(FEmpLayout.createSequentialGroup()
+        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(0, 676, Short.MAX_VALUE))
     );
     FEmpLayout.setVerticalGroup(
       FEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGap(0, 780, Short.MAX_VALUE)
-      .addGroup(FEmpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(FEmpLayout.createSequentialGroup()
-          .addGap(308, 308, 308)
-          .addComponent(jLabel6)
-          .addContainerGap(451, Short.MAX_VALUE)))
+      .addGroup(FEmpLayout.createSequentialGroup()
+        .addComponent(jLabel6)
+        .addGap(0, 737, Short.MAX_VALUE))
     );
 
     PanelOt.add(FEmp);
 
-    jDesktopPane1.add(PanelOt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 780));
+    jDesktopPane1.add(PanelOt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 780));
 
     getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 780));
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
-
-  private void POrdenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_POrdenMouseClicked
-    // TODO add your handling code here:
-    FOrd.setVisible(true);
-    FAfi.setVisible(false);
-    FPres.setVisible(false);
-    FEsp.setVisible(false);
-    FEmp.setVisible(false);
-    POrden.setBackground(Color.lightGray);
-    PAfil.setBackground(new Color(102, 255, 255));
-    PPrest.setBackground(new Color(102, 255, 255));
-    PEspe.setBackground(new Color(102, 255, 255));
-    PEmpl.setBackground(new Color(102, 255, 255));
-  }//GEN-LAST:event_POrdenMouseClicked
-
-  private void PAfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAfilMouseClicked
-    // TODO add your handling code here:
-    FOrd.setVisible(false);
-    FAfi.setVisible(true);
-    FPres.setVisible(false);
-    FEsp.setVisible(false);
-    FEmp.setVisible(false);
-    POrden.setBackground(new Color(102, 255, 255));
-    PAfil.setBackground(Color.lightGray);
-    PPrest.setBackground(new Color(102, 255, 255));
-    PEspe.setBackground(new Color(102, 255, 255));
-    PEmpl.setBackground(new Color(102, 255, 255));
-
-
-  }//GEN-LAST:event_PAfilMouseClicked
-
-  private void PPrestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPrestMouseClicked
-    // TODO add your handling code here:
-    FOrd.setVisible(false);
-    FAfi.setVisible(false);
-    FPres.setVisible(true);
-    FEsp.setVisible(false);
-    FEmp.setVisible(false);
-    POrden.setBackground(new Color(102, 255, 255));
-    PAfil.setBackground(new Color(102, 255, 255));
-    PPrest.setBackground(Color.lightGray);
-    PEspe.setBackground(new Color(102, 255, 255));
-    PEmpl.setBackground(new Color(102, 255, 255));
-  }//GEN-LAST:event_PPrestMouseClicked
-
-  private void PEspeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PEspeMouseClicked
-    // TODO add your handling code here:
-    FOrd.setVisible(false);
-    FAfi.setVisible(false);
-    FPres.setVisible(false);
-    FEsp.setVisible(true);
-    FEmp.setVisible(false);
-    POrden.setBackground(new Color(102, 255, 255));
-    PAfil.setBackground(new Color(102, 255, 255));
-    PPrest.setBackground(new Color(102, 255, 255));
-    PEspe.setBackground(Color.lightGray);
-    PEmpl.setBackground(new Color(102, 255, 255));
-  }//GEN-LAST:event_PEspeMouseClicked
-
-  private void PEmplMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PEmplMouseClicked
-    // TODO add your handling code here:
-    FOrd.setVisible(false);
-    FAfi.setVisible(false);
-    FPres.setVisible(false);
-    FEsp.setVisible(false);
-    FEmp.setVisible(true);
-    POrden.setBackground(new Color(102, 255, 255));
-    PAfil.setBackground(new Color(102, 255, 255));
-    PPrest.setBackground(new Color(102, 255, 255));
-    PEspe.setBackground(new Color(102, 255, 255));
-    PEmpl.setBackground(Color.lightGray);
-  }//GEN-LAST:event_PEmplMouseClicked
 
   private void TelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelActionPerformed
     // TODO add your handling code here:
@@ -717,21 +601,127 @@ public class Menu extends javax.swing.JFrame {
     // TODO add your handling code here:
   }//GEN-LAST:event_DocActionPerformed
 
-  private void CorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CorActionPerformed
-    // TODO add your handling code here:
-  }//GEN-LAST:event_CorActionPerformed
-
   private void IdAfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdAfActionPerformed
     // TODO add your handling code here:
   }//GEN-LAST:event_IdAfActionPerformed
 
-  private void BBuscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBuscActionPerformed
+  private void PEmplMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PEmplMouseClicked
+    // TODO add your handling code here:
+    FOrd.setVisible(false);
+    FAfi.setVisible(false);
+    FPres.setVisible(false);
+    FEsp.setVisible(false);
+    FEmp.setVisible(true);
+    Empl.setForeground(new Color(0, 204, 204));
+     Espe.setForeground(new Color(204, 102, 0));
+     Prest.setForeground(new Color(204, 102, 0));
+    Afil.setForeground(new Color(204, 102, 0));
+    Orden.setForeground(new Color(204, 102, 0));   
+       
+    
+    
+    
+    POrden.setBackground(new Color(0, 204, 204));
+    PAfil.setBackground(new Color(0, 204, 204));
+    PPrest.setBackground(new Color(0, 204, 204));
+    PEspe.setBackground(new Color(0, 204, 204));
+    PEmpl.setBackground(new Color(204, 102, 0));
+  }//GEN-LAST:event_PEmplMouseClicked
+
+  private void PEspeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PEspeMouseClicked
+    // TODO add your handling code here:
+    FOrd.setVisible(false);
+    FAfi.setVisible(false);
+    FPres.setVisible(false);
+    FEsp.setVisible(true);
+    FEmp.setVisible(false);
+    Espe.setForeground(new Color(0, 204, 204));
+     Prest.setForeground(new Color(204, 102, 0));
+    Afil.setForeground(new Color(204, 102, 0));
+    Orden.setForeground(new Color(204, 102, 0));   
+       Empl.setForeground(new Color(204, 102, 0));
+    
+    
+    
+    
+    
+    POrden.setBackground(new Color(0, 204, 204));
+    PAfil.setBackground(new Color(0, 204, 204));
+    PPrest.setBackground(new Color(0, 204, 204));
+    PEspe.setBackground(new Color(204, 102, 0));
+    PEmpl.setBackground(new Color(0, 204, 204));
+  }//GEN-LAST:event_PEspeMouseClicked
+
+  private void PPrestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PPrestMouseClicked
+    // TODO add your handling code here:
+    FOrd.setVisible(false);
+    FAfi.setVisible(false);
+    FPres.setVisible(true);
+    FEsp.setVisible(false);
+    FEmp.setVisible(false);
+    
+    Prest.setForeground(new Color(0, 204, 204));
+    Afil.setForeground(new Color(204, 102, 0));
+    Orden.setForeground(new Color(204, 102, 0));   
+    Espe.setForeground(new Color(204, 102, 0));
+    Empl.setForeground(new Color(204, 102, 0));
+    
+    POrden.setBackground(new Color(0, 204, 204));
+    PAfil.setBackground(new Color(0, 204, 204));
+    PPrest.setBackground(new Color(204, 102, 0));
+    PEspe.setBackground(new Color(0, 204, 204));
+    PEmpl.setBackground(new Color(0, 204, 204));
+  }//GEN-LAST:event_PPrestMouseClicked
+
+  private void PAfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PAfilMouseClicked
+    // TODO add your handling code here:
+    FOrd.setVisible(false);
+    FAfi.setVisible(true);
+    FPres.setVisible(false);
+    FEsp.setVisible(false);
+    FEmp.setVisible(false);
+    Afil.setForeground(new Color(0, 204, 204));
+    Orden.setForeground(new Color(204, 102, 0));   
+    Prest.setForeground(new Color(204, 102, 0));
+    Espe.setForeground(new Color(204, 102, 0));
+    Empl.setForeground(new Color(204, 102, 0));
+    
+    
+    
+    POrden.setBackground(new Color(0, 204, 204));
+    PAfil.setBackground(new Color(204, 102, 0));
+    PPrest.setBackground(new Color(0, 204, 204));
+    PEspe.setBackground(new Color(0, 204, 204));
+    PEmpl.setBackground(new Color(0, 204, 204));
+
+  }//GEN-LAST:event_PAfilMouseClicked
+
+  private void POrdenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_POrdenMouseClicked
+    // TODO add your handling code here:
+    FOrd.setVisible(true);
+    FAfi.setVisible(false);
+    FPres.setVisible(false);
+    FEsp.setVisible(false);
+    FEmp.setVisible(false);
+    Orden.setForeground(new Color(0, 204, 204));
+    Afil.setForeground(new Color(204, 102, 0));
+    Prest.setForeground(new Color(204, 102, 0));
+    Espe.setForeground(new Color(204, 102, 0));
+    Empl.setForeground(new Color(204, 102, 0));
+    POrden.setBackground(new Color(204, 102, 0));
+    PAfil.setBackground(new Color(0, 204, 204));
+    PPrest.setBackground(new Color(0, 204, 204));
+    PEspe.setBackground(new Color(0, 204, 204));
+    PEmpl.setBackground(new Color(0, 204, 204));
+  }//GEN-LAST:event_POrdenMouseClicked
+
+  private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
     // TODO add your handling code here:
     try {
-    
+
       Integer dni = Integer.parseInt(Doc.getText());
       afiliadoActualDni = afiData.buscarAfiliadoPorDni(dni);
-      if (afiliadoActualDni != null) {       
+      if (afiliadoActualDni != null) {
         Nom.setText(afiliadoActualDni.getNombre());
         Ape.setText(afiliadoActualDni.getApellido());
         IdAf.setText(Integer.toString(afiliadoActualDni.getIdafiliaado()));
@@ -749,13 +739,7 @@ public class Menu extends javax.swing.JFrame {
     } catch (NumberFormatException ex) {
       JOptionPane.showMessageDialog(this, "Ingrese DNI de Afiliado Válido");
     }
-
-  }//GEN-LAST:event_BBuscActionPerformed
-
-  private void BBuscKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBuscKeyPressed
-    // TODO add your handling code here:
-  
-  }//GEN-LAST:event_BBuscKeyPressed
+  }//GEN-LAST:event_BuscarActionPerformed
 
   /**
    * @param args the command line arguments
@@ -797,9 +781,7 @@ public class Menu extends javax.swing.JFrame {
   private javax.swing.JLabel Afil;
   private javax.swing.JTextField Ape;
   private javax.swing.JLabel Apel;
-  private java.awt.Button BBusc;
-  private javax.swing.JTextField Cor;
-  private javax.swing.JLabel Corre;
+  private javax.swing.JButton Buscar;
   private javax.swing.JLabel Corre1;
   private javax.swing.JTextField Doc;
   private javax.swing.JLabel Docu;
@@ -818,6 +800,7 @@ public class Menu extends javax.swing.JFrame {
   private javax.swing.JTextField Nom;
   private javax.swing.JLabel Nomb;
   private javax.swing.JLabel Orden;
+  private javax.swing.JLabel Ordenes;
   private javax.swing.JPanel PAfil;
   private javax.swing.JPanel PEmpl;
   private javax.swing.JPanel PEspe;
@@ -826,18 +809,13 @@ public class Menu extends javax.swing.JFrame {
   private javax.swing.JPanel PanelMenu;
   private javax.swing.JPanel PanelOt;
   private javax.swing.JLabel Prest;
-  private javax.swing.JSeparator Sep;
   private javax.swing.JTextField Tel;
   private javax.swing.JLabel Telf;
+  private javax.swing.JLabel afili;
+  private javax.swing.JLabel espe;
   private javax.swing.JDesktopPane jDesktopPane1;
-  private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
-  private javax.swing.JLabel jLabel3;
-  private javax.swing.JLabel jLabel4;
-  private javax.swing.JLabel jLabel5;
   private javax.swing.JLabel jLabel6;
-  private javax.swing.JLabel jLabel7;
-  private javax.swing.JPanel jPanel1;
-  private javax.swing.JPanel jPanel3;
+  private javax.swing.JLabel logomenu;
+  private javax.swing.JLabel prest;
   // End of variables declaration//GEN-END:variables
 }
