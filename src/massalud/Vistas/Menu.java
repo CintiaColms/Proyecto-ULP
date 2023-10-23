@@ -121,6 +121,7 @@ private DefaultTableModel model = new DefaultTableModel();
         jlistar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtabla = new javax.swing.JTable();
+        jSeparator1 = new javax.swing.JSeparator();
         ImageIcon iconop=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
         Image imagenp=iconop.getImage();
         FPres = new javax.swing.JPanel(){
@@ -139,6 +140,9 @@ private DefaultTableModel model = new DefaultTableModel();
             }
         };
         espe = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         ImageIcon iconoem=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
         Image imagenem=iconoem.getImage();
         FEmp = new javax.swing.JPanel(){
@@ -677,7 +681,10 @@ private DefaultTableModel model = new DefaultTableModel();
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(FAfiLayout.createSequentialGroup()
                         .addGap(353, 353, 353)
-                        .addComponent(jlistar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jlistar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FAfiLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FAfiLayout.setVerticalGroup(
@@ -722,7 +729,9 @@ private DefaultTableModel model = new DefaultTableModel();
                         .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Apel1)
                             .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(124, 124, 124)
+                .addGap(102, 102, 102)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -755,6 +764,12 @@ private DefaultTableModel model = new DefaultTableModel();
         espe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/espe (1).png"))); // NOI18N
         espe.setText("ESPECIALISTA");
 
+        jLabel5.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel5.setText("ID Especialidad :");
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/buscar.png"))); // NOI18N
+
         javax.swing.GroupLayout FEspLayout = new javax.swing.GroupLayout(FEsp);
         FEsp.setLayout(FEspLayout);
         FEspLayout.setHorizontalGroup(
@@ -762,12 +777,29 @@ private DefaultTableModel model = new DefaultTableModel();
             .addGroup(FEspLayout.createSequentialGroup()
                 .addComponent(espe, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 676, Short.MAX_VALUE))
+            .addGroup(FEspLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FEspLayout.setVerticalGroup(
             FEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FEspLayout.createSequentialGroup()
                 .addComponent(espe)
-                .addGap(0, 737, Short.MAX_VALUE))
+                .addGroup(FEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FEspLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(FEspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(FEspLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel7)))
+                .addGap(0, 686, Short.MAX_VALUE))
         );
 
         PanelOt.add(FEsp);
@@ -981,6 +1013,7 @@ private DefaultTableModel model = new DefaultTableModel();
 
     private void jlistarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistarMouseClicked
         borrarF();
+        
         for(Afiliado a: afiData.listarAfiliado()){
             model.addRow(new Object []{a.getIdafiliaado(),a.getNombre(),a.getApellido(),a.getDni(),a.getEmpleado().getIdEmpleado(),a.getDomicilio(),a.getTelefono()});
         
@@ -1078,8 +1111,12 @@ private DefaultTableModel model = new DefaultTableModel();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jlistar;
     private javax.swing.JTable jtabla;
     private javax.swing.JLabel logomenu;
