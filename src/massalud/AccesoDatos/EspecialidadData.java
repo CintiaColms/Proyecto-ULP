@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import massalud.Entidades.Especialidad;
 
@@ -36,6 +38,28 @@ public class EspecialidadData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Especialidad" + ex.getMessage());
         }
     }
+    public void actualizarEspecialidad(Especialidad espe){
+        String sql="update especialidad set nombre=?, estado=?";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1, espe.getNombre());
+            ps.setBoolean(2, espe.isEstado());
+            int exito=ps.executeUpdate();
+            if(exito == 1){
+                JOptionPane.showMessageDialog(null, " Especialidad Modificada con Exito ");            
+            }else{
+              JOptionPane.showMessageDialog(null, " Especialidad NO pudo ser Modificada");  
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, " Error al ingresar a la tabla Especialidad");
+        }
+        
+    
+    
+    }
 
     public void eliminarEspecialidad(int id) {
         String sql = "update especialidad set estado=0 where idespecialidad= ?";
@@ -52,6 +76,7 @@ public class EspecialidadData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Especialidad");
         }
     }
+    
 
     public List<Especialidad> listarEspecialidad() {
         String sql = "select * from especialidad where estado=1";
