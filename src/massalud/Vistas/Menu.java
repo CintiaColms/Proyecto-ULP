@@ -636,15 +636,6 @@ private DefaultTableModel model = new DefaultTableModel();
             }
         ));
         jScrollPane1.setViewportView(jtabla);
-        if (jtabla.getColumnModel().getColumnCount() > 0) {
-            jtabla.getColumnModel().getColumn(0).setPreferredWidth(80);
-            jtabla.getColumnModel().getColumn(1).setPreferredWidth(120);
-            jtabla.getColumnModel().getColumn(2).setPreferredWidth(120);
-            jtabla.getColumnModel().getColumn(3).setPreferredWidth(110);
-            jtabla.getColumnModel().getColumn(4).setPreferredWidth(60);
-            jtabla.getColumnModel().getColumn(5).setPreferredWidth(140);
-            jtabla.getColumnModel().getColumn(6).setPreferredWidth(120);
-        }
 
         jSeparator1.setBackground(new java.awt.Color(0, 153, 153));
 
