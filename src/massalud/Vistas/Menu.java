@@ -14,7 +14,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import massalud.AccesoDatos.AfiliadoData;
+import massalud.AccesoDatos.EmpleadoData;
 import massalud.Entidades.Afiliado;
+import massalud.Entidades.Empleado;
 
 /**
  *
@@ -101,7 +103,7 @@ private DefaultTableModel model = new DefaultTableModel();
         afili = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         idafi = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jbuscar = new javax.swing.JLabel();
         IdAfil1 = new javax.swing.JLabel();
         Nomb1 = new javax.swing.JLabel();
         Apel1 = new javax.swing.JLabel();
@@ -122,6 +124,9 @@ private DefaultTableModel model = new DefaultTableModel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtabla = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
+        guardar = new javax.swing.JLabel();
+        modificar = new javax.swing.JLabel();
+        eliminar = new javax.swing.JLabel();
         ImageIcon iconop=new ImageIcon(getClass().getResource("/massalud/Recursos/F1.png"));
         Image imagenp=iconop.getImage();
         FPres = new javax.swing.JPanel(){
@@ -531,7 +536,12 @@ private DefaultTableModel model = new DefaultTableModel();
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
         jLabel2.setText("ID Afiliado/a :");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/buscar.png"))); // NOI18N
+        jbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/buscar.png"))); // NOI18N
+        jbuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbuscarMouseClicked(evt);
+            }
+        });
 
         IdAfil1.setFont(new java.awt.Font("Bauhaus 93", 0, 15)); // NOI18N
         IdAfil1.setForeground(new java.awt.Color(0, 153, 153));
@@ -616,16 +626,48 @@ private DefaultTableModel model = new DefaultTableModel();
         jtabla.setForeground(new java.awt.Color(0, 153, 153));
         jtabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
         jScrollPane1.setViewportView(jtabla);
+        if (jtabla.getColumnModel().getColumnCount() > 0) {
+            jtabla.getColumnModel().getColumn(0).setPreferredWidth(80);
+            jtabla.getColumnModel().getColumn(1).setPreferredWidth(120);
+            jtabla.getColumnModel().getColumn(2).setPreferredWidth(120);
+            jtabla.getColumnModel().getColumn(3).setPreferredWidth(110);
+            jtabla.getColumnModel().getColumn(4).setPreferredWidth(60);
+            jtabla.getColumnModel().getColumn(5).setPreferredWidth(140);
+            jtabla.getColumnModel().getColumn(6).setPreferredWidth(120);
+        }
+
+        jSeparator1.setBackground(new java.awt.Color(0, 153, 153));
+
+        guardar.setText("Guardar");
+        guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guardarMouseClicked(evt);
+            }
+        });
+
+        modificar.setText("Modificar");
+        modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificarMouseClicked(evt);
+            }
+        });
+
+        eliminar.setText("Eliminar");
+        eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout FAfiLayout = new javax.swing.GroupLayout(FAfi);
         FAfi.setLayout(FAfiLayout);
@@ -636,17 +678,15 @@ private DefaultTableModel model = new DefaultTableModel();
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(FAfiLayout.createSequentialGroup()
                 .addGap(160, 160, 160)
-                .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                        .addComponent(apellido))
+                .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(FAfiLayout.createSequentialGroup()
                         .addComponent(documento, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(idemp, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Telf1)
                     .addComponent(Corre2)
@@ -672,10 +712,7 @@ private DefaultTableModel model = new DefaultTableModel();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(idafi, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(FAfiLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(FAfiLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -684,7 +721,20 @@ private DefaultTableModel model = new DefaultTableModel();
                         .addComponent(jlistar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(FAfiLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FAfiLayout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                            .addComponent(apellido)))
+                    .addGroup(FAfiLayout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(423, 423, 423)
+                        .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FAfiLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FAfiLayout.setVerticalGroup(
@@ -711,7 +761,7 @@ private DefaultTableModel model = new DefaultTableModel();
                             .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel2)
                                 .addComponent(idafi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(FAfiLayout.createSequentialGroup()
@@ -729,7 +779,12 @@ private DefaultTableModel model = new DefaultTableModel();
                         .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Apel1)
                             .addComponent(apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(102, 102, 102)
+                .addGap(33, 33, 33)
+                .addGroup(FAfiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -987,7 +1042,7 @@ private DefaultTableModel model = new DefaultTableModel();
         }
       }
     } catch (NumberFormatException ex) {
-      JOptionPane.showMessageDialog(this, "Ingrese DNI de Afiliado Válido");
+      JOptionPane.showMessageDialog(this, "Ingrese DNI de Afiliado valido!");
     }
   }//GEN-LAST:event_BuscarActionPerformed
 
@@ -1012,14 +1067,102 @@ private DefaultTableModel model = new DefaultTableModel();
     }//GEN-LAST:event_domicilioActionPerformed
 
     private void jlistarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistarMouseClicked
+        try{
         borrarF();
         
         for(Afiliado a: afiData.listarAfiliado()){
             model.addRow(new Object []{a.getIdafiliaado(),a.getNombre(),a.getApellido(),a.getDni(),a.getEmpleado().getIdEmpleado(),a.getDomicilio(),a.getTelefono()});
         
         }
-        
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Ingrese ID de Afiliado valido!");
+        }
     }//GEN-LAST:event_jlistarMouseClicked
+
+    private void guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseClicked
+       
+        try{
+        AfiliadoData ad= new AfiliadoData();
+       EmpleadoData ed=new EmpleadoData();
+       int ide=Integer.parseInt(idemp.getText());
+       int dni=Integer.parseInt(documento.getText());
+       int tel=Integer.parseInt(telefono.getText());
+       boolean act= activo.getState();
+       Empleado e= ed.buscarEmpleado(ide);
+       Afiliado a= new Afiliado(nombre.getText(),apellido.getText(),dni,domicilio.getText(),tel,e,act);
+       ad.guardarAfiliado(a);
+        
+        
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Error al ingresar Datos!!");
+        } 
+    }//GEN-LAST:event_guardarMouseClicked
+
+    private void jbuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuscarMouseClicked
+       try{
+        int ida = Integer.parseInt(idafi.getText());
+        Afiliado a = afiData.buscarAfiliado(ida);
+        if (a != null) {
+            documento.setText(Integer.toString(a.getDni()));
+            nombre.setText(a.getNombre());
+            apellido.setText(a.getApellido());
+            idemp.setText(Integer.toString(a.getEmpleado().getIdEmpleado()));
+            domicilio.setText(a.getDomicilio());
+            telefono.setText(Integer.toString(a.getTelefono()));
+            if (a.isEstado() == true) {
+                activo.setState(true);
+                inactivo.setState(false);
+            } else {
+                inactivo.setState(true);
+                activo.setState(false);
+            }
+       }
+       }catch (Exception e){
+         JOptionPane.showMessageDialog(this, "Ingrese ID de Afiliado valido!");  
+       }
+           
+       
+       
+       
+       
+    }//GEN-LAST:event_jbuscarMouseClicked
+
+    private void modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseClicked
+        try {
+            AfiliadoData ad = new AfiliadoData();
+            EmpleadoData ed = new EmpleadoData();
+            int ide = Integer.parseInt(idemp.getText());
+            Empleado e = ed.buscarEmpleado(ide);
+            int id = Integer.parseInt(idafi.getText());
+            int tel = Integer.parseInt(telefono.getText());
+            int dni = Integer.parseInt(documento.getText());
+            boolean act = activo.getState();
+
+            Afiliado a = new Afiliado(id, nombre.getText(), apellido.getText(), dni, domicilio.getText(), tel, e, act);
+            ad.modificarAfiliado(a);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al Modificar Afiliado " + e.getMessage());
+        }
+    }//GEN-LAST:event_modificarMouseClicked
+
+    private void eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarMouseClicked
+        try {
+             AfiliadoData ad = new AfiliadoData();            
+            int id = Integer.parseInt(idafi.getText()); 
+            
+            ad.eliminarAfiliado(id);       
+            
+            
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, "Error al eliminar Afiliado " + e.getMessage());
+
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_eliminarMouseClicked
 
   /**
    * @param args the command line arguments
@@ -1102,14 +1245,15 @@ private DefaultTableModel model = new DefaultTableModel();
     private javax.swing.JTextField apellido;
     private javax.swing.JTextField documento;
     private javax.swing.JTextField domicilio;
+    private javax.swing.JLabel eliminar;
     private javax.swing.JLabel espe;
+    private javax.swing.JLabel guardar;
     private javax.swing.JTextField idafi;
     private javax.swing.JTextField idemp;
     private java.awt.Checkbox inactivo;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1117,9 +1261,11 @@ private DefaultTableModel model = new DefaultTableModel();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jbuscar;
     private javax.swing.JLabel jlistar;
     private javax.swing.JTable jtabla;
     private javax.swing.JLabel logomenu;
+    private javax.swing.JLabel modificar;
     private javax.swing.JTextField nombre;
     private javax.swing.JLabel prest;
     private javax.swing.JTextField telefono;
