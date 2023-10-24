@@ -5,12 +5,15 @@
 package massalud.Vistas;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.UIManager;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
 /**
@@ -29,6 +32,7 @@ public class Inicio extends javax.swing.JFrame {
    */
   public Inicio() {
     initComponents();
+    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
      setIconImage(new ImageIcon(getClass().getResource("/massalud/Recursos/icon.png")).getImage());
     setLocationRelativeTo(null);
    
@@ -47,7 +51,7 @@ public class Inicio extends javax.swing.JFrame {
         
     // Configurar la etiqueta "Cargando..."
     cargandoLabel = new javax.swing.JLabel("Cargando...");
-    cargandoLabel.setFont(new java.awt.Font("Harabara", java.awt.Font.BOLD, 14));    
+    cargandoLabel.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));    
     cargandoLabel.setForeground(new Color(0, 153, 153));
     cargandoLabel.setBounds(520, 695, 250, 40); // Establece la posición de la etiqueta
     inicio.add(cargandoLabel); // Agrega la etiqueta al JDesktopPane
@@ -74,13 +78,20 @@ public class Inicio extends javax.swing.JFrame {
     jLabel3 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    addWindowListener(new java.awt.event.WindowAdapter() {
+      public void windowClosing(java.awt.event.WindowEvent evt) {
+        formWindowClosing(evt);
+      }
+    });
 
     Barra.setBackground(new java.awt.Color(204, 102, 0));
     Barra.setForeground(new java.awt.Color(0, 153, 153));
+    Barra.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 204, 153), new java.awt.Color(255, 102, 0), new java.awt.Color(102, 255, 255), new java.awt.Color(0, 255, 255)));
+    Barra.setRequestFocusEnabled(false);
 
     jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/logoini.gif"))); // NOI18N
 
-    jLabel3.setFont(new java.awt.Font("Berlin Sans FB Demi", 2, 36)); // NOI18N
+    jLabel3.setFont(new java.awt.Font("Segoe UI Black", 2, 36)); // NOI18N
     jLabel3.setForeground(new java.awt.Color(0, 204, 204));
     jLabel3.setText("La mutual que Más te cuida");
 
@@ -100,7 +111,7 @@ public class Inicio extends javax.swing.JFrame {
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGroup(inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
           .addComponent(Barra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE))
+          .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addGap(320, 320, 320))
     );
     inicioLayout.setVerticalGroup(
@@ -111,8 +122,8 @@ public class Inicio extends javax.swing.JFrame {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(jLabel3)
         .addGap(116, 116, 116)
-        .addComponent(Barra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(91, Short.MAX_VALUE))
+        .addComponent(Barra, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(75, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -128,6 +139,23 @@ public class Inicio extends javax.swing.JFrame {
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
+
+  private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    // TODO add your handling code here:
+     Object[] opciones = {"Si", "NO"};
+    String nombre = "¿Está saliendo de MAS SALUD?";
+    UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 18));
+    UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+// UIManager.put("OptionPane.buttonFont", new Font("Segoe UI", Font.BOLD, 16));
+//    UIManager.put("OptionPane.buttonForeground", new Color(204, 204, 0));
+    ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+    int seleccion = JOptionPane.showOptionDialog(this, nombre, "Salir ", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, icono, opciones, opciones[1]);
+
+    if (seleccion == JOptionPane.YES_OPTION) {
+      this.dispose();
+    } else {
+    }
+  }//GEN-LAST:event_formWindowClosing
 
   /**
    * @param args the command line arguments
