@@ -11,16 +11,20 @@ package massalud.AccesoDatos;
  * @author Leroom
  */
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.UIManager;
 import massalud.Entidades.Especialidad;
 import massalud.Entidades.Prestador;
 import massalud.AccesoDatos.EspecialidadData;
@@ -220,19 +224,19 @@ public Prestador buscarPrestador(int idABuscar) {
             prestador.setEspecialidad(especialidad);
             prestador.setEstado(resultSet.getBoolean("estado"));
 
-            String mensaje = "El prestador fue encontrado exitosamente:\n";
-            mensaje += "ID: " + prestador.getIdPrestador() + "\n";
-            mensaje += "Nombre: " + prestador.getNombre() + "\n";
-            mensaje += "Apellido: " + prestador.getApellido() + "\n";
-            mensaje += "DNI: " + prestador.getDni() + "\n";
-            mensaje += "Institución: " + prestador.getInstitucion() + "\n";
-            mensaje += "Dirección: " + prestador.getDireccion() + "\n";
-            mensaje += "Teléfono: " + prestador.getTelefono() + "\n";
-            mensaje += "Email: " + prestador.getEmail() + "\n";
-            mensaje += "Especialidad: " + prestador.getEspecialidad().getNombre() + "\n";
-            mensaje += "Estado: " + (prestador.isEstado() ? "Activo" : "Inactivo");
-
-            JOptionPane.showMessageDialog(null, mensaje, "Prestador Encontrado", JOptionPane.INFORMATION_MESSAGE);
+//            String mensaje = "El prestador fue encontrado exitosamente:\n";
+//            mensaje += "ID: " + prestador.getIdPrestador() + "\n";
+//            mensaje += "Nombre: " + prestador.getNombre() + "\n";
+//            mensaje += "Apellido: " + prestador.getApellido() + "\n";
+////            mensaje += "DNI: " + prestador.getDni() + "\n";
+//            mensaje += "Institución: " + prestador.getInstitucion() + "\n";
+//            mensaje += "Dirección: " + prestador.getDireccion() + "\n";
+//            mensaje += "Teléfono: " + prestador.getTelefono() + "\n";
+//            mensaje += "Email: " + prestador.getEmail() + "\n";
+//            mensaje += "Especialidad: " + prestador.getEspecialidad().getNombre() + "\n";
+//            mensaje += "Estado: " + (prestador.isEstado() ? "Activo" : "Inactivo");
+//
+//            JOptionPane.showMessageDialog(null, mensaje, "Prestador Encontrado", JOptionPane.INFORMATION_MESSAGE);
         }
     } catch (SQLException p) {
         String mensaje = "Error al obtener prestador: " + p.getMessage();
@@ -268,7 +272,8 @@ public List<Prestador> buscarPrestadoresPorEspecialidad(String nombreEspecialida
         }
 
         if (!prestadores.isEmpty()) {
-            StringBuilder mensaje = new StringBuilder("Prestadores encontrados con la especialidad '" + nombreEspecialidad + "':\n");
+            StringBuilder mensaje = new StringBuilder("Especialidad: '" + nombreEspecialidad + "'\n");
+             mensaje.append("-----------------------------------------------------------------------------------------------------\n");
             for (Prestador prestador : prestadores) {
                 mensaje.append("Nombre: ").append(prestador.getNombre()).append("\n");
                 mensaje.append("Apellido: ").append(prestador.getApellido()).append("\n");
@@ -279,17 +284,59 @@ public List<Prestador> buscarPrestadoresPorEspecialidad(String nombreEspecialida
                 mensaje.append("Teléfono: ").append(prestador.getTelefono()).append("\n");
                 mensaje.append("Email: ").append(prestador.getEmail()).append("\n");
                 mensaje.append("Estado: ").append(prestador.isEstado() ? "Activo" : "Inactivo").append("\n");
-                mensaje.append("------------------------------\n");
+                mensaje.append("-----------------------------------------------------------------------------------------------------\n");
             }
-            JOptionPane.showMessageDialog(null, mensaje.toString());
+          
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 14));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Búsqueda ", JOptionPane.PLAIN_MESSAGE, icono);
+//            JOptionPane.showMessageDialog(null, mensaje.toString());
         } else {
-            String mensajeError = "Error: No se encontraron prestadores con especialidad '" + nombreEspecialidad + "'";
-            JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
+//            String mensajeError = "Error: No se encontraron prestadores con especialidad '" + nombreEspecialidad + "'";
+//            JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
         }
     } catch (SQLException p) {
-        String mensaje = "Error al obtener prestadores: " + p.getMessage();
-        JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+//        String mensaje = "Error al obtener prestadores: " + p.getMessage();
+//        JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
     return prestadores;
+}
+
+
+
+public Prestador elegirPrestadorPorEspecialidad(String nombreEspecialidad) {
+    List<Prestador> prestadores = buscarPrestadoresPorEspecialidad(nombreEspecialidad);
+
+    if (!prestadores.isEmpty()) {
+        String[] opciones = new String[prestadores.size()];
+        for (int i = 0; i < prestadores.size(); i++) {
+            Prestador prestador = prestadores.get(i);
+            opciones[i] = prestador.getNombre() + " " + prestador.getApellido();
+        }
+
+        // Mostrar un cuadro de diálogo de selección
+        String seleccion = (String) JOptionPane.showInputDialog(
+            null,
+            "Elige un prestador:",
+            "Selección de Prestador",
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            opciones,
+            opciones[0]
+        );
+
+        if (seleccion != null) {
+            // El usuario ha seleccionado un prestador, encuentra el Prestador correspondiente y devuélvelo
+            for (Prestador prestador : prestadores) {
+                if (seleccion.equals(prestador.getNombre() + " " + prestador.getApellido())) {
+                    return prestador;
+                }
+            }
+        }
+    }
+
+    // Si no se selecciona ningún prestador o no se encuentran prestadores, retorna null o realiza alguna otra acción según tus necesidades.
+    return null;
 }
 }

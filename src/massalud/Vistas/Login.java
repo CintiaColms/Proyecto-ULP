@@ -30,13 +30,14 @@ import massalud.Entidades.Empleado;
 public class Login extends javax.swing.JFrame {
 
   Connection con = null;
-//private EmpleadoData empData= new EmpleadoData();
+private EmpleadoData empData= new EmpleadoData();
 
   /**
    * Creates new form Login
    */
   public Login() {
     initComponents();
+    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     setIconImage(new ImageIcon(getClass().getResource("/massalud/Recursos/icon.png")).getImage());
     setLocationRelativeTo(null);
 
@@ -67,6 +68,11 @@ public class Login extends javax.swing.JFrame {
     jLabel3.setText("jLabel3");
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    addWindowListener(new java.awt.event.WindowAdapter() {
+      public void windowClosing(java.awt.event.WindowEvent evt) {
+        formWindowClosing(evt);
+      }
+    });
     getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     PanelLog.setBackground(new java.awt.Color(62, 67, 76));
@@ -74,7 +80,7 @@ public class Login extends javax.swing.JFrame {
     PanelLog.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     texemp.setBackground(new java.awt.Color(255, 255, 255));
-    texemp.setFont(new java.awt.Font("Bauhaus 93", 0, 18)); // NOI18N
+    texemp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
     texemp.setForeground(new java.awt.Color(0, 153, 153));
     texemp.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +101,7 @@ public class Login extends javax.swing.JFrame {
     PanelLog.add(contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 600, -1, 40));
 
     texcontra.setBackground(new java.awt.Color(255, 255, 255));
-    texcontra.setFont(new java.awt.Font("Bauhaus 93", 0, 18)); // NOI18N
+    texcontra.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
     texcontra.setForeground(new java.awt.Color(0, 153, 153));
     texcontra.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,12 +151,13 @@ public class Login extends javax.swing.JFrame {
 
   private void botoninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoninActionPerformed
     // TODO add your handling code here:
+//if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     Login();
+//    }
   }//GEN-LAST:event_botoninActionPerformed
 
   private void botoninKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botoninKeyPressed
     // TODO add your handling code here:
-
 
   }//GEN-LAST:event_botoninKeyPressed
 
@@ -161,62 +168,100 @@ public class Login extends javax.swing.JFrame {
     }
   }//GEN-LAST:event_texcontraKeyPressed
 
+  private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    // TODO add your handling code here:
+     Object[] opciones = {"Si", "NO"};
+    String nombre = "¿Está saliendo de MAS SALUD?";
+    UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 18));
+    UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+// UIManager.put("OptionPane.buttonFont", new Font("Segoe UI", Font.BOLD, 16));
+//    UIManager.put("OptionPane.buttonForeground", new Color(204, 204, 0));
+    ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+    int seleccion = JOptionPane.showOptionDialog(this, nombre, "Salir ", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, icono, opciones, opciones[1]);
+
+    if (seleccion == JOptionPane.YES_OPTION) {
+      this.dispose();
+    } else {
+    }
+  }//GEN-LAST:event_formWindowClosing
+
   /**
    * @param args the command line arguments
    */
   public void Login() {
-    con = Conexion.getConexion();
-    String usuario = null;
-    String contra = null;
-    String contra1 = (String) texcontra.getText();
-    String sql = "select nombre, usuario, contraseña from empleado where estado=1";
-    try {
-      PreparedStatement ps = con.prepareStatement(sql);
-      ResultSet rs = ps.executeQuery();
+con = Conexion.getConexion();
+String usuario = null;
+String contra = null;
+String contra1 = (String) texcontra.getText();
+String sql = "select nombre, usuario, contraseña,idEmpleado from empleado where estado=1";
+boolean usuarioValido = false;
+boolean contraseñaValida = false;
 
-      while (rs.next()) {
-        usuario = rs.getString("usuario");
-        contra = rs.getString("contraseña");
-        if (usuario.equalsIgnoreCase(texemp.getText()) && contra.equalsIgnoreCase(contra1)) {
-          String nombre = "Bienvenido a Mas Salud!!!, "+ rs.getString("nombre");
-          UIManager.put("OptionPane.messageFont",new Font("Bauhaus 93",Font.BOLD,18));          
-          UIManager.put("OptionPane.messageForeground",new Color(204, 102, 0));
-          ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
-          JOptionPane.showMessageDialog(this, nombre, "  Ingreso Exitoso ", JOptionPane.PLAIN_MESSAGE, icono);
-          Menu menu = new Menu();
-          menu.setVisible(true);
-          this.dispose();
+try {
+  PreparedStatement ps = con.prepareStatement(sql);
+  ResultSet rs = ps.executeQuery();
 
-          break;
-        }
-
-      }
-      if (!usuario.equalsIgnoreCase(texemp.getText()) || !contra.equalsIgnoreCase(contra1)) {
-        texemp.setText("");
-        texcontra.setText("");
-        
-         String nombre = "Contraseña y/o Usuario incorrectos, Ingrese Nuevamente ";
-          UIManager.put("OptionPane.messageFont",new Font("Bauhaus 93",Font.BOLD,18));          
-          UIManager.put("OptionPane.messageForeground",new Color(204, 102, 0));
-          ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
-          JOptionPane.showMessageDialog(this, nombre, "  Ingreso Fallido ", JOptionPane.PLAIN_MESSAGE, icono);
-        
-        
-//        JOptionPane.showMessageDialog(this, "Contraseña y/o Usuario incorrectos, Ingrese Nuevamente");
-      }
-
-//    if (usuario.equals("Leon")&& contra.compareTo("123456")==0){
-//    Menu menu=new Menu();
-//    menu.setVisible(true);
-//    this.dispose();
-//    }else{
-//      JOptionPane.showMessageDialog(null,"Verifique Usuario y/o Contraseña","Error",JOptionPane.WARNING_MESSAGE);
-//    }
-    } catch (SQLException ex) {
-      Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+  while (rs.next()) {
+    usuario = rs.getString("usuario");
+    contra = rs.getString("contraseña");
+    
+    if (usuario.equalsIgnoreCase(texemp.getText()) && contra.equals(contra1)) {
+      usuarioValido = true;
+      contraseñaValida = true;
+      String nombre = "Bienvenido a Mas Salud!!! " + rs.getString("nombre");
+      UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 18));
+      UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+      ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+      JOptionPane.showMessageDialog(this, nombre, "  Ingreso Exitoso ", JOptionPane.PLAIN_MESSAGE, icono);
+      Menu menu = new Menu();
+      menu.setVisible(true);
+      this.dispose();
+      break;
+    } else if (usuario.equalsIgnoreCase(texemp.getText())) {
+      usuarioValido = true;
+    } else if (contra.equals(contra1)) {
+      contraseñaValida = true;
     }
   }
-
+  if (!usuarioValido && !contraseñaValida) {
+    texemp.setText("");
+    texcontra.setText("");
+    String nombre = "Usuario y contraseña incorrectos. Por favor, ingrese nuevamente.";                
+    UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));          
+    UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+    ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+    JOptionPane.showMessageDialog(this, nombre, "Ingreso Fallido", JOptionPane.ERROR_MESSAGE,icono);
+  } else if (!usuarioValido) {
+    texemp.setText("");
+    String nombre = "Usuario incorrecto. Por favor, ingrese nuevamente.";                
+    UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));          
+    UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+    ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+    JOptionPane.showMessageDialog(this, nombre, "Ingreso Fallido", JOptionPane.ERROR_MESSAGE,icono);
+  } else if (!contraseñaValida) {
+    texcontra.setText("");
+    String nombre = "Contraseña incorrecta. Por favor, ingrese nuevamente.";                
+    UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));          
+    UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+    ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+    JOptionPane.showMessageDialog(this, nombre, "Ingreso Fallido", JOptionPane.ERROR_MESSAGE,icono);
+  }
+} catch (SQLException ex) {
+ 
+  String mensaje = "Error de base de datos: " + ex.getMessage();
+  UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 18));          
+  UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+  ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+  JOptionPane.showMessageDialog(this, mensaje, "Error de Base de Datos", JOptionPane.ERROR_MESSAGE,icono);
+  Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+}
+  }
+  public int obtenerId(int Id){
+   int Idempleado=Id;
+   return Idempleado;
+    
+    
+  }
   public static void main(String args[]) {
     /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

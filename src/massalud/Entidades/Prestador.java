@@ -28,6 +28,7 @@ public class Prestador {
   public Prestador() {
   }
 
+
     public Prestador(String nombre, String apellido, int dni, String institucion, String direccion, String telefono, String email, Especialidad especialidad, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -41,6 +42,9 @@ public class Prestador {
     }
 
   public Prestador(int idPrestador, String nombre, String apellido, int dni, String institucion, String direccion, String telefono, String email, Especialidad especialidad, boolean estado) {
+
+  
+
     this.idPrestador = idPrestador;
     this.nombre = nombre;
     this.apellido = apellido;
@@ -52,6 +56,8 @@ public class Prestador {
     this.especialidad = especialidad;
     this.estado = estado;
 }
+
+  
 
   
     public int getIdPrestador() {

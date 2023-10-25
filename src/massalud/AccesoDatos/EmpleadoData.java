@@ -203,4 +203,48 @@ public class EmpleadoData {
         }
         return empleado;
     }
+
+public Empleado buscarEmpleadoPorUsuario(String usuario) {
+        Empleado empleado = null;
+        String sql = "SELECT * FROM empleado WHERE dni = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                if (rs.getBoolean("estado") == true) {
+                    empleado = new Empleado();
+                    empleado.setIdEmpleado(rs.getInt("idEmpleado"));
+                    empleado.setDni(rs.getInt("dni"));
+                    empleado.setApellido(rs.getString("apellido"));
+                    empleado.setNombre(rs.getString("nombre"));
+                    empleado.setUsuario(rs.getString("usuario"));
+                    empleado.setContra(rs.getString("contraseña"));
+                    empleado.setClave(rs.getString("claveacceso"));
+                    empleado.setTel(rs.getInt("telefono"));
+                    empleado.setEstado(rs.getBoolean("estado"));
+                } else {
+                    empleado = new Empleado();
+                    empleado.setIdEmpleado(rs.getInt("idEmpleado"));
+                    empleado.setDni(rs.getInt("dni"));
+                    empleado.setApellido(rs.getString("apellido"));
+                    empleado.setNombre(rs.getString("nombre"));
+                    empleado.setUsuario(rs.getString("usuario"));
+                    empleado.setContra(rs.getString("contraseña"));
+                    empleado.setClave(rs.getString("claveacceso"));
+                    empleado.setTel(rs.getInt("telefono"));
+                    empleado.setEstado(rs.getBoolean("estado"));
+                    
+                    JOptionPane.showMessageDialog(null,"El Empleado "+empleado.getUsuario()+" ha sido dado de Baja");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El Usuario que busca no esta Registrado");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la Tabla de Empleados " + ex.getMessage());
+        }
+        return empleado;
+    }
 }
