@@ -4,6 +4,7 @@
  */
 package massalud.Vistas;
 
+import static com.sun.org.apache.xpath.internal.axes.HasPositionalPredChecker.check;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -37,6 +38,8 @@ private EmpleadoData empData= new EmpleadoData();
    */
   public Login() {
     initComponents();
+    
+    this.VistaA.setVisible(false);
     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     setIconImage(new ImageIcon(getClass().getResource("/massalud/Recursos/icon.png")).getImage());
     setLocationRelativeTo(null);
@@ -63,11 +66,16 @@ private EmpleadoData empData= new EmpleadoData();
     contra = new javax.swing.JLabel();
     texcontra = new javax.swing.JPasswordField();
     botonin = new javax.swing.JButton();
+    VistaA = new javax.swing.JLabel();
     jLabel1 = new javax.swing.JLabel();
+    VistaC = new javax.swing.JLabel();
+    VerPass = new javax.swing.JCheckBox();
+    jLabel2 = new javax.swing.JLabel();
 
     jLabel3.setText("jLabel3");
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setResizable(false);
     addWindowListener(new java.awt.event.WindowAdapter() {
       public void windowClosing(java.awt.event.WindowEvent evt) {
         formWindowClosing(evt);
@@ -87,18 +95,20 @@ private EmpleadoData empData= new EmpleadoData();
         texempActionPerformed(evt);
       }
     });
-    PanelLog.add(texemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 600, 200, 40));
+    PanelLog.add(texemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 250, 200, 40));
 
-    Emp.setFont(new java.awt.Font("Bauhaus 93", 1, 22)); // NOI18N
+    Emp.setFont(new java.awt.Font("Segoe UI Black", 1, 26)); // NOI18N
     Emp.setForeground(new java.awt.Color(0, 153, 153));
-    Emp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/USUARIO VERDE 167X42 PX.png"))); // NOI18N
+    Emp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    Emp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/usu1.png"))); // NOI18N
     Emp.setText("Usuario");
-    PanelLog.add(Emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 600, 190, 40));
+    PanelLog.add(Emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 160, 60));
 
-    contra.setFont(new java.awt.Font("Bauhaus 93", 1, 22)); // NOI18N
-    contra.setForeground(new java.awt.Color(0, 204, 204));
-    contra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/CONTRASEÑA VERDE 167X42 PX.png"))); // NOI18N
-    PanelLog.add(contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 600, -1, 40));
+    contra.setFont(new java.awt.Font("Segoe UI Black", 1, 26)); // NOI18N
+    contra.setForeground(new java.awt.Color(0, 153, 153));
+    contra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/contra2.png"))); // NOI18N
+    contra.setText("Contraseña");
+    PanelLog.add(contra, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 220, 60));
 
     texcontra.setBackground(new java.awt.Color(255, 255, 255));
     texcontra.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -113,12 +123,12 @@ private EmpleadoData empData= new EmpleadoData();
         texcontraKeyPressed(evt);
       }
     });
-    PanelLog.add(texcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 600, 180, 40));
+    PanelLog.add(texcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 200, 40));
 
-    botonin.setBackground(new java.awt.Color(198, 204, 204));
+    botonin.setBackground(new java.awt.Color(0, 153, 153));
     botonin.setFont(new java.awt.Font("Bauhaus 93", 1, 24)); // NOI18N
-    botonin.setForeground(new java.awt.Color(0, 102, 204));
-    botonin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/ingresar.png"))); // NOI18N
+    botonin.setForeground(new java.awt.Color(0, 153, 153));
+    botonin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Ingresarc.png"))); // NOI18N
     botonin.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         botoninActionPerformed(evt);
@@ -129,10 +139,45 @@ private EmpleadoData empData= new EmpleadoData();
         botoninKeyPressed(evt);
       }
     });
-    PanelLog.add(botonin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 690, 200, 40));
+    PanelLog.add(botonin, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 450, 160, 50));
 
+    VistaA.setForeground(new java.awt.Color(0, 153, 153));
+    VistaA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Cin icono1.png"))); // NOI18N
+    VistaA.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mousePressed(java.awt.event.MouseEvent evt) {
+        VistaAMousePressed(evt);
+      }
+    });
+    PanelLog.add(VistaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 340, -1, -1));
+
+    jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/logoini.gif"))); // NOI18N
-    PanelLog.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, 530));
+    jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+    PanelLog.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 520, 530));
+
+    VistaC.setForeground(new java.awt.Color(255, 153, 0));
+    VistaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Cin icono1a.png"))); // NOI18N
+    VistaC.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mousePressed(java.awt.event.MouseEvent evt) {
+        VistaCMousePressed(evt);
+      }
+    });
+    PanelLog.add(VistaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 340, 40, 40));
+
+    VerPass.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+    VerPass.setForeground(new java.awt.Color(0, 153, 153));
+    VerPass.setText("Ver contraseña");
+    VerPass.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        VerPassActionPerformed(evt);
+      }
+    });
+    PanelLog.add(VerPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 390, 160, -1));
+
+    jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 16)); // NOI18N
+    jLabel2.setForeground(new java.awt.Color(204, 102, 0));
+    jLabel2.setText("© Creado y Diseñado |G17~CDJL|");
+    PanelLog.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 690, 250, -1));
 
     getContentPane().add(PanelLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 780));
 
@@ -184,6 +229,32 @@ private EmpleadoData empData= new EmpleadoData();
     } else {
     }
   }//GEN-LAST:event_formWindowClosing
+
+  private void VerPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerPassActionPerformed
+    // TODO add your handling code here:
+    if(VerPass.isSelected()){
+    texcontra.setEchoChar((char)0);
+    }
+    else{
+     texcontra.setEchoChar('*');
+    }
+    
+  }//GEN-LAST:event_VerPassActionPerformed
+
+  private void VistaAMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VistaAMousePressed
+    // TODO add your handling code here:
+    VistaA.setVisible(false);
+       VistaC.setVisible(true);
+  texcontra.setEchoChar((char)0);
+    
+  }//GEN-LAST:event_VistaAMousePressed
+
+  private void VistaCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VistaCMousePressed
+    // TODO add your handling code here:
+     VistaC.setVisible(false);
+       VistaA.setVisible(true);
+ texcontra.setEchoChar('*');
+  }//GEN-LAST:event_VistaCMousePressed
 
   /**
    * @param args the command line arguments
@@ -297,9 +368,13 @@ try {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel Emp;
   private javax.swing.JPanel PanelLog;
+  private javax.swing.JCheckBox VerPass;
+  private javax.swing.JLabel VistaA;
+  private javax.swing.JLabel VistaC;
   private javax.swing.JButton botonin;
   private javax.swing.JLabel contra;
   private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JPasswordField texcontra;
   private javax.swing.JTextField texemp;

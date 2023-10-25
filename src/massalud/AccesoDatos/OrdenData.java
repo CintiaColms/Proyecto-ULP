@@ -6,6 +6,8 @@
 //<<<<<<< HEAD
 package massalud.AccesoDatos;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -15,7 +17,9 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import massalud.Entidades.Afiliado;
 import massalud.Entidades.Orden;
 import massalud.Entidades.Prestador;
@@ -78,7 +82,35 @@ public class OrdenData {
       JOptionPane.showMessageDialog(null, "Error al modificar la orden: " + ex.getMessage());
     }
   }
+ 
+public void eliminarPorFila(String columna, String valor) {
+    String sql = "DELETE FROM orden WHERE " + columna + " = ?";
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, valor); // Establece el valor de la columna para identificar la fila
+        int filasEliminadas = ps.executeUpdate();
+//        if (filasEliminadas > 0) {
 
+String mensaje = "" + columna + ": " + valor + "\n Eliminada con éxito";
+        UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+        UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+        ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+        JOptionPane.showMessageDialog(null, mensaje, "Exito", JOptionPane.PLAIN_MESSAGE, icono);
+
+//            JOptionPane.showMessageDialog(null, "Fila con " + columna + ": " + valor + "\n Eliminada con éxito");
+//        } else {
+//            JOptionPane.showMessageDialog(null, "No se encontró la fila para eliminar\n Verificar el valor de la columna");
+//        }
+        ps.close();
+    } catch (SQLException ex) {
+//      String mensaje = "Error al eliminar la fila: ";
+//        UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+//        UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+//        ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+//        JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
+//        JOptionPane.showMessageDialog(null, "Error al eliminar la fila: " + ex.getMessage());
+    }
+}
   public void eliminarOrden(int idOrden) {
     String sql = "DELETE FROM orden WHERE idOrden = ?";
     try {
@@ -117,10 +149,12 @@ public class OrdenData {
         Prestador p = presData.buscarPrestador(rs.getInt("idprestador"));
         ord.setPrestador(p);
         ordenes.add(ord);
+        
       }
       rs.close();
       ps.close();
     } catch (SQLException ex) {
+       
       ex.printStackTrace();
     }
     return ordenes;

@@ -32,14 +32,14 @@ public class Conexion {
 
         Class.forName("org.mariadb.jdbc.Driver");
         connection=DriverManager.getConnection(Url+DB,Usuario,Password);
-  String mensajecon = "Conectado" ;
-      UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
-      UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
-       UIManager.put("OptionPane.buttonFont", new Font("Segoe UI", Font.BOLD, 16));
-
-ImageIcon iconom = new ImageIcon(Conexion.class.getResource("/massalud/Recursos/icob.png"));
-
-      JOptionPane.showMessageDialog(null, mensajecon, "Conexión", JOptionPane.PLAIN_MESSAGE, iconom);
+//  String mensajecon = "Conectado" ;
+//      UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+//      UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+//       UIManager.put("OptionPane.buttonFont", new Font("Segoe UI", Font.BOLD, 16));
+//
+//ImageIcon iconom = new ImageIcon(Conexion.class.getResource("/massalud/Recursos/icob.png"));
+//
+//      JOptionPane.showMessageDialog(null, mensajecon, "Conexión", JOptionPane.PLAIN_MESSAGE, iconom);
 
 
       } catch (ClassNotFoundException ex) {

@@ -53,7 +53,7 @@ public class Inicio extends javax.swing.JFrame {
     cargandoLabel = new javax.swing.JLabel("Cargando...");
     cargandoLabel.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));    
     cargandoLabel.setForeground(new Color(0, 153, 153));
-    cargandoLabel.setBounds(520, 695, 250, 40); // Establece la posición de la etiqueta
+    cargandoLabel.setBounds(520, 630, 250, 40); // Establece la posición de la etiqueta
     inicio.add(cargandoLabel); // Agrega la etiqueta al JDesktopPane
     cargandoLabel.setVisible(true); // Asegura que la etiqueta sea visible inicialmente
   }
@@ -76,8 +76,10 @@ public class Inicio extends javax.swing.JFrame {
     Barra = new javax.swing.JProgressBar();
     jLabel1 = new javax.swing.JLabel();
     jLabel3 = new javax.swing.JLabel();
+    jLabel2 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setResizable(false);
     addWindowListener(new java.awt.event.WindowAdapter() {
       public void windowClosing(java.awt.event.WindowEvent evt) {
         formWindowClosing(evt);
@@ -95,9 +97,14 @@ public class Inicio extends javax.swing.JFrame {
     jLabel3.setForeground(new java.awt.Color(0, 204, 204));
     jLabel3.setText("La mutual que Más te cuida");
 
+    jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 16)); // NOI18N
+    jLabel2.setForeground(new java.awt.Color(204, 102, 0));
+    jLabel2.setText("© Creado y Diseñado |G17~CDJL|");
+
     inicio.setLayer(Barra, javax.swing.JLayeredPane.DEFAULT_LAYER);
     inicio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
     inicio.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+    inicio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
     javax.swing.GroupLayout inicioLayout = new javax.swing.GroupLayout(inicio);
     inicio.setLayout(inicioLayout);
@@ -109,10 +116,15 @@ public class Inicio extends javax.swing.JFrame {
         .addContainerGap(236, Short.MAX_VALUE))
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inicioLayout.createSequentialGroup()
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addGroup(inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-          .addComponent(Barra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addGap(320, 320, 320))
+        .addGroup(inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inicioLayout.createSequentialGroup()
+            .addGroup(inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+              .addComponent(Barra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(320, 320, 320))
+          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inicioLayout.createSequentialGroup()
+            .addComponent(jLabel2)
+            .addGap(457, 457, 457))))
     );
     inicioLayout.setVerticalGroup(
       inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,9 +133,11 @@ public class Inicio extends javax.swing.JFrame {
         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(jLabel3)
-        .addGap(116, 116, 116)
+        .addGap(52, 52, 52)
         .addComponent(Barra, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(75, Short.MAX_VALUE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+        .addComponent(jLabel2)
+        .addGap(58, 58, 58))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,6 +235,7 @@ public class Inicio extends javax.swing.JFrame {
   private javax.swing.JProgressBar Barra;
   private javax.swing.JDesktopPane inicio;
   private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   // End of variables declaration//GEN-END:variables
 }
