@@ -185,7 +185,7 @@ public class Inicio extends javax.swing.JFrame {
         esconderB();
         Login log = new Login();
         log.setVisible(true);
-        setVisible(false);
+//        setVisible(false);
 
       }
     }

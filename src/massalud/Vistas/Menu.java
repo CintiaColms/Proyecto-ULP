@@ -112,7 +112,7 @@ public class Menu extends javax.swing.JFrame {
     jespe.setShowGrid(true);
     jespe.setRowHeight(28);
     
-    String[] cabepre = new String[]{"ID Prestador", "Nombre/s", "Apellido/s", "DNI", "Institucion", "Domicilio","Telefono","Email","ID Especialidad"};
+    String[] cabepre = new String[]{"ID Prestador", "Nombre/s", "Apellido/s", "Institucion", "Domicilio","Telefono","Email","ID Especialidad"};
     pres.setColumnIdentifiers(cabepre);
     jtpre.setModel(pres);
     JTableHeader head = jtpre.getTableHeader();
@@ -121,22 +121,21 @@ public class Menu extends javax.swing.JFrame {
     
     jtpre.getColumnModel().getColumn(0).setPreferredWidth(5);
     jtpre.getColumnModel().getColumn(0).setResizable(false);
-    jtpre.getColumnModel().getColumn(1).setPreferredWidth(40);
+    jtpre.getColumnModel().getColumn(1).setPreferredWidth(20);
     jtpre.getColumnModel().getColumn(1).setResizable(false);
-    jtpre.getColumnModel().getColumn(2).setPreferredWidth(40);
+    jtpre.getColumnModel().getColumn(2).setPreferredWidth(20);
     jtpre.getColumnModel().getColumn(2).setResizable(false);
     jtpre.getColumnModel().getColumn(3).setPreferredWidth(30);
     jtpre.getColumnModel().getColumn(3).setResizable(false);
-    jtpre.getColumnModel().getColumn(4).setPreferredWidth(40);
+    jtpre.getColumnModel().getColumn(4).setPreferredWidth(60);
     jtpre.getColumnModel().getColumn(4).setResizable(false);
-    jtpre.getColumnModel().getColumn(5).setPreferredWidth(50);
+    jtpre.getColumnModel().getColumn(5).setPreferredWidth(30);
     jtpre.getColumnModel().getColumn(5).setResizable(false);
-    jtpre.getColumnModel().getColumn(6).setPreferredWidth(40);
+    jtpre.getColumnModel().getColumn(6).setPreferredWidth(60);
     jtpre.getColumnModel().getColumn(6).setResizable(false);
-    jtpre.getColumnModel().getColumn(7).setPreferredWidth(40);
+    jtpre.getColumnModel().getColumn(7).setPreferredWidth(5);
     jtpre.getColumnModel().getColumn(7).setResizable(false);
-    jtpre.getColumnModel().getColumn(8).setPreferredWidth(5);
-    jtpre.getColumnModel().getColumn(8).setResizable(false);
+   
     jtpre.setShowGrid(true);
     jtpre.setRowHeight(28);
     
@@ -1853,7 +1852,7 @@ public class Menu extends javax.swing.JFrame {
 
         jtpre.setBackground(new java.awt.Color(229, 243, 229));
         jtpre.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 153)));
-        jtpre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jtpre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jtpre.setForeground(new java.awt.Color(0, 153, 153));
         jtpre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -3364,7 +3363,7 @@ public class Menu extends javax.swing.JFrame {
         try {
             borrarFpre();
             for(Prestador p: presData.obtenerPrestadores()){
-                pres.addRow(new Object []{p.getIdPrestador(),p.getNombre(),p.getApellido(),p.getDni(),p.getInstitucion(),p.getDireccion(),p.getTelefono(),p.getEmail(),p.getEspecialidad().getIdEspecialidad()});
+                pres.addRow(new Object []{p.getIdPrestador(),p.getNombre(),p.getApellido(),p.getInstitucion(),p.getDireccion(),p.getTelefono(),p.getEmail(),p.getEspecialidad().getIdEspecialidad()});
             }
             
             
