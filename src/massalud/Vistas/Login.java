@@ -39,7 +39,7 @@ private EmpleadoData empData= new EmpleadoData();
   public Login() {
     initComponents();
     
-    this.VistaA.setVisible(false);
+    this.VistaC.setVisible(false);
     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     setIconImage(new ImageIcon(getClass().getResource("/massalud/Recursos/icon.png")).getImage());
     setLocationRelativeTo(null);
@@ -66,7 +66,7 @@ private EmpleadoData empData= new EmpleadoData();
     contra = new javax.swing.JLabel();
     texcontra = new javax.swing.JPasswordField();
     botonin = new javax.swing.JButton();
-    VistaA = new javax.swing.JLabel();
+    VistaO = new javax.swing.JLabel();
     jLabel1 = new javax.swing.JLabel();
     VistaC = new javax.swing.JLabel();
     VerPass = new javax.swing.JCheckBox();
@@ -141,14 +141,14 @@ private EmpleadoData empData= new EmpleadoData();
     });
     PanelLog.add(botonin, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 450, 160, 50));
 
-    VistaA.setForeground(new java.awt.Color(0, 153, 153));
-    VistaA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Cin icono1.png"))); // NOI18N
-    VistaA.addMouseListener(new java.awt.event.MouseAdapter() {
+    VistaO.setForeground(new java.awt.Color(0, 153, 153));
+    VistaO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Cin icono4a.png"))); // NOI18N
+    VistaO.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mousePressed(java.awt.event.MouseEvent evt) {
-        VistaAMousePressed(evt);
+        VistaOMousePressed(evt);
       }
     });
-    PanelLog.add(VistaA, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 340, -1, -1));
+    PanelLog.add(VistaO, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 340, -1, -1));
 
     jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/logoini.gif"))); // NOI18N
@@ -156,13 +156,13 @@ private EmpleadoData empData= new EmpleadoData();
     PanelLog.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 520, 530));
 
     VistaC.setForeground(new java.awt.Color(255, 153, 0));
-    VistaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Cin icono1a.png"))); // NOI18N
+    VistaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/Cin icono3a.png"))); // NOI18N
     VistaC.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mousePressed(java.awt.event.MouseEvent evt) {
         VistaCMousePressed(evt);
       }
     });
-    PanelLog.add(VistaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 340, 40, 40));
+    PanelLog.add(VistaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 340, 40, 40));
 
     VerPass.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
     VerPass.setForeground(new java.awt.Color(0, 153, 153));
@@ -241,18 +241,18 @@ private EmpleadoData empData= new EmpleadoData();
     
   }//GEN-LAST:event_VerPassActionPerformed
 
-  private void VistaAMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VistaAMousePressed
+  private void VistaOMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VistaOMousePressed
     // TODO add your handling code here:
-    VistaA.setVisible(false);
+    VistaO.setVisible(false);
        VistaC.setVisible(true);
   texcontra.setEchoChar((char)0);
     
-  }//GEN-LAST:event_VistaAMousePressed
+  }//GEN-LAST:event_VistaOMousePressed
 
   private void VistaCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VistaCMousePressed
     // TODO add your handling code here:
      VistaC.setVisible(false);
-       VistaA.setVisible(true);
+       VistaO.setVisible(true);
  texcontra.setEchoChar('*');
   }//GEN-LAST:event_VistaCMousePressed
 
@@ -369,8 +369,8 @@ try {
   private javax.swing.JLabel Emp;
   private javax.swing.JPanel PanelLog;
   private javax.swing.JCheckBox VerPass;
-  private javax.swing.JLabel VistaA;
   private javax.swing.JLabel VistaC;
+  private javax.swing.JLabel VistaO;
   private javax.swing.JButton botonin;
   private javax.swing.JLabel contra;
   private javax.swing.JLabel jLabel1;
