@@ -1,6 +1,8 @@
 
 package massalud.AccesoDatos;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import massalud.Entidades.Especialidad;
 
 public class EspecialidadData {
@@ -30,31 +34,52 @@ public class EspecialidadData {
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                espe.setIdEspecialidad(rs.getInt("idespecialidad"));
-                JOptionPane.showMessageDialog(null, "Especialidad añadida con éxito.");
+                espe.setIdEspecialidad(rs.getInt(1));
+               String mensaje = "Especialidad agregada con exito";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Especialidad agregada", JOptionPane.PLAIN_MESSAGE, icono);
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Especialidad" + ex.getMessage());
+            String mensaje = "Error al acceder a la tabla Especialidad";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
     }
     public void actualizarEspecialidad(Especialidad espe){
-        String sql="update especialidad set nombre=?, estado=?";
+        String sql="update especialidad set nombre=?, estado=? where idespecialidad=?";
         
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1, espe.getNombre());
             ps.setBoolean(2, espe.isEstado());
+            ps.setInt(3, espe.getIdEspecialidad());
             int exito=ps.executeUpdate();
             if(exito == 1){
-                JOptionPane.showMessageDialog(null, " Especialidad Modificada con Exito ");            
+                String mensaje = "Especialidad modificada con exito";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Especialidad modificada", JOptionPane.PLAIN_MESSAGE, icono);            
             }else{
-              JOptionPane.showMessageDialog(null, " Especialidad NO pudo ser Modificada");  
+               String mensaje = "Especialidad no pudo ser modificada";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Especialidad sin modificada", JOptionPane.PLAIN_MESSAGE, icono);  
             }
             ps.close();
             
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, " Error al ingresar a la tabla Especialidad");
+           String mensaje = "Error al acceder a la tabla Especialidad";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
         
     
@@ -69,11 +94,19 @@ public class EspecialidadData {
             int fila = ps.executeUpdate();
 
             if (fila == 1) {
-                JOptionPane.showMessageDialog(null, " Se eliminó la Especialidad con número de Identificación: " + id);
+                 String mensaje = "Se elimino la Especialidad con ID "+id+" con exito";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Especialidad eliminada", JOptionPane.PLAIN_MESSAGE, icono);
             }
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Especialidad");
+            String mensaje = "Error al acceder a laa tabla Especialidad";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
     }
     
@@ -97,7 +130,11 @@ public class EspecialidadData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Especialidad " + ex.getMessage());
+            String mensaje = "Error al acceder a laa tabla Especialidad";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
 
         return espe;
@@ -120,7 +157,11 @@ public class EspecialidadData {
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println("Error al acceder a la tabla Especialidad " + e.getMessage());
+            String mensaje = "Error al acceder a laa tabla Especialidad";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
 
         return especialidad;

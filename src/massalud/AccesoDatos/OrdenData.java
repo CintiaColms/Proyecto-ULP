@@ -53,11 +53,19 @@ public class OrdenData {
       ResultSet rs = ps.getGeneratedKeys();
       if (rs.next()) {
         ord.setIdOrden(rs.getInt(1));
-        JOptionPane.showMessageDialog(null, "Orden generada a nombre de: " + ord.getAfiliado().getApellido() + " " + ord.getAfiliado().getNombre());
+         String mensaje = "Orden generada exitosamente!!";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Orden generada", JOptionPane.PLAIN_MESSAGE, icono);
       }
       ps.close();
     } catch (SQLException ex) {
-      JOptionPane.showMessageDialog(null, "Error al guardar Orden " + ex.getMessage());
+      String mensaje = "Error al acceder a la tabla Orden!!";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
   }
 
@@ -73,9 +81,19 @@ public class OrdenData {
       ps.setInt(6, ord.getIdOrden()); // Identificador de la orden a actualizar
       int filasActualizadas = ps.executeUpdate();
       if (filasActualizadas > 0) {
-        JOptionPane.showMessageDialog(null, "ID Orden: " + ord.getIdOrden() + "\n Modificada con éxito");
+        
+         String mensaje = "ID Orden: "+ord.getIdOrden()+" modificada con exito!!";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Orden modificada", JOptionPane.PLAIN_MESSAGE, icono);
       } else {
-        JOptionPane.showMessageDialog(null, "No se encontró la orden para modificar\n Verificar ID de la Orden");
+//        JOptionPane.showMessageDialog(null, "No se encontró la orden para modificar\n Verificar ID de la Orden");
+         String mensaje = "No se encontro la orden para modificar!!";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Orden no modificada", JOptionPane.PLAIN_MESSAGE, icono);
       }
       ps.close();
     } catch (SQLException ex) {
@@ -118,13 +136,27 @@ String mensaje = "" + columna + ": " + valor + "\n Eliminada con éxito";
       ps.setInt(1, idOrden); // Establece el valor del ID de la orden a eliminar
       int filasEliminadas = ps.executeUpdate();
       if (filasEliminadas > 0) {
-        JOptionPane.showMessageDialog(null, "ID Orden: " + idOrden + "\n Eliminada con éxito");
+//        JOptionPane.showMessageDialog(null, "ID Orden: " + idOrden + "\n Eliminada con éxito");
+         String mensaje = "ID Orden: "+idOrden+" "+"eliminada con exito";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Orden eliminada", JOptionPane.PLAIN_MESSAGE, icono);
       } else {
         JOptionPane.showMessageDialog(null, "No se encontró la orden para eliminar\n Verificar ID de la Orden");
+         String mensaje = "No se encontro la orden para eliminar, verificar ID de la Orden";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Orden no encontrada", JOptionPane.PLAIN_MESSAGE, icono);
       }
       ps.close();
     } catch (SQLException ex) {
-      JOptionPane.showMessageDialog(null, "Error al eliminar la orden: " + ex.getMessage());
+      String mensaje = "Error al eliminar Orden";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
   }
 
@@ -279,7 +311,11 @@ public List<Orden> buscarOrdenesPorAfiliado(int idAafiliado) {
         rs.close();
         ps.close();
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Orden: " + ex.getMessage());
+        String mensaje = "Error al acceder a la tabla Orden";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
 
     return ordenes;

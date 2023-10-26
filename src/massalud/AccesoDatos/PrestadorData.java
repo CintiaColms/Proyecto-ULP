@@ -62,18 +62,32 @@ public class PrestadorData {
             ResultSet generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
                 prestador.setIdPrestador(generatedKeys.getInt(1));
-                JOptionPane.showMessageDialog(null, "Nuevo Prestador agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+//                JOptionPane.showMessageDialog(null, "Nuevo Prestador agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                 String mensaje = "Nuevo Prestador agregado con exito!!";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Prestador agregado", JOptionPane.PLAIN_MESSAGE, icono);
             } else {
-                JOptionPane.showMessageDialog(null, "No se pudo agregar el nuevo Prestador.", "Error", JOptionPane.ERROR_MESSAGE);
+                String mensaje = "No se pudo agregar al Prestsador";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
             }
         }
     } catch (SQLException e) {
-        if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
-            JOptionPane.showMessageDialog(null, "Error: El DNI ingresado ya existe en la base de datos.", "DNI Duplicado", JOptionPane.ERROR_MESSAGE);
-        } else {
-            System.out.println("Error al guardar el prestador: " + e.getMessage());
-            JOptionPane.showMessageDialog(null, "Error al guardar el Prestador: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+//        if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
+//            JOptionPane.showMessageDialog(null, "Error: El DNI ingresado ya existe en la base de datos.", "DNI Duplicado", JOptionPane.ERROR_MESSAGE);
+//        } else {
+//            System.out.println("Error al guardar el prestador: " + e.getMessage());
+//            JOptionPane.showMessageDialog(null, "Error al guardar el Prestador: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//        }
+         String mensaje = "Error al acceder a la tabla Prestador";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
 }
 
@@ -81,9 +95,7 @@ public class PrestadorData {
 
 public void actualizarPrestador(Prestador prestador) {
     try {
-        if (prestador.getIdPrestador() == 0) {
-            return;
-        }
+        
         String query = "UPDATE prestador SET nombre = ?, apellido = ?, dni = ?, institucion = ?, direccion = ?, telefono = ?, email = ?, idespecialidad = ?, estado = ? WHERE id=?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, prestador.getNombre());
@@ -96,24 +108,42 @@ public void actualizarPrestador(Prestador prestador) {
             statement.setInt(8, prestador.getEspecialidad().getIdEspecialidad());
             statement.setBoolean(9, prestador.isEstado());
             statement.setInt(10, prestador.getIdPrestador());
-            statement.executeUpdate();
+            int exito= statement.executeUpdate();
+            if(exito == 1){
             
-            String mensaje = "Prestador fue actualizado exitosamente.\n";
-            mensaje += "Datos modificados:\n";
-            mensaje += "Nombre: " + prestador.getNombre() + "\n";
-            mensaje += "Apellido: " + prestador.getApellido() + "\n";
-            mensaje += "DNI: " + prestador.getDni() + "\n";
-            mensaje += "Institución: " + prestador.getInstitucion() + "\n";
-            mensaje += "Dirección: " + prestador.getDireccion() + "\n";
-            mensaje += "Teléfono: " + prestador.getTelefono() + "\n";
-            mensaje += "Email: " + prestador.getEmail() + "\n";
-            mensaje += "Especialidad: " + prestador.getEspecialidad().getNombre() + "\n";
-            mensaje += "Estado: " + (prestador.isEstado() ? "Activo" : "Inactivo");
-
-            JOptionPane.showMessageDialog(null, mensaje);
+//            String mensaje = "Prestador fue actualizado exitosamente.";
+//            mensaje += "Datos modificados:\n";
+//            mensaje += "Nombre: " + prestador.getNombre() + "\n";
+//            mensaje += "Apellido: " + prestador.getApellido() + "\n";
+//            mensaje += "DNI: " + prestador.getDni() + "\n";
+//            mensaje += "Institución: " + prestador.getInstitucion() + "\n";
+//            mensaje += "Dirección: " + prestador.getDireccion() + "\n";
+//            mensaje += "Teléfono: " + prestador.getTelefono() + "\n";
+//            mensaje += "Email: " + prestador.getEmail() + "\n";
+//            mensaje += "Especialidad: " + prestador.getEspecialidad().getNombre() + "\n";
+//            mensaje += "Estado: " + (prestador.isEstado() ? "Activo" : "Inactivo");
+//                JOptionPane.showMessageDialog(null, "Prestador fue actualizado exitosamente");
+                String mensaje = "El Prestador fue actualizado exitosamente";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Prestador actualizado", JOptionPane.PLAIN_MESSAGE, icono);
+            }else {
+               String mensaje = "El Prestador no existe";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
+            
+            }
+            statement.close();
         }
     } catch (SQLException e) {
-        System.out.println("Error al actualizar el prestador: " + e.getMessage());
+        String mensaje = "Error al acceder a la tabla Prestador";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
 }
 
@@ -125,17 +155,30 @@ public void actualizarPrestador(Prestador prestador) {
             statement.setInt(1, id);
             int rowsAffected = statement.executeUpdate();
             if (rowsAffected > 0) {
-                String mensajeConfirmacion = "El prestador con ID " + id + " fue eliminado exitosamente.";
-                JOptionPane.showMessageDialog(null, mensajeConfirmacion, "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+//                String mensajeConfirmacion = "El prestador con ID " + id + " fue eliminado exitosamente.";
+//                JOptionPane.showMessageDialog(null, mensajeConfirmacion, "Eliminación Exitosa", JOptionPane.INFORMATION_MESSAGE);
+                String mensaje = "El restador con ID "+id+" fue eliminado exitosamente";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Prestador eliminado", JOptionPane.PLAIN_MESSAGE, icono);
 
             } else {
-                String mensajeError = "Error: No se encontró prestador con ID " + id + " para eliminar.";
-                JOptionPane.showMessageDialog(null, mensajeError, "Error al Eliminar", JOptionPane.ERROR_MESSAGE);
+//                String mensajeError = "Error: No se encontró prestador con ID " + id + " para eliminar.";
+//                JOptionPane.showMessageDialog(null, mensajeError, "Error al Eliminar", JOptionPane.ERROR_MESSAGE);
+                String mensaje = "Error no se encontro al Prestador con ID "+id+" para eliminar";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
             }
         }
     } catch (SQLException e) {
-        String mensajeError = "Error al eliminar el prestador: " + e.getMessage();
-        JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
+      String mensaje = "Error al acceder a la tabla Prestador";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
 }
 
@@ -143,7 +186,7 @@ public void actualizarPrestador(Prestador prestador) {
 public List<Prestador> obtenerPrestadores() {
     List<Prestador> prestadores = new ArrayList<>();
     try {
-        String sql = "SELECT * FROM prestador";
+        String sql = "SELECT * FROM prestador where estado=1";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ResultSet resultSet = ps.executeQuery();
 
@@ -165,38 +208,47 @@ public List<Prestador> obtenerPrestadores() {
             }
 
             if (prestadores.isEmpty()) {
-                String mensajeError = "Error: No se encontraron prestadores.";
-                JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                StringBuilder mensajeExito = new StringBuilder("La lista de prestadores es:\n");
-                for (Prestador p : prestadores) {
-                    mensajeExito.append("ID: ").append(p.getIdPrestador()).append("\n");
-                    mensajeExito.append("Nombre: ").append(p.getNombre()).append("\n");
-                    mensajeExito.append("Apellido: ").append(p.getApellido()).append("\n");
-                    mensajeExito.append("DNI: ").append(p.getDni()).append("\n");
-                    mensajeExito.append("Institución: ").append(p.getInstitucion()).append("\n");
-                    mensajeExito.append("Dirección: ").append(p.getDireccion()).append("\n");
-                    mensajeExito.append("Teléfono: ").append(p.getTelefono()).append("\n");
-                    mensajeExito.append("Email: ").append(p.getEmail()).append("\n");
-                    mensajeExito.append("Especialidad: ").append(p.getEspecialidad().getNombre()).append("\n");
-                    mensajeExito.append("Estado: ").append(p.isEstado() ? "Activo" : "Inactivo").append("\n");
-                    mensajeExito.append("-------------------------------------------------\n");
-                }
-
-                JTextArea textArea = new JTextArea(mensajeExito.toString());
-                textArea.setWrapStyleWord(true);
-                textArea.setLineWrap(true);
-                textArea.setCaretPosition(0);
-
-                JScrollPane scrollPane = new JScrollPane(textArea);
-                scrollPane.setPreferredSize(new Dimension(600, 400));
-
-
-                JOptionPane.showMessageDialog(null, scrollPane, "Prestadores Encontrados", JOptionPane.INFORMATION_MESSAGE);
+//                String mensajeError = "Error: No se encontraron prestadores.";
+//                JOptionPane.showMessageDialog(null, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
+                String mensaje = "Error no se encontraron Prestadores";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
+//            } else {
+//                StringBuilder mensajeExito = new StringBuilder("La lista de prestadores es:\n");
+//                for (Prestador p : prestadores) {
+//                    mensajeExito.append("ID: ").append(p.getIdPrestador()).append("\n");
+//                    mensajeExito.append("Nombre: ").append(p.getNombre()).append("\n");
+//                    mensajeExito.append("Apellido: ").append(p.getApellido()).append("\n");
+//                    mensajeExito.append("DNI: ").append(p.getDni()).append("\n");
+//                    mensajeExito.append("Institución: ").append(p.getInstitucion()).append("\n");
+//                    mensajeExito.append("Dirección: ").append(p.getDireccion()).append("\n");
+//                    mensajeExito.append("Teléfono: ").append(p.getTelefono()).append("\n");
+//                    mensajeExito.append("Email: ").append(p.getEmail()).append("\n");
+//                    mensajeExito.append("Especialidad: ").append(p.getEspecialidad().getNombre()).append("\n");
+//                    mensajeExito.append("Estado: ").append(p.isEstado() ? "Activo" : "Inactivo").append("\n");
+//                    mensajeExito.append("-------------------------------------------------\n");
+//                }
+//
+//                JTextArea textArea = new JTextArea(mensajeExito.toString());
+//                textArea.setWrapStyleWord(true);
+//                textArea.setLineWrap(true);
+//                textArea.setCaretPosition(0);
+//
+//                JScrollPane scrollPane = new JScrollPane(textArea);
+//                scrollPane.setPreferredSize(new Dimension(600, 400));
+//
+//
+////                JOptionPane.showMessageDialog(null, scrollPane, "Prestadores Encontrados", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     } catch (SQLException e) {
-       
+       String mensaje = "Error al acceder a la tabla Prestador";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
     return prestadores;
 }
@@ -239,8 +291,11 @@ public Prestador buscarPrestador(int idABuscar) {
 //            JOptionPane.showMessageDialog(null, mensaje, "Prestador Encontrado", JOptionPane.INFORMATION_MESSAGE);
         }
     } catch (SQLException p) {
-        String mensaje = "Error al obtener prestador: " + p.getMessage();
-        JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+      String mensaje = "Error al acceder a la tabla Prestador";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
 
     return prestador;

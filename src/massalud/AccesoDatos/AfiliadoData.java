@@ -54,12 +54,20 @@ public class AfiliadoData {
       ResultSet rs = ps.getGeneratedKeys();
       if (rs.next()) {
         afiliado.setIdafiliaado(rs.getInt(1));
-        JOptionPane.showMessageDialog(null, "Afiliado añadido con exito.");
+         String mensaje = "Afiliado ingresado con exito!! ";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Ingreso exitoso", JOptionPane.PLAIN_MESSAGE, icono);
       }
       ps.close();
 
     } catch (SQLException ex) {
-      JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliado" + ex.getMessage());
+       String mensaje = "Error al ingresar a la tabla Afiliado";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
   }
 
@@ -79,15 +87,27 @@ public class AfiliadoData {
       ps.setInt(8, afiliado.getIdafiliaado());
       int exito = ps.executeUpdate();
       if (exito == 1) {
-        JOptionPane.showMessageDialog(null, "Afiliado Modificado Exitosamente.");
+         String mensaje = "Afiliado modificado exitosamente!! ";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Afiliado modificado", JOptionPane.PLAIN_MESSAGE, icono);
       } else {
-        JOptionPane.showMessageDialog(null, "El Afiliado no existe");
+         String mensaje = "Error Afiliado no registrado ";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Afiliado inexistente", JOptionPane.PLAIN_MESSAGE, icono);
       }
 
       ps.close();
     } catch (SQLException ex) {
 
-      JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliado" + ex.getMessage());
+       String mensaje = "Error al ingresar a la tabla Afiliados ";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
   }
 
@@ -99,11 +119,19 @@ public class AfiliadoData {
       int fila = ps.executeUpdate();
 
       if (fila == 1) {
-        JOptionPane.showMessageDialog(null, " Se eliminó el Afiliado.");
+         String mensaje = "Se elimino el Afiliado con ID "+id+" exitosamente ";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Afiliado eliminado", JOptionPane.PLAIN_MESSAGE, icono);
       }
       ps.close();
     } catch (SQLException e) {
-      JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Afiliado");
+      String mensaje = "Error al ingresar a la tabla Afiliados";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
   }
 
@@ -130,6 +158,7 @@ public class AfiliadoData {
           afiliado.setTelefono(rs.getInt("telefono"));
           afiliado.setEstado(rs.getBoolean("estado"));
 //          JOptionPane.showMessageDialog(null, "Afiliado Encontrado");
+            
         } else {
           afiliado = new Afiliado();
           EmpleadoData eD = new EmpleadoData();
@@ -142,7 +171,11 @@ public class AfiliadoData {
           afiliado.setDomicilio(rs.getString("domicilio"));
           afiliado.setTelefono(rs.getInt("telefono"));
           afiliado.setEstado(rs.getBoolean("estado"));
-//          JOptionPane.showMessageDialog(null, "Afiliado esta dado de BAJA");
+          String mensaje = "El Afiliado esta dado de baja!! ";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Afiliado dado de baja", JOptionPane.PLAIN_MESSAGE, icono);
         }
       } 
 //      else {
@@ -151,6 +184,11 @@ public class AfiliadoData {
 //      ps.close();
     } catch (SQLException ex) {
 //      JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliado " + ex.getMessage());
+         String mensaje = "Error al ingresar a la tabla Afiliados! ";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
     return afiliado;
   }
@@ -184,7 +222,11 @@ public class AfiliadoData {
       ps.close();
 
     } catch (SQLException ex) {
-      JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliado " + ex.getMessage());
+      String mensaje = "Error al ingresar a la tabla Afiliados!";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
     }
 
     return afi;
@@ -238,7 +280,7 @@ public class AfiliadoData {
        UIManager.put("OptionPane.buttonFont", new Font("Segoe UI", Font.BOLD, 16));
     UIManager.put("OptionPane.buttonForeground", new Color(204, 204, 0));
       ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
-      JOptionPane.showMessageDialog(null, mensaje, "Búsqueda Fallida", JOptionPane.PLAIN_MESSAGE, icono);
+      JOptionPane.showMessageDialog(null, mensaje, "Afiliado dado de baja", JOptionPane.PLAIN_MESSAGE, icono);
           
 //      JOptionPane.showMessageDialog(null, "Afiliado esta dado de BAJA");
 
@@ -247,6 +289,7 @@ public class AfiliadoData {
       } else {
         
 //        JOptionPane.showMessageDialog(null, "No existe el Afiliado");
+            
         
         
         
@@ -267,7 +310,7 @@ public class AfiliadoData {
        UIManager.put("OptionPane.buttonFont", new Font("Segoe UI", Font.BOLD, 16));
     UIManager.put("OptionPane.buttonForeground", new Color(204, 204, 0));
       ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
-      JOptionPane.showMessageDialog(null, mensaje, "Búsqueda Fallida", JOptionPane.PLAIN_MESSAGE, icono);
+      JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
       
 //      JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliado " + ex.getMessage());
     }

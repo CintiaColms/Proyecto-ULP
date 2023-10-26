@@ -5,6 +5,8 @@
  */
 package massalud.AccesoDatos;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +14,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import massalud.Entidades.Empleado;
 
 public class EmpleadoData {
@@ -39,12 +43,22 @@ public class EmpleadoData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 empleado.setIdEmpleado(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "El Empleado fue agregado con Exito!");
+                
+                String mensaje = "El Empleado fue Agregado con Exito!! ";
+                UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+                UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+                ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+                JOptionPane.showMessageDialog(null, mensaje, "Ingreso Exitoso", JOptionPane.PLAIN_MESSAGE, icono);
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la Tabla de Empleados " + ex.getMessage());
+           
+            String mensaje = "Error al acceder a la tabla Empleados ";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
     }
 
@@ -64,13 +78,27 @@ public class EmpleadoData {
             ps.setInt(9, empleado.getIdEmpleado());
             int exito = ps.executeUpdate();
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Datos Actualizados con Exito!");
+                
+                String mensaje = "Datos actualizados con Exito!! ";
+                UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+                UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+                ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+                JOptionPane.showMessageDialog(null, mensaje, "Datos Actualizados", JOptionPane.PLAIN_MESSAGE, icono);
             } else {
-                JOptionPane.showMessageDialog(null, "El Empleado no se encuentra Registrado");
+                
+                    String mensaje = "Error el Empleado no se encuentra registrado";
+                UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+                UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+                ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+                JOptionPane.showMessageDialog(null, mensaje, "Empleado no Existe", JOptionPane.PLAIN_MESSAGE, icono);
             }
         } catch (SQLException ex) {
 
-            JOptionPane.showMessageDialog(null, "Error al acceder a la Tabla de Empleados " + ex.getMessage());
+                       String mensaje = "Error al acceder a la tabla Empleados ";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
     }
 
@@ -82,11 +110,21 @@ public class EmpleadoData {
             int fila = ps.executeUpdate();
 
             if (fila == 1) {
-                JOptionPane.showMessageDialog(null, "El Empleado ha sido Eliminado con Exito!");
+                
+                    String mensaje = "El empleado ha sido eliminado con exito!! ";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Eliminado exitosamente", JOptionPane.PLAIN_MESSAGE, icono);
             }
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la Tabla de Empleados");
+            
+                String mensaje = "Error al acceder a la Tabla de Empleados";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
   }
     
@@ -122,20 +160,34 @@ public class EmpleadoData {
                     empleado.setTel(rs.getInt("telefono"));
                     empleado.setEstado(rs.getBoolean("estado"));
                     
-                    JOptionPane.showMessageDialog(null, "El Empleado "+empleado.getApellido()+" "+empleado.getNombre()+" ha sido dado de Baja");                   
+                    
+                        String mensaje = "El empleado "+empleado.getApellido()+" "+empleado.getNombre()+ " ha sido dado de baja";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Dado de Baja", JOptionPane.PLAIN_MESSAGE, icono);
                 }                
             } else {
-                JOptionPane.showMessageDialog(null, "El Empleado que busca no esta Registrado");
+               
+                    String mensaje = "El empleado que busca no se encuentra registrado";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Empleado inexistente", JOptionPane.PLAIN_MESSAGE, icono);
             }
             ps.close();
         } catch (SQLException ex) {            
-            JOptionPane.showMessageDialog(null, "Error al acceder a la Tabla de Empleados " + ex.getMessage());            
+            String mensaje = "Error al acceder a la Tabla de Empleados";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);            
         }
         return empleado;
     }
   
     public List<Empleado> listarEmpleado() {
-        String sql = "SELECT idEmpleado, dni, apellido, nombre, telefono, usuario FROM empleado WHERE estado = 1";
+        String sql = "SELECT * FROM empleado WHERE estado = 1";
         PreparedStatement ps = null;
         ArrayList<Empleado> empleados = new ArrayList<>();
         try {
@@ -150,12 +202,18 @@ public class EmpleadoData {
                 empleado.setNombre(rs.getString("nombre"));
                 empleado.setTel(rs.getInt("telefono"));
                 empleado.setUsuario(rs.getString("usuario"));
+                empleado.setClave(rs.getString("claveacceso"));
+                empleado.setContra(rs.getString("contraseña"));
                 empleado.setEstado(true);
                 empleados.add(empleado);
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la Tabla de Empleados " + ex.getMessage());
+             String mensaje = "Error al acceder a la Tabla de Empleados";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
         return empleados;
     }
@@ -192,14 +250,26 @@ public class EmpleadoData {
                     empleado.setTel(rs.getInt("telefono"));
                     empleado.setEstado(rs.getBoolean("estado"));
                     
-                    JOptionPane.showMessageDialog(null,"El Empleado "+empleado.getApellido()+" "+empleado.getNombre()+" ha sido dado de Baja");
+                       String mensaje = "El empleado "+empleado.getApellido()+" "+empleado.getNombre()+ " ha sido dado de baja";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Dado de Baja", JOptionPane.PLAIN_MESSAGE, icono);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "El Empleado que busca no esta Registrado");
+                 String mensaje = "El empleado que busca no se encuentra registrado";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Empleado inexistente", JOptionPane.PLAIN_MESSAGE, icono);
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la Tabla de Empleados " + ex.getMessage());
+            String mensaje = "Error al acceder a la Tabla de Empleados";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
         return empleado;
     }
@@ -236,14 +306,26 @@ public Empleado buscarEmpleadoPorUsuario(String usuario) {
                     empleado.setTel(rs.getInt("telefono"));
                     empleado.setEstado(rs.getBoolean("estado"));
                     
-                    JOptionPane.showMessageDialog(null,"El Empleado "+empleado.getUsuario()+" ha sido dado de Baja");
+                      String mensaje = "El empleado "+empleado.getApellido()+" "+empleado.getNombre()+ " ha sido dado de baja";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Dado de Baja", JOptionPane.PLAIN_MESSAGE, icono);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "El Usuario que busca no esta Registrado");
+                  String mensaje = "El empleado que busca no se encuentra registrado";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Empleado inexistente", JOptionPane.PLAIN_MESSAGE, icono);
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la Tabla de Empleados " + ex.getMessage());
+             String mensaje = "Error al acceder a la Tabla de Empleados";
+            UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+            UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+            ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+            JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.PLAIN_MESSAGE, icono);
         }
         return empleado;
     }
