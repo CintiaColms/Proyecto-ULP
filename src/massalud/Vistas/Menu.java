@@ -1565,6 +1565,10 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/LISTAR VERDE 167X42 PX.png"))); // NOI18N
 
+        jtAfi.setBackground(new java.awt.Color(229, 243, 229));
+        jtAfi.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 153)));
+        jtAfi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jtAfi.setForeground(new java.awt.Color(0, 153, 153));
         jtAfi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1576,6 +1580,7 @@ public class Menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtAfi.setGridColor(new java.awt.Color(0, 153, 153));
         jScrollPane4.setViewportView(jtAfi);
 
         Listarafi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/LISTAR VERDE 95X22PX.png"))); // NOI18N
@@ -1846,7 +1851,10 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/LISTAR VERDE 167X42 PX.png"))); // NOI18N
 
-        jtpre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jtpre.setBackground(new java.awt.Color(229, 243, 229));
+        jtpre.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 153)));
+        jtpre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jtpre.setForeground(new java.awt.Color(0, 153, 153));
         jtpre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1858,6 +1866,7 @@ public class Menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtpre.setGridColor(new java.awt.Color(0, 153, 153));
         jScrollPane2.setViewportView(jtpre);
 
         listarpre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/LISTAR VERDE 95X22PX.png"))); // NOI18N
@@ -2083,6 +2092,10 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/LISTAR VERDE 167X42 PX.png"))); // NOI18N
 
+        jespe.setBackground(new java.awt.Color(229, 243, 229));
+        jespe.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 153)));
+        jespe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jespe.setForeground(new java.awt.Color(0, 153, 153));
         jespe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -2094,6 +2107,7 @@ public class Menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jespe.setGridColor(new java.awt.Color(0, 153, 153));
         jScrollPane5.setViewportView(jespe);
 
         listarespe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/LISTAR VERDE 95X22PX.png"))); // NOI18N
@@ -2319,6 +2333,10 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/LISTAR VERDE 167X42 PX.png"))); // NOI18N
 
+        jemp.setBackground(new java.awt.Color(229, 243, 229));
+        jemp.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 153, 153)));
+        jemp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jemp.setForeground(new java.awt.Color(0, 153, 153));
         jemp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -2330,6 +2348,7 @@ public class Menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jemp.setGridColor(new java.awt.Color(0, 153, 153));
         jScrollPane3.setViewportView(jemp);
 
         listaremp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/Recursos/LISTAR VERDE 95X22PX.png"))); // NOI18N
