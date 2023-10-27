@@ -203,22 +203,23 @@ public class AfiliadoData {
       PreparedStatement ps = con.prepareStatement(sql);
 
       ResultSet rs = ps.executeQuery();
-
-      while (rs.next()) {
-        Afiliado a = new Afiliado();
-        EmpleadoData eD = new EmpleadoData();
-        a.setIdafiliaado(rs.getInt("idafiliaado"));
-        a.setDni(rs.getInt("dni"));
-        a.setApellido(rs.getString("apellido"));
-        a.setNombre(rs.getString("nombre"));
-        Empleado e = eD.buscarEmpleado(rs.getInt("idempleado"));
-        a.setEmpleado(e);
-        a.setDomicilio(rs.getString("domicilio"));
-        a.setTelefono(rs.getInt("telefono"));
-        a.setEstado(true);
-        afi.add(a);
-
-      }
+        
+            while (rs.next()) {
+                Afiliado a = new Afiliado();
+                EmpleadoData eD = new EmpleadoData();
+                a.setIdafiliaado(rs.getInt("idafiliaado"));
+                a.setDni(rs.getInt("dni"));
+                a.setApellido(rs.getString("apellido"));
+                a.setNombre(rs.getString("nombre"));
+                Empleado e = eD.buscarEmpleado(rs.getInt("idempleado"));
+                a.setEmpleado(e);
+                a.setDomicilio(rs.getString("domicilio"));
+                a.setTelefono(rs.getInt("telefono"));
+                a.setEstado(true);
+                afi.add(a);
+            }
+        
+      
       ps.close();
 
     } catch (SQLException ex) {

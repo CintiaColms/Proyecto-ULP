@@ -304,7 +304,7 @@ public Prestador buscarPrestador(int idABuscar) {
 public List<Prestador> buscarPrestadoresPorEspecialidad(String nombreEspecialidad) {
     List<Prestador> prestadores = new ArrayList<>();
     try {
-        String sql = "SELECT p.* FROM prestador p INNER JOIN especialidad e ON p.idespecialidad = e.idespecialidad WHERE e.nombre = ?";
+        String sql = "SELECT p.* FROM prestador p INNER JOIN especialidad e ON p.idespecialidad = e.idespecialidad WHERE e.nombre = ? and e.estado=1";
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, nombreEspecialidad);
         ResultSet resultSet = ps.executeQuery();
