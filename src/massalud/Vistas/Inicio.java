@@ -26,7 +26,7 @@ public class Inicio extends javax.swing.JFrame {
   int cont = 0;
   public final static int TWO_SECOND = 100;
   private javax.swing.JLabel cargandoLabel; // Etiqueta para mostrar "Cargando..."
-
+//Hola,Bienvenido
   /**
    * Creates new form Inicio
    */
