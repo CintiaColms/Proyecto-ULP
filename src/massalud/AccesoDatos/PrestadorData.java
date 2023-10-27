@@ -391,7 +391,7 @@ public Prestador elegirPrestadorPorEspecialidad(String nombreEspecialidad) {
         }
     }
 
-    // Si no se selecciona ningún prestador o no se encuentran prestadores, retorna null o realiza alguna otra acción según tus necesidades.
+
     return null;
 }
 }
