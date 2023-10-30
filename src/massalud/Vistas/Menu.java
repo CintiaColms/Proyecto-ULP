@@ -72,6 +72,8 @@ public class Menu extends javax.swing.JFrame {
   public Menu() {
 
     initComponents();
+    FechaOrd.setMinSelectableDate(new Date());
+    FechaOrd.setMaxSelectableDate(new Date());
     
      String[] cabeceraemp = new String[]{"ID Empleado", "Nombre/s", "Apellido/s", "DNI", "Usuario", "Contraseña","Telefono","Clave Acceso"};
     empleado.setColumnIdentifiers(cabeceraemp);
@@ -1290,7 +1292,7 @@ public class Menu extends javax.swing.JFrame {
             FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FOrdLayout.createSequentialGroup()
                 .addComponent(Ordenes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FOrdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(FOrdLayout.createSequentialGroup()
@@ -1433,7 +1435,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(PresBus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(listarPres)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         PanelOt.add(FOrd);
@@ -2828,14 +2830,14 @@ public class Menu extends javax.swing.JFrame {
         return;
       }
 
-      if (fechaSeleccionada.before(fechaActual)) {
-        String mensaje = "La fecha seleccionada es anterior a la fecha actual.";
-        UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
-        UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
-        ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
-        JOptionPane.showMessageDialog(this, mensaje, "Advertencia", JOptionPane.PLAIN_MESSAGE, icono);
-        return;
-      }
+//      if (fechaSeleccionada.before(fechaActual)) {
+//        String mensaje = "La fecha seleccionada es anterior a la fecha actual.";
+//        UIManager.put("OptionPane.messageFont", new Font("Segoe UI", Font.BOLD, 15));
+//        UIManager.put("OptionPane.messageForeground", new Color(204, 102, 0));
+//        ImageIcon icono = new ImageIcon(getClass().getResource("/massalud/Recursos/icob.png"));
+//        JOptionPane.showMessageDialog(this, mensaje, "Advertencia", JOptionPane.PLAIN_MESSAGE, icono);
+//        return;
+//      }
 
       LocalDate fecha = fechaSeleccionada.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
